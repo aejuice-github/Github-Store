@@ -1,20 +1,14 @@
 package zed.rainxch.githubstore.app.navigation
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.navigationBarsPadding
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.toRoute
 import io.github.fletchmckee.liquid.rememberLiquidState
 import org.koin.compose.viewmodel.koinViewModel
@@ -29,21 +23,21 @@ import zed.rainxch.settings.presentation.SettingsRoot
 
 @Composable
 fun AppNavigation(
-    navController: NavHostController
+    navController: NavHostController,
+    onInstallModeClick: () -> Unit = {}
 ) {
     val liquidState = rememberLiquidState()
 
     CompositionLocalProvider(
         value = LocalBottomNavigationLiquid provides liquidState
     ) {
-        Box(
-            modifier = Modifier.fillMaxSize()
+        NavHost(
+            navController = navController,
+            startDestination = GithubStoreGraph.HomeScreen,
+            modifier = Modifier
+                .fillMaxSize()
+                .background(MaterialTheme.colorScheme.background)
         ) {
-            NavHost(
-                navController = navController,
-                startDestination = GithubStoreGraph.HomeScreen,
-                modifier = Modifier.background(MaterialTheme.colorScheme.background)
-            ) {
                 composable<GithubStoreGraph.HomeScreen> {
                     HomeRoot(
                         onNavigateToSearch = {
@@ -55,6 +49,9 @@ fun AppNavigation(
                         onNavigateToApps = {
                             navController.navigate(GithubStoreGraph.AppsScreen)
                         },
+                        onNavigateToFavourites = {
+                            navController.navigate(GithubStoreGraph.FavouritesScreen)
+                        },
                         onNavigateToDetails = { component ->
                             navController.navigate(
                                 GithubStoreGraph.DetailsScreen(
@@ -62,6 +59,7 @@ fun AppNavigation(
                                 )
                             )
                         },
+                        onInstallModeClick = onInstallModeClick,
                     )
                 }
 
@@ -126,21 +124,6 @@ fun AppNavigation(
                     )
                 }
             }
-
-            val currentScreen = navController.currentBackStackEntryAsState().value.getCurrentScreen()
-
-            currentScreen?.let {
-                BottomNavigation(
-                    currentScreen = currentScreen,
-                    onNavigate = {
-                        navController.navigate(it)
-                    },
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-                        .navigationBarsPadding()
-                        .padding(bottom = 24.dp)
-                )
-            }
         }
     }
-}
+

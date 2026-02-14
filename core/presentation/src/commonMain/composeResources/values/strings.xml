@@ -26,6 +26,7 @@
     <string name="update_all">Update All</string>
     <string name="update">Update</string>
     <string name="open">Open</string>
+    <string name="install">Install</string>
     <string name="cancel">Cancel</string>
 
     <!-- Apps feature - Update states -->

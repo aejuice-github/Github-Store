@@ -20,5 +20,7 @@ data class Component(
     val hooks: ComponentHooks? = null,
     val runnable: Boolean = false,
     val runCommand: String? = null,
-    val changelog: String = ""
+    val changelog: String = "",
+    val compatibleApps: List<String> = emptyList(),
+    val price: Int = 0
 )

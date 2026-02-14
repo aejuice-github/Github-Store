@@ -246,6 +246,22 @@ class HomeViewModel(
             HomeAction.OnAppsClick -> {
                 /* Handled in composable */
             }
+
+            HomeAction.OnFavouritesClick -> {
+                /* Handled in composable */
+            }
+
+            is HomeAction.SwitchApp -> {
+                _state.update { it.copy(selectedApp = action.app) }
+            }
+
+            is HomeAction.SwitchPriceFilter -> {
+                _state.update { it.copy(priceFilter = action.filter) }
+            }
+
+            HomeAction.OnInstallModeClick -> {
+                /* Handled in composable */
+            }
         }
     }
 

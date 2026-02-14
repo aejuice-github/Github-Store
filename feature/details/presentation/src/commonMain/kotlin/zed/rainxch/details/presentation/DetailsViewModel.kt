@@ -173,6 +173,16 @@ class DetailsViewModel(
                             )
                             _events.send(DetailsEvent.ShowSuccess("${component.name} installed successfully"))
                         }
+                        is InstallProgress.CompletedWithMessage -> {
+                            _state.value = _state.value.copy(
+                                isInstalling = false,
+                                isInstalled = true,
+                                installedVersion = component.version,
+                                isUpdateAvailable = false,
+                                installProgress = null
+                            )
+                            _events.send(DetailsEvent.ShowLongMessage(progress.message))
+                        }
                         is InstallProgress.Failed -> {
                             _state.value = _state.value.copy(
                                 isInstalling = false,
@@ -256,6 +266,16 @@ class DetailsViewModel(
                                 installProgress = null
                             )
                             _events.send(DetailsEvent.ShowSuccess("${component.name} updated to ${component.version}"))
+                        }
+                        is InstallProgress.CompletedWithMessage -> {
+                            _state.value = _state.value.copy(
+                                isInstalling = false,
+                                isInstalled = true,
+                                installedVersion = component.version,
+                                isUpdateAvailable = false,
+                                installProgress = null
+                            )
+                            _events.send(DetailsEvent.ShowLongMessage(progress.message))
                         }
                         is InstallProgress.Failed -> {
                             _state.value = _state.value.copy(

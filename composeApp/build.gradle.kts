@@ -67,6 +67,7 @@ kotlin {
                 implementation(compose.desktop.macos_arm64)
                 implementation(compose.desktop.windows_x64)
                 implementation(compose.desktop.windows_arm64)
+
             }
         }
     }
@@ -75,6 +76,9 @@ kotlin {
 compose.desktop {
     application {
         mainClass = "zed.rainxch.githubstore.DesktopAppKt"
+        jvmArgs += listOf(
+            "-Dsun.java2d.noddraw=true"
+        )
         nativeDistributions {
             packageName = "AEJuice-Component-Manager"
             packageVersion = libs.versions.projectVersionName.get().toString()

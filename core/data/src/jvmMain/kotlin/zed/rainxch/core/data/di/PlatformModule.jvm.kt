@@ -22,6 +22,7 @@ import zed.rainxch.core.domain.system.PackageMonitor
 import zed.rainxch.core.domain.utils.AppLauncher
 import zed.rainxch.core.domain.utils.BrowserHelper
 import zed.rainxch.core.domain.utils.ClipboardHelper
+import zed.rainxch.core.data.services.DragDropInstaller
 
 actual val corePlatformModule = module {
     single<Downloader> {
@@ -71,6 +72,12 @@ actual val corePlatformModule = module {
         DesktopAppLauncher(
             logger = get(),
             platform = get()
+        )
+    }
+
+    single<DragDropInstaller> {
+        DragDropInstaller(
+            installer = get()
         )
     }
 }

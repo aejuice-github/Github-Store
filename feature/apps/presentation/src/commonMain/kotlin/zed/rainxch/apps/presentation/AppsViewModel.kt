@@ -208,6 +208,11 @@ class AppsViewModel(
                             logger.debug("Successfully updated ${app.name} to latest version")
                         }
 
+                        is InstallProgress.CompletedWithMessage -> {
+                            updateAppState(app.componentId, UpdateState.Success)
+                            logger.debug("Updated ${app.name}: ${progress.message}")
+                        }
+
                         is InstallProgress.Failed -> {
                             throw IllegalStateException(progress.message)
                         }

@@ -41,6 +41,7 @@ import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
@@ -84,6 +85,22 @@ fun DetailsRoot(
             is DetailsEvent.ShowSuccess -> {
                 coroutineScope.launch {
                     snackbarHostState.showSnackbar(event.message)
+                }
+            }
+
+            is DetailsEvent.ShowLongMessage -> {
+                coroutineScope.launch {
+                    val job = launch {
+                        snackbarHostState.showSnackbar(
+                            message = event.message,
+                            duration = SnackbarDuration.Indefinite,
+                            withDismissAction = true
+                        )
+                    }
+                    launch {
+                        kotlinx.coroutines.delay(15_000L)
+                        snackbarHostState.currentSnackbarData?.dismiss()
+                    }
                 }
             }
 
@@ -447,6 +464,13 @@ private fun InfoSection(
             InfoRow(label = "Category", value = component.category)
             InfoRow(label = "Version", value = component.version)
             InfoRow(label = "Type", value = component.type.name.lowercase().replaceFirstChar { it.uppercase() })
+
+            if (component.compatibleApps.isNotEmpty()) {
+                InfoRow(
+                    label = "Compatible with",
+                    value = component.compatibleApps.joinToString(", ")
+                )
+            }
 
             if (state.installedVersion != null) {
                 InfoRow(label = "Installed version", value = state.installedVersion)

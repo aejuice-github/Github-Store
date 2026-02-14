@@ -9,4 +9,9 @@ data class HomeState(
     val isLoading: Boolean = false,
     val errorMessage: String? = null,
     val currentCategory: HomeCategory = HomeCategory.ALL,
+    val selectedApp: String = "All",
+    val availableApps: List<String> = listOf(
+        "All", "After Effects", "Premiere Pro", "DaVinci Resolve", "Vegas", "Final Cut Pro"
+    ),
+    val priceFilter: String = "All",
 )

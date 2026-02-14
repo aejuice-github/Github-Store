@@ -8,5 +8,6 @@ data class PlatformAsset(
     val sha256: String = "",
     val size: Long = 0,
     val installPath: String = "",
-    val requiresAdmin: Boolean = false
+    val requiresAdmin: Boolean = false,
+    val fileName: String = ""
 )

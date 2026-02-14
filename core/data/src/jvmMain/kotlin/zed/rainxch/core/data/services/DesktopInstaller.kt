@@ -29,14 +29,57 @@ class DesktopInstaller(
         }
 
         val targetDir = File(installPath)
+        val isZip = archive.extension.equals("zip", ignoreCase = true)
 
         if (requiresAdmin) {
-            installWithElevation(archive, targetDir)
+            if (isZip) {
+                installWithElevation(archive, targetDir)
+            } else {
+                copyFileWithElevation(archive, targetDir)
+            }
         } else {
-            extractZip(archive, targetDir)
+            if (isZip) {
+                extractZip(archive, targetDir)
+            } else {
+                copyFile(archive, targetDir)
+            }
         }
 
         Logger.i { "Installed ${archive.name} to $installPath" }
+    }
+
+    override suspend fun installToMultiplePaths(
+        archivePath: String,
+        installPaths: List<String>,
+        requiresAdmin: Boolean
+    ) = withContext(Dispatchers.IO) {
+        if (installPaths.isEmpty()) return@withContext
+        if (installPaths.size == 1) {
+            install(archivePath, installPaths.first(), requiresAdmin)
+            return@withContext
+        }
+
+        val source = File(archivePath)
+        if (!source.exists()) {
+            throw IllegalStateException("File not found: $archivePath")
+        }
+
+        val isZip = source.extension.equals("zip", ignoreCase = true)
+
+        if (!requiresAdmin) {
+            for (path in installPaths) {
+                val targetDir = File(path)
+                if (isZip) extractZip(source, targetDir) else copyFile(source, targetDir)
+            }
+        } else {
+            if (isZip) {
+                batchInstallZipWithElevation(source, installPaths)
+            } else {
+                batchCopyWithElevation(source, installPaths)
+            }
+        }
+
+        Logger.i { "Installed ${source.name} to ${installPaths.size} paths" }
     }
 
     override suspend fun uninstall(
@@ -62,6 +105,71 @@ class DesktopInstaller(
         }
 
         Logger.i { "Uninstalled from $installPath" }
+    }
+
+    override suspend fun uninstallFromMultiplePaths(
+        installPaths: List<String>,
+        files: List<String>,
+        requiresAdmin: Boolean
+    ) = withContext(Dispatchers.IO) {
+        if (installPaths.isEmpty()) return@withContext
+        if (installPaths.size == 1) {
+            uninstall(installPaths.first(), files, requiresAdmin)
+            return@withContext
+        }
+
+        if (!requiresAdmin) {
+            for (path in installPaths) {
+                val targetDir = File(path)
+                for (fileName in files) {
+                    val file = File(targetDir, fileName)
+                    if (file.exists()) {
+                        file.delete()
+                        Logger.d { "Deleted: ${file.absolutePath}" }
+                    }
+                }
+            }
+        } else {
+            when (platform) {
+                Platform.WINDOWS -> {
+                    val script = File(System.getProperty("java.io.tmpdir"), "aejuice-uninstall-${System.currentTimeMillis()}.bat")
+                    try {
+                        script.writeText(buildString {
+                            appendLine("@echo off")
+                            for (path in installPaths) {
+                                for (fileName in files) {
+                                    appendLine("del /f \"${File(File(path), fileName).absolutePath}\"")
+                                }
+                            }
+                        })
+                        runElevatedBat(script)
+                    } finally {
+                        script.delete()
+                    }
+                }
+                Platform.MACOS -> {
+                    val allFiles = installPaths.flatMap { path ->
+                        files.map { "'${File(File(path), it).absolutePath}'" }
+                    }.joinToString(" ")
+                    val process = ProcessBuilder(
+                        "osascript", "-e",
+                        "do shell script \"rm -f $allFiles\" with administrator privileges"
+                    ).start()
+                    process.waitFor()
+                }
+                Platform.LINUX -> {
+                    val allFiles = installPaths.flatMap { path ->
+                        files.map { "'${File(File(path), it).absolutePath}'" }
+                    }.joinToString(" ")
+                    val process = ProcessBuilder(
+                        "pkexec", "sh", "-c", "rm -f $allFiles"
+                    ).start()
+                    process.waitFor()
+                }
+            }
+        }
+
+        Logger.i { "Uninstalled from ${installPaths.size} paths" }
     }
 
     override suspend fun runHook(hookPath: String, requiresAdmin: Boolean) = withContext(Dispatchers.IO) {
@@ -113,6 +221,107 @@ class DesktopInstaller(
 
     override fun detectSystemArchitecture(): SystemArchitecture = systemArchitecture
 
+    private fun copyFile(source: File, targetDir: File) {
+        if (!targetDir.exists()) {
+            targetDir.mkdirs()
+        }
+        val destFile = File(targetDir, source.name)
+        source.copyTo(destFile, overwrite = true)
+        Logger.d { "Copied ${source.name} to ${destFile.absolutePath}" }
+    }
+
+    private fun copyFileWithElevation(source: File, targetDir: File) {
+        batchCopyWithElevation(source, listOf(targetDir.absolutePath))
+    }
+
+    private fun batchCopyWithElevation(source: File, targetPaths: List<String>) {
+        when (platform) {
+            Platform.WINDOWS -> {
+                val script = File(System.getProperty("java.io.tmpdir"), "aejuice-copy-${System.currentTimeMillis()}.bat")
+                try {
+                    script.writeText(buildString {
+                        appendLine("@echo off")
+                        for (path in targetPaths) {
+                            appendLine("mkdir \"$path\" 2>nul")
+                            appendLine("copy /y \"${source.absolutePath}\" \"$path\\\"")
+                        }
+                    })
+                    runElevatedBat(script)
+                    for (path in targetPaths) {
+                        val destFile = File(File(path), source.name)
+                        if (!destFile.exists()) {
+                            throw IOException("Elevated copy failed: ${destFile.absolutePath} not found after copy")
+                        }
+                    }
+                } finally {
+                    script.delete()
+                }
+            }
+            Platform.MACOS -> {
+                val commands = targetPaths.joinToString(" && ") { path ->
+                    "mkdir -p '$path' && cp '${source.absolutePath}' '$path/'"
+                }
+                val process = ProcessBuilder(
+                    "osascript", "-e",
+                    "do shell script \"$commands\" with administrator privileges"
+                ).start()
+                process.waitFor()
+            }
+            Platform.LINUX -> {
+                val commands = targetPaths.joinToString(" && ") { path ->
+                    "mkdir -p '$path' && cp '${source.absolutePath}' '$path/'"
+                }
+                val process = ProcessBuilder(
+                    "pkexec", "sh", "-c", commands
+                ).start()
+                process.waitFor()
+            }
+        }
+    }
+
+    private fun batchInstallZipWithElevation(archive: File, targetPaths: List<String>) {
+        val tempDir = File(System.getProperty("java.io.tmpdir"), "aejuice-install-${System.currentTimeMillis()}")
+        tempDir.mkdirs()
+        extractZip(archive, tempDir)
+
+        try {
+            when (platform) {
+                Platform.WINDOWS -> {
+                    val script = File(tempDir, "install.bat")
+                    script.writeText(buildString {
+                        appendLine("@echo off")
+                        for (path in targetPaths) {
+                            appendLine("mkdir \"$path\" 2>nul")
+                            appendLine("xcopy /s /y /q \"${tempDir.absolutePath}\\*\" \"$path\\\"")
+                        }
+                    })
+                    runElevatedBat(script)
+                }
+                Platform.MACOS -> {
+                    val commands = targetPaths.joinToString(" && ") { path ->
+                        "mkdir -p '$path' && cp -R '${tempDir.absolutePath}/'* '$path/'"
+                    }
+                    val process = ProcessBuilder(
+                        "osascript", "-e",
+                        "do shell script \"$commands\" with administrator privileges"
+                    ).start()
+                    process.waitFor()
+                }
+                Platform.LINUX -> {
+                    val commands = targetPaths.joinToString(" && ") { path ->
+                        "mkdir -p '$path' && cp -R '${tempDir.absolutePath}/'* '$path/'"
+                    }
+                    val process = ProcessBuilder(
+                        "pkexec", "sh", "-c", commands
+                    ).start()
+                    process.waitFor()
+                }
+            }
+        } finally {
+            tempDir.deleteRecursively()
+        }
+    }
+
     private fun extractZip(archive: File, targetDir: File) {
         if (!targetDir.exists()) {
             targetDir.mkdirs()
@@ -136,76 +345,113 @@ class DesktopInstaller(
     }
 
     private fun installWithElevation(archive: File, targetDir: File) {
-        val tempDir = File(System.getProperty("java.io.tmpdir"), "aejuice-install-${System.currentTimeMillis()}")
-        tempDir.mkdirs()
-
-        extractZip(archive, tempDir)
-
-        try {
-            when (platform) {
-                Platform.WINDOWS -> {
-                    val script = File(tempDir, "install.bat")
-                    script.writeText(buildString {
-                        appendLine("@echo off")
-                        appendLine("mkdir \"${targetDir.absolutePath}\" 2>nul")
-                        appendLine("xcopy /s /y /q \"${tempDir.absolutePath}\\*\" \"${targetDir.absolutePath}\\\"")
-                    })
-                    val process = ProcessBuilder(
-                        "powershell", "-Command",
-                        "Start-Process", "cmd", "-ArgumentList", "'/c','${script.absolutePath}'",
-                        "-Verb", "RunAs", "-Wait"
-                    ).start()
-                    process.waitFor()
-                }
-                Platform.MACOS -> {
-                    val command = "mkdir -p '${targetDir.absolutePath}' && cp -R '${tempDir.absolutePath}/'* '${targetDir.absolutePath}/'"
-                    val process = ProcessBuilder(
-                        "osascript", "-e",
-                        "do shell script \"$command\" with administrator privileges"
-                    ).start()
-                    process.waitFor()
-                }
-                Platform.LINUX -> {
-                    val process = ProcessBuilder(
-                        "pkexec", "sh", "-c",
-                        "mkdir -p '${targetDir.absolutePath}' && cp -R '${tempDir.absolutePath}/'* '${targetDir.absolutePath}/'"
-                    ).start()
-                    process.waitFor()
-                }
-            }
-        } finally {
-            tempDir.deleteRecursively()
-        }
+        batchInstallZipWithElevation(archive, listOf(targetDir.absolutePath))
     }
 
     private fun uninstallWithElevation(targetDir: File, files: List<String>) {
-        val filesList = files.joinToString(" ") { "'${File(targetDir, it).absolutePath}'" }
-
         when (platform) {
             Platform.WINDOWS -> {
-                val deleteCommands = files.joinToString(" & ") { "del /f \"${File(targetDir, it).absolutePath}\"" }
-                val process = ProcessBuilder(
-                    "powershell", "-Command",
-                    "Start-Process", "cmd", "-ArgumentList", "'/c','$deleteCommands'",
-                    "-Verb", "RunAs", "-Wait"
-                ).start()
-                process.waitFor()
+                val script = File(System.getProperty("java.io.tmpdir"), "aejuice-uninstall-${System.currentTimeMillis()}.bat")
+                try {
+                    script.writeText(buildString {
+                        appendLine("@echo off")
+                        for (fileName in files) {
+                            appendLine("del /f \"${File(targetDir, fileName).absolutePath}\"")
+                        }
+                    })
+                    runElevatedBat(script)
+                } finally {
+                    script.delete()
+                }
             }
             Platform.MACOS -> {
-                val command = "rm -f $filesList"
+                val filesList = files.joinToString(" ") { "'${File(targetDir, it).absolutePath}'" }
                 val process = ProcessBuilder(
                     "osascript", "-e",
-                    "do shell script \"$command\" with administrator privileges"
+                    "do shell script \"rm -f $filesList\" with administrator privileges"
                 ).start()
                 process.waitFor()
             }
             Platform.LINUX -> {
+                val filesList = files.joinToString(" ") { "'${File(targetDir, it).absolutePath}'" }
                 val process = ProcessBuilder(
                     "pkexec", "sh", "-c", "rm -f $filesList"
                 ).start()
                 process.waitFor()
             }
         }
+    }
+
+    private fun runElevatedBat(script: File) {
+        val process = ProcessBuilder(
+            "powershell", "-Command",
+            "Start-Process", "cmd",
+            "-ArgumentList", "'/c','\"${script.absolutePath}\"'",
+            "-Verb", "RunAs", "-Wait", "-WindowStyle", "Hidden"
+        ).start()
+        val exitCode = process.waitFor()
+        if (exitCode != 0) {
+            Logger.w { "Elevated script exited with code $exitCode: ${script.name}" }
+        }
+    }
+
+    override fun isProcessRunning(processName: String): Boolean {
+        return try {
+            val command = when (platform) {
+                Platform.WINDOWS -> listOf("tasklist", "/FI", "IMAGENAME eq $processName")
+                else -> listOf("pgrep", "-x", processName)
+            }
+            val process = ProcessBuilder(command).start()
+            val output = process.inputStream.bufferedReader().readText()
+            process.waitFor()
+            when (platform) {
+                Platform.WINDOWS -> output.contains(processName, ignoreCase = true)
+                else -> process.exitValue() == 0
+            }
+        } catch (e: Exception) {
+            Logger.w { "Failed to check process $processName: ${e.message}" }
+            false
+        }
+    }
+
+    override fun findScriptUIPanelsPaths(): List<String> {
+        val paths = mutableListOf<String>()
+        when (platform) {
+            Platform.WINDOWS -> {
+                val adobeDir = File("C:/Program Files/Adobe")
+                if (adobeDir.exists()) {
+                    adobeDir.listFiles()?.filter {
+                        it.isDirectory && it.name.startsWith("Adobe After Effects")
+                    }?.forEach { aeFolder ->
+                        val scriptsPath = File(aeFolder, "Support Files/Scripts/ScriptUI Panels")
+                        if (scriptsPath.exists()) {
+                            paths.add(scriptsPath.absolutePath)
+                        }
+                    }
+                }
+            }
+            Platform.MACOS -> {
+                val applicationsDir = File("/Applications")
+                applicationsDir.listFiles()?.filter {
+                    it.isDirectory && it.name.startsWith("Adobe After Effects")
+                }?.forEach { aeFolder ->
+                    val scriptsPath = File(aeFolder, "Scripts/ScriptUI Panels")
+                    if (scriptsPath.exists()) {
+                        paths.add(scriptsPath.absolutePath)
+                    }
+                }
+            }
+            Platform.LINUX -> { }
+        }
+        Logger.d { "Found ${paths.size} ScriptUI Panels paths: $paths" }
+        return paths
+    }
+
+    override fun fileExistsWithSize(path: String, expectedSize: Long): Boolean {
+        val file = File(path)
+        if (!file.exists()) return false
+        if (expectedSize <= 0) return true
+        return file.length() == expectedSize
     }
 
     private fun determineSystemArchitecture(): SystemArchitecture {

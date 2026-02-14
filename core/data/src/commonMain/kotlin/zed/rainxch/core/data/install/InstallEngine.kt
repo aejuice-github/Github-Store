@@ -9,6 +9,7 @@ import zed.rainxch.core.data.local.db.dao.InstalledAppDao
 import zed.rainxch.core.data.local.db.dao.UpdateHistoryDao
 import zed.rainxch.core.data.local.db.entities.UpdateHistoryEntity
 import zed.rainxch.core.domain.model.Component
+import zed.rainxch.core.domain.model.ComponentType
 import zed.rainxch.core.domain.model.InstalledApp
 import zed.rainxch.core.domain.model.Platform
 import zed.rainxch.core.domain.network.Downloader
@@ -35,14 +36,42 @@ class InstallEngine(
         }
 
         try {
+            val installFileName = asset.fileName.ifBlank {
+                asset.url.substringAfterLast('/').let { java.net.URLDecoder.decode(it, "UTF-8") }
+            }
+            val installPaths = resolveInstallPaths(component, asset)
+            val isAeRunning = installer.isProcessRunning("AfterFX.exe")
+
+            if (component.type == ComponentType.PLUGIN && isAeRunning) {
+                val existingFile = installPaths.firstOrNull { path ->
+                    File(File(path), installFileName).exists()
+                }
+                if (existingFile != null) {
+                    emit(InstallProgress.Failed("Close After Effects before updating plugins"))
+                    return@flow
+                }
+            }
+
+            val alreadyInstalled = installPaths.all { path ->
+                val target = File(File(path), installFileName)
+                target.exists() && target.length() > 0
+            }
+            if (alreadyInstalled && installPaths.isNotEmpty()) {
+                saveInstalledRecord(component, asset, installPaths.first(), installFileName)
+                val message = buildPostInstallMessage(component, isAeRunning)
+                emit(InstallProgress.CompletedWithMessage("Already installed. $message"))
+                return@flow
+            }
+
             emit(InstallProgress.Downloading(0))
 
-            val fileName = "${component.id}-${component.version}.zip"
-            downloader.download(asset.url, fileName).collect { progress ->
+            val extension = asset.url.substringAfterLast('.').substringBefore('?')
+            val downloadFileName = "${component.id}-${component.version}.$extension"
+            downloader.download(asset.url, downloadFileName).collect { progress ->
                 emit(InstallProgress.Downloading(progress.percent ?: 0))
             }
 
-            val filePath = downloader.getDownloadedFilePath(fileName)
+            val filePath = downloader.getDownloadedFilePath(downloadFileName)
             if (filePath == null) {
                 emit(InstallProgress.Failed("Download failed"))
                 return@flow
@@ -58,12 +87,15 @@ class InstallEngine(
                 }
             }
 
-            emit(InstallProgress.Installing)
-            val installPath = asset.installPath.ifBlank {
-                getDefaultInstallPath(component, platform)
+            val downloadedFile = File(filePath)
+            val renamedFile = File(downloadedFile.parent, installFileName)
+            if (downloadedFile.name != installFileName) {
+                downloadedFile.renameTo(renamedFile)
             }
+            val sourceFile = if (renamedFile.exists()) renamedFile else downloadedFile
 
-            installer.install(filePath, installPath, asset.requiresAdmin)
+            emit(InstallProgress.Installing)
+            installer.installToMultiplePaths(sourceFile.absolutePath, installPaths, asset.requiresAdmin)
 
             val postInstallHook = component.hooks?.postInstall
             if (postInstallHook != null) {
@@ -71,34 +103,72 @@ class InstallEngine(
                 installer.runHook(postInstallHook, asset.requiresAdmin)
             }
 
-            val installedFiles = listInstalledFiles(installPath)
+            saveInstalledRecord(component, asset, installPaths.first(), installFileName)
 
-            val installedApp = InstalledApp(
-                componentId = component.id,
-                name = component.name,
-                type = component.type,
-                description = component.description,
-                author = component.author,
-                category = component.category,
-                icon = component.icon,
-                installedVersion = component.version,
-                installPath = installPath,
-                files = installedFiles,
-                sha256 = asset.sha256,
-                installedAt = System.currentTimeMillis(),
-                lastCheckedAt = System.currentTimeMillis(),
-                lastUpdatedAt = System.currentTimeMillis(),
-                runnable = component.runnable,
-                runCommand = component.runCommand
-            )
-
-            installedAppsRepository.save(installedApp)
-            emit(InstallProgress.Completed)
+            val message = buildPostInstallMessage(component, isAeRunning)
+            emit(InstallProgress.CompletedWithMessage(message))
 
         } catch (e: Exception) {
             Logger.e { "Install failed for ${component.id}: ${e.message}" }
             emit(InstallProgress.Failed(e.message ?: "Unknown error"))
         }
+    }
+
+    private suspend fun saveInstalledRecord(
+        component: Component,
+        asset: zed.rainxch.core.domain.model.PlatformAsset,
+        installPath: String,
+        fileName: String
+    ) {
+        val installedApp = InstalledApp(
+            componentId = component.id,
+            name = component.name,
+            type = component.type,
+            description = component.description,
+            author = component.author,
+            category = component.category,
+            icon = component.icon,
+            installedVersion = component.version,
+            installPath = installPath,
+            files = listOf(fileName),
+            sha256 = asset.sha256,
+            installedAt = System.currentTimeMillis(),
+            lastCheckedAt = System.currentTimeMillis(),
+            lastUpdatedAt = System.currentTimeMillis(),
+            runnable = component.runnable,
+            runCommand = component.runCommand
+        )
+        installedAppsRepository.save(installedApp)
+    }
+
+    private fun resolveInstallPaths(
+        component: Component,
+        asset: zed.rainxch.core.domain.model.PlatformAsset
+    ): List<String> {
+        if (asset.installPath == "scriptui") {
+            val paths = installer.findScriptUIPanelsPaths()
+            if (paths.isNotEmpty()) return paths
+        }
+
+        val path = asset.installPath.ifBlank {
+            getDefaultInstallPath(component, platform)
+        }
+        return listOf(path)
+    }
+
+    private fun buildPostInstallMessage(component: Component, isAeRunning: Boolean): String {
+        val menuPath = when (component.type) {
+            ComponentType.PLUGIN -> "Effect > AEJuice > ${component.name}"
+            ComponentType.SCRIPT -> "Window > AEJuice ${component.name}"
+            ComponentType.EXTENSION -> "Window > Extensions > AEJuice ${component.name}"
+            ComponentType.SOFTWARE -> component.name
+        }
+
+        val restartNote = if (isAeRunning && component.type != ComponentType.SOFTWARE) {
+            "\nRestart After Effects to see changes."
+        } else ""
+
+        return "${component.name} installed.\nFind it: $menuPath$restartNote"
     }
 
     suspend fun uninstall(componentId: String): Result<Unit> = withContext(Dispatchers.IO) {
@@ -114,7 +184,15 @@ class InstallEngine(
             }
 
             val asset = component?.platforms?.get(platform.manifestKey)
-            installer.uninstall(installed.installPath, installed.files, asset?.requiresAdmin ?: false)
+            val requiresAdmin = asset?.requiresAdmin ?: false
+
+            val uninstallPaths = if (component != null && asset != null) {
+                resolveInstallPaths(component, asset)
+            } else {
+                listOf(installed.installPath)
+            }
+
+            installer.uninstallFromMultiplePaths(uninstallPaths, installed.files, requiresAdmin)
 
             installedAppsRepository.delete(componentId)
             Result.success(Unit)
@@ -216,5 +294,6 @@ sealed class InstallProgress {
     data object Installing : InstallProgress()
     data class RunningHook(val hookName: String) : InstallProgress()
     data object Completed : InstallProgress()
+    data class CompletedWithMessage(val message: String) : InstallProgress()
     data class Failed(val message: String) : InstallProgress()
 }

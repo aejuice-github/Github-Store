@@ -32,23 +32,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/ascii/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20ASCII.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice ASCII.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/ascii/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20ASCII.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice ASCII.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "audio-waveform",
@@ -69,23 +78,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/audio-waveform/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Audio%20Waveform.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Audio Waveform.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/audio-waveform/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Audio%20Waveform.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Audio Waveform.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "auto-crop",
@@ -106,23 +124,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/auto-crop/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Auto%20Crop.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Crop.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/auto-crop/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Auto%20Crop.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Crop.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "auto-cut",
@@ -143,23 +167,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/auto-cut/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Auto%20Cut.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Cut.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/auto-cut/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Auto%20Cut.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Cut.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "auto-reframe",
@@ -180,23 +210,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/auto-reframe/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Auto%20Reframe.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Reframe.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/auto-reframe/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Auto%20Reframe.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Auto Reframe.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "black-and-white",
@@ -217,23 +253,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/black-and-white/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Black%20%26%20White.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Black & White.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/black-and-white/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Black%20%26%20White.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Black & White.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "cctv",
@@ -254,23 +299,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/cctv/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20CCTV.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice CCTV.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/cctv/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20CCTV.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice CCTV.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "change-color",
@@ -291,23 +345,30 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/change-color/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Change%20Color.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Change Color.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/change-color/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Change%20Color.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Change Color.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "chromatic-aberration",
@@ -328,23 +389,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/chromatic-aberration/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Chromatic%20Aberration.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Chromatic Aberration.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/chromatic-aberration/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Chromatic%20Aberration.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Chromatic Aberration.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "color-curves",
@@ -365,23 +435,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/color-curves/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Color%20Curves.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Color Curves.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/color-curves/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Color%20Curves.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Color Curves.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "color-match",
@@ -402,23 +481,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/color-match/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Color%20Match.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Color Match.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/color-match/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Color%20Match.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Color Match.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "crt",
@@ -439,23 +524,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/crt/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20CRT.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice CRT.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/crt/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20CRT.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice CRT.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "crystal-light",
@@ -476,23 +570,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/crystal-light/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Crystal%20Light.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Crystal Light.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/crystal-light/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Crystal%20Light.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Crystal Light.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "deep-glow",
@@ -513,23 +616,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/deep-glow/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Deep%20Glow.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Deep Glow.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/deep-glow/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Deep%20Glow.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Deep Glow.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "depth-map",
@@ -550,23 +662,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/depth-map/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Depth%20Map.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Depth Map.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/depth-map/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Depth%20Map.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Depth Map.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "duotone",
@@ -587,23 +705,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/duotone/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Duotone.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duotone.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/duotone/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Duotone.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duotone.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "8-bit",
@@ -624,23 +751,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/8-bit/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%208-Bit.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice 8-Bit.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/8-bit/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%208-Bit.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice 8-Bit.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "emboss",
@@ -661,23 +797,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/emboss/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Emboss.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Emboss.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/emboss/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Emboss.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Emboss.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "explode-shape-layers",
@@ -698,23 +843,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Explode%20Shape%20Layers.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Explode Shape Layers.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Explode%20Shape%20Layers.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Explode Shape Layers.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "face-detector",
@@ -735,23 +886,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/face-detector/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Face%20Detector.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Face Detector.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/face-detector/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Face%20Detector.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Face Detector.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "film-grain",
@@ -772,23 +932,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/film-grain/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Film%20Grain.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Film Grain.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/film-grain/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Film%20Grain.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Film Grain.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "flow-lines",
@@ -809,23 +978,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/flow-lines/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Flow%20Lines.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Flow Lines.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/flow-lines/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Flow%20Lines.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Flow Lines.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "glitch-maker",
@@ -846,23 +1024,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/glitch-maker/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Glitch%20Maker.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Glitch Maker.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/glitch-maker/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Glitch%20Maker.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Glitch Maker.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "halftone",
@@ -883,23 +1070,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/halftone/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Halftone.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Halftone.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/halftone/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Halftone.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Halftone.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "hex-glitch",
@@ -920,23 +1116,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/hex-glitch/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Hex%20Glitch.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Hex Glitch.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/hex-glitch/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Hex%20Glitch.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Hex Glitch.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "infrared",
@@ -957,23 +1159,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/infrared/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Infrared.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Infrared.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/infrared/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Infrared.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Infrared.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "light-rays",
@@ -994,23 +1205,30 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/light-rays/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Light%20Rays.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Light Rays.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/light-rays/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Light%20Rays.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Light Rays.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "motion-echo",
@@ -1031,23 +1249,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/motion-echo/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Motion%20Echo.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Motion Echo.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/motion-echo/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Motion%20Echo.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Motion Echo.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "night-vision",
@@ -1068,23 +1295,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/night-vision/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Night%20Vision.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Night Vision.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/night-vision/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Night%20Vision.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Night Vision.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "noise-sort",
@@ -1105,23 +1341,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/noise-sort/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Noise%20Sort.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Noise Sort.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/noise-sort/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Noise%20Sort.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Noise Sort.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "nostalgia",
@@ -1142,23 +1387,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/nostalgia/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Nostalgia.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Nostalgia.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/nostalgia/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Nostalgia.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Nostalgia.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "ntsc",
@@ -1179,23 +1433,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/ntsc/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20NTSC.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice NTSC.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/ntsc/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20NTSC.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice NTSC.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "object-detector",
@@ -1216,23 +1479,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/object-detector/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Object%20Detector.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Object Detector.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/object-detector/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Object%20Detector.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Object Detector.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "optical-flares",
@@ -1253,23 +1522,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/optical-flares/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Optical%20Flares.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Optical Flares.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/optical-flares/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Optical%20Flares.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Optical Flares.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "path-fire",
@@ -1290,23 +1568,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/path-fire/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Path%20Fire.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Path Fire.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/path-fire/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Path%20Fire.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Path Fire.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "pixel-shifter",
@@ -1327,23 +1611,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/pixel-shifter/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Pixel%20Shifter.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Pixel Shifter.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/pixel-shifter/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Pixel%20Shifter.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Pixel Shifter.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "prism-echo",
@@ -1364,23 +1657,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/prism-echo/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Prism%20Echo.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Prism Echo.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/prism-echo/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Prism%20Echo.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Prism Echo.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "privacy-blur",
@@ -1401,23 +1703,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/privacy-blur/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Privacy%20Blur.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Privacy Blur.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/privacy-blur/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Privacy%20Blur.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Privacy Blur.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "psychedelic",
@@ -1438,23 +1749,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/psychedelic/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Psychedelic.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Psychedelic.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/psychedelic/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Psychedelic.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Psychedelic.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "quantize",
@@ -1475,23 +1795,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/quantize/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Quantize.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Quantize.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/quantize/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Quantize.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Quantize.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "real-vhs",
@@ -1512,23 +1838,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/real-vhs/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Real%20VHS.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Real VHS.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/real-vhs/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Real%20VHS.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Real VHS.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "repeater",
@@ -1549,23 +1884,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/repeater/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Repeater.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Repeater.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/repeater/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Repeater.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Repeater.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "resize-blur",
@@ -1586,23 +1930,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/resize-blur/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Resize%20Blur.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Resize Blur.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/resize-blur/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Resize%20Blur.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Resize Blur.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "soft-glow",
@@ -1623,23 +1976,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/soft-glow/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Soft%20Glow.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Soft Glow.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/soft-glow/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Soft%20Glow.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Soft Glow.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "stop-motion",
@@ -1660,23 +2022,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/stop-motion/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Stop%20Motion.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Stop Motion.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/stop-motion/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Stop%20Motion.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Stop Motion.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "thermal-vision",
@@ -1697,23 +2068,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/thermal-vision/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Thermal%20Vision.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Thermal Vision.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/thermal-vision/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Thermal%20Vision.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Thermal Vision.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "tilt-shift",
@@ -1734,23 +2114,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/tilt-shift/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Tilt%20Shift.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Tilt Shift.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/tilt-shift/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Tilt%20Shift.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Tilt Shift.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "track",
@@ -1771,23 +2160,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/track/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Track.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Track.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/track/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Track.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Track.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "vhs",
@@ -1808,23 +2206,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/vhs/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20VHS.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice VHS.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/vhs/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20VHS.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice VHS.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "voronoi-glitch",
@@ -1845,23 +2252,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/voronoi-glitch/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Voronoi%20Glitch.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Voronoi Glitch.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/voronoi-glitch/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Voronoi%20Glitch.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Voronoi Glitch.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "wave",
@@ -1882,23 +2298,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/wave/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20Wave.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Wave.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/wave/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20Wave.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Wave.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "x-ray",
@@ -1919,23 +2344,32 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/x-ray/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Win/Adobe/AEJuice%20X-Ray.aex",
           "sha256": "",
           "size": 3500000,
           "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice X-Ray.aex"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/x-ray/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Plugins/Mac/Adobe/AEJuice%20X-Ray.plugin",
           "sha256": "",
           "size": 3200000,
           "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice X-Ray.plugin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "Vegas",
+        "Other OpenFX hosts"
+      ]
     },
     {
       "id": "add-bounce-expression",
@@ -1956,23 +2390,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-bounce-expression/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Bounce%20Expression.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Bounce Expression.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-bounce-expression/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Bounce%20Expression.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Bounce Expression.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-color-controls",
@@ -1993,23 +2432,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-color-controls/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Color%20Controls.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Color Controls.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-color-controls/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Color%20Controls.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Color Controls.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-dynamic-text-box",
@@ -2030,23 +2474,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-dynamic-text-box/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Dynamic%20Text%20Box.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Dynamic Text Box.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-dynamic-text-box/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Dynamic%20Text%20Box.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Dynamic Text Box.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-glow",
@@ -2067,23 +2516,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-glow/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Glow.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Glow.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-glow/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Glow.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Glow.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-null-at-point",
@@ -2104,23 +2558,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-null-at-point/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Null%20at%20Point.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Null at Point.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-null-at-point/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Null%20at%20Point.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Null at Point.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-text-controls",
@@ -2141,23 +2600,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-text-controls/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Text%20Controls.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Text Controls.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-text-controls/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Text%20Controls.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Text Controls.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-texture",
@@ -2178,23 +2642,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-texture/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Texture.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Texture.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-texture/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Texture.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Texture.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "add-typing-cursor",
@@ -2215,23 +2684,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/add-typing-cursor/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Typing%20Cursor.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Typing Cursor.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/add-typing-cursor/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Add%20Typing%20Cursor.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Add Typing Cursor.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "audio-to-markers",
@@ -2252,23 +2726,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/audio-to-markers/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Audio%20to%20Markers.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Audio to Markers.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/audio-to-markers/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Audio%20to%20Markers.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Audio to Markers.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "autopodcast-ai",
@@ -2289,23 +2768,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/autopodcast-ai/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Autopodcast%20AI.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Autopodcast AI.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/autopodcast-ai/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Autopodcast%20AI.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Autopodcast AI.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "autoresize",
@@ -2326,23 +2810,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/autoresize/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Autoresize.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Autoresize.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/autoresize/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Autoresize.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Autoresize.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "bake-expressions",
@@ -2363,23 +2852,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/bake-expressions/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Bake%20Expressions.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Bake Expressions.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/bake-expressions/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Bake%20Expressions.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Bake Expressions.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "collect-fonts",
@@ -2400,23 +2894,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/collect-fonts/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Collect%20Fonts.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Collect Fonts.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/collect-fonts/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Collect%20Fonts.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Collect Fonts.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "comp-to-spreadsheet",
@@ -2437,23 +2936,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/comp-to-spreadsheet/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Comp%20to%20Spreadsheet.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Comp to Spreadsheet.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/comp-to-spreadsheet/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Comp%20to%20Spreadsheet.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Comp to Spreadsheet.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "cursor-toolkit",
@@ -2474,23 +2978,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/cursor-toolkit/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Cursor%20Toolkit.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Cursor Toolkit.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/cursor-toolkit/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Cursor%20Toolkit.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Cursor Toolkit.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "duplicate",
@@ -2511,23 +3020,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/duplicate/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Duplicate.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duplicate.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/duplicate/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Duplicate.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duplicate.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "explode-shape-layers-script",
@@ -2548,23 +3062,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Explode%20Shape%20Layers.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Explode Shape Layers.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Explode%20Shape%20Layers.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Explode Shape Layers.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "export-gif",
@@ -2585,23 +3104,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/export-gif/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20GIF.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export GIF.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/export-gif/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20GIF.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export GIF.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "export-mp4",
@@ -2622,23 +3146,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/export-mp4/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20MP4.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export MP4.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/export-mp4/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20MP4.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export MP4.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "export-png",
@@ -2659,23 +3188,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/export-png/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20PNG.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export PNG.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/export-png/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Export%20PNG.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Export PNG.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "find",
@@ -2696,23 +3230,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/find/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Find.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Find.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/find/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Find.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Find.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "find-missing-files",
@@ -2733,23 +3272,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/find-missing-files/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Find%20Missing%20Files.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Find Missing Files.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/find-missing-files/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Find%20Missing%20Files.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Find Missing Files.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "fix-legacy-expressions",
@@ -2770,23 +3314,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/fix-legacy-expressions/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Fix%20Legacy%20Expressions.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Fix Legacy Expressions.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/fix-legacy-expressions/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Fix%20Legacy%20Expressions.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Fix Legacy Expressions.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "footages-to-comps",
@@ -2807,23 +3356,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/footages-to-comps/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Footages%20to%20Comps.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Footages to Comps.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/footages-to-comps/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Footages%20to%20Comps.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Footages to Comps.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "freeze-frame",
@@ -2844,23 +3398,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/freeze-frame/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Freeze%20Frame.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Freeze Frame.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/freeze-frame/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Freeze%20Frame.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Freeze Frame.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "import-sequences",
@@ -2881,23 +3440,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/import-sequences/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Import%20Sequences.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Import Sequences.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/import-sequences/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Import%20Sequences.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Import Sequences.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "increase-comp-duration",
@@ -2918,23 +3482,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/increase-comp-duration/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Increase%20Comp%20Duration.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Increase Comp Duration.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/increase-comp-duration/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Increase%20Comp%20Duration.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Increase Comp Duration.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "localize-ai",
@@ -2955,23 +3524,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/localize-ai/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Localize%20AI.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Localize AI.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/localize-ai/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Localize%20AI.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Localize AI.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "loop",
@@ -2992,23 +3566,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/loop/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Loop.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Loop.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/loop/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Loop.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Loop.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "move-to",
@@ -3029,23 +3608,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/move-to/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Move%20to.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Move to.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/move-to/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Move%20to.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Move to.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "pixelate",
@@ -3066,23 +3650,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/pixelate/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Pixelate.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Pixelate.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/pixelate/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Pixelate.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Pixelate.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "points-to-nulls",
@@ -3103,23 +3692,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/points-to-nulls/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Points%20to%20Nulls.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Points to Nulls.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/points-to-nulls/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Points%20to%20Nulls.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Points to Nulls.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "precomp",
@@ -3140,23 +3734,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/precomp/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Precomp.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Precomp.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/precomp/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Precomp.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Precomp.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "prerender",
@@ -3177,23 +3776,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/prerender/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Prerender.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Prerender.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/prerender/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Prerender.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Prerender.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "quick-folders",
@@ -3214,23 +3818,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/quick-folders/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Quick%20Folders.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Quick Folders.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/quick-folders/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Quick%20Folders.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Quick Folders.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "remove-silence",
@@ -3251,23 +3860,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/remove-silence/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Remove%20Silence.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Remove Silence.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/remove-silence/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Remove%20Silence.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Remove Silence.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "rename-controls",
@@ -3288,23 +3902,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/rename-controls/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Rename%20Controls.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Rename Controls.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/rename-controls/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Rename%20Controls.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Rename Controls.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "replace-expressions",
@@ -3325,23 +3944,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/replace-expressions/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Replace%20Expressions.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Replace Expressions.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/replace-expressions/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Replace%20Expressions.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Replace Expressions.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "reposition-anchor-point",
@@ -3362,23 +3986,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/reposition-anchor-point/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Reposition%20Anchor%20Point.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Reposition Anchor Point.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/reposition-anchor-point/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Reposition%20Anchor%20Point.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Reposition Anchor Point.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "round-cap",
@@ -3399,23 +4028,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/round-cap/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Round%20Cap.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Round Cap.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/round-cap/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Round%20Cap.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Round Cap.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "set-rasterize",
@@ -3436,23 +4070,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/set-rasterize/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Set%20Rasterize.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Set Rasterize.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/set-rasterize/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Set%20Rasterize.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Set Rasterize.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "text-to-layers",
@@ -3473,23 +4112,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/text-to-layers/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Text%20to%20Layers.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Text to Layers.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/text-to-layers/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Text%20to%20Layers.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Text to Layers.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "unprecomp",
@@ -3510,23 +4154,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/unprecomp/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Unprecomp.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Unprecomp.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/unprecomp/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Unprecomp.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Unprecomp.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "anti-static-toolbox",
@@ -3547,23 +4196,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/anti-static-toolbox/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Anti-Static%20ToolBox.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Anti-Static ToolBox.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/anti-static-toolbox/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Anti-Static%20ToolBox.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Anti-Static ToolBox.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "anti-static-dominion",
@@ -3584,23 +4238,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/anti-static-dominion/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Anti-Static%20Dominion.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Anti-Static Dominion.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/anti-static-dominion/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Anti-Static%20Dominion.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Anti-Static Dominion.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "stable-diffusion-ai",
@@ -3621,23 +4280,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/stable-diffusion-ai/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Stable%20Diffusion%20AI.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Stable Diffusion AI.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/stable-diffusion-ai/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Stable%20Diffusion%20AI.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Stable Diffusion AI.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "duik-angela",
@@ -3658,23 +4322,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/duik-angela/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Duik%20Angela.jsxbin",
           "sha256": "",
           "size": 256000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duik Angela.jsxbin"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/duik-angela/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Scripts/AEJuice%20Duik%20Angela.jsxbin",
           "sha256": "",
           "size": 250000,
-          "installPath": "",
-          "requiresAdmin": false
+          "installPath": "scriptui",
+          "requiresAdmin": true,
+          "fileName": "AEJuice Duik Angela.jsxbin"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 17.1.20\n- Latest release"
+      "changelog": "### 17.1.20\n- Latest release",
+      "compatibleApps": [
+        "After Effects"
+      ]
     },
     {
       "id": "bodymovin",
@@ -3695,23 +4364,29 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/bodymovin/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Extensions/bodymovin.zxp",
           "sha256": "",
           "size": 1500000,
           "installPath": "C:/Program Files/Common Files/Adobe/CEP/extensions/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "bodymovin.zxp"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/bodymovin/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Extensions/bodymovin.zxp",
           "sha256": "",
           "size": 1400000,
           "installPath": "/Library/Application Support/Adobe/CEP/extensions/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "bodymovin.zxp"
         }
       },
       "dependencies": [],
       "runnable": false,
-      "changelog": "### 1.0.0\n- Latest release"
+      "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "After Effects",
+        "Premiere Pro"
+      ]
     },
     {
       "id": "gyroflow",
@@ -3732,23 +4407,28 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/gyroflow/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Software/Gyroflow-windows64.zip",
           "sha256": "",
           "size": 85000000,
           "installPath": "C:/Program Files/AEJuice/Gyroflow/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "Gyroflow-windows64.zip"
         },
         "macos": {
-          "url": "https://cdn.aejuice.com/components/gyroflow/latest/mac.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Software/Gyroflow-mac-universal.dmg",
           "sha256": "",
           "size": 82000000,
           "installPath": "/Applications/Gyroflow.app/",
-          "requiresAdmin": false
+          "requiresAdmin": false,
+          "fileName": "Gyroflow-mac-universal.dmg"
         }
       },
       "dependencies": [],
       "runnable": true,
       "changelog": "### 1.6.3\n- Latest release",
+      "compatibleApps": [
+        "Standalone"
+      ],
       "runCommand": "gyroflow"
     },
     {
@@ -3770,16 +4450,20 @@
       "screenshots": [],
       "platforms": {
         "windows": {
-          "url": "https://cdn.aejuice.com/components/aejuice-video-editor/latest/win.zip",
+          "url": "https://snas.aejuice.xyz/aejuice-plugins/Software/AEJuice%20Video%20Editor.exe",
           "sha256": "",
           "size": 85000000,
           "installPath": "C:/Program Files/AEJuice/AEJuice Video Editor/",
-          "requiresAdmin": true
+          "requiresAdmin": true,
+          "fileName": "AEJuice Video Editor.exe"
         }
       },
       "dependencies": [],
       "runnable": true,
       "changelog": "### 1.0.0\n- Latest release",
+      "compatibleApps": [
+        "Standalone"
+      ],
       "runCommand": "aejuice-video-editor"
     }
   ]

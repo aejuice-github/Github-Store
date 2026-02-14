@@ -11,12 +11,15 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.Update
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularWavyProgressIndicator
@@ -122,15 +125,23 @@ fun RepositoryCard(
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                Text(
-                    text = discoveryRepository.component.name,
-                    fontWeight = FontWeight.Bold,
-                    style = MaterialTheme.typography.titleLarge,
-                    color = MaterialTheme.colorScheme.onSurface,
-                    maxLines = 1,
-                    softWrap = false,
-                    overflow = TextOverflow.Ellipsis
-                )
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(
+                        text = discoveryRepository.component.name,
+                        fontWeight = FontWeight.Bold,
+                        style = MaterialTheme.typography.titleLarge,
+                        color = MaterialTheme.colorScheme.onSurface,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+
+                    PriceBadge(price = discoveryRepository.component.price)
+                }
 
                 Spacer(modifier = Modifier.height(4.dp))
 
@@ -169,23 +180,84 @@ fun RepositoryCard(
                     )
                 }
 
-                if (discoveryRepository.isInstalled) {
-                    Spacer(Modifier.height(12.dp))
+                Spacer(Modifier.height(16.dp))
 
-                    InstallStatusBadge(
-                        isUpdateAvailable = discoveryRepository.isUpdateAvailable
-                    )
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    if (discoveryRepository.isUpdateAvailable) {
+                        Button(
+                            onClick = onClick,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Update,
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(Modifier.width(4.dp))
+                            Text(stringResource(Res.string.update))
+                        }
+                    } else if (!discoveryRepository.isInstalled) {
+                        Button(
+                            onClick = onClick,
+                            modifier = Modifier.weight(1f)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Download,
+                                contentDescription = null,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(Modifier.width(4.dp))
+                            Text(stringResource(Res.string.install))
+                        }
+                    } else {
+                        GithubStoreButton(
+                            text = stringResource(Res.string.installed),
+                            onClick = {},
+                            modifier = Modifier.weight(1f),
+                            enabled = false
+                        )
+                    }
+
                 }
-
-                Spacer(Modifier.height(24.dp))
-
-                GithubStoreButton(
-                    text = stringResource(Res.string.home_view_details),
-                    onClick = onClick,
-                    modifier = Modifier.fillMaxWidth()
-                )
             }
         }
+    }
+}
+
+@Composable
+fun PriceBadge(
+    price: Int,
+    modifier: Modifier = Modifier
+) {
+    val backgroundColor = if (price == 0) {
+        MaterialTheme.colorScheme.tertiaryContainer
+    } else {
+        MaterialTheme.colorScheme.secondaryContainer
+    }
+
+    val textColor = if (price == 0) {
+        MaterialTheme.colorScheme.onTertiaryContainer
+    } else {
+        MaterialTheme.colorScheme.onSecondaryContainer
+    }
+
+    val text = if (price == 0) "Free" else "$price credits"
+
+    Surface(
+        modifier = modifier,
+        shape = RoundedCornerShape(12.dp),
+        color = backgroundColor
+    ) {
+        Text(
+            text = text,
+            style = MaterialTheme.typography.labelSmall,
+            color = textColor,
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+        )
     }
 }
 
