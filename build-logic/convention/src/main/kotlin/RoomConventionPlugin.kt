@@ -20,7 +20,6 @@ class RoomConventionPlugin : Plugin<Project> {
             dependencies {
                 "commonMainApi"(libs.findLibrary("androidx-room-runtime").get())
                 "commonMainApi"(libs.findLibrary("sqlite-bundled").get())
-                "kspAndroid"(libs.findLibrary("androidx-room-compiler").get())
                 "kspJvm"(libs.findLibrary("androidx-room-compiler").get())
             }
         }

@@ -5,9 +5,8 @@ import zed.rainxch.core.domain.model.FavoriteRepo
 
 interface FavouritesRepository {
     fun getAllFavorites(): Flow<List<FavoriteRepo>>
-    fun isFavorite(repoId: Long): Flow<Boolean>
-    suspend fun isFavoriteSync(repoId: Long): Boolean
-    suspend fun toggleFavorite(repo: FavoriteRepo)
-    
-    suspend fun updateFavoriteInstallStatus(repoId: Long, installed: Boolean, packageName: String?)
+    fun isFavorite(componentId: String): Flow<Boolean>
+    suspend fun isFavoriteSync(componentId: String): Boolean
+    suspend fun toggleFavorite(favorite: FavoriteRepo)
+    suspend fun updateInstallStatus(componentId: String, installed: Boolean)
 }

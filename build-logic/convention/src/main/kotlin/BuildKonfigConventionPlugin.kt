@@ -23,12 +23,12 @@ class BuildKonfigConventionPlugin : Plugin<Project> {
                         if (file.exists()) file.inputStream().use { this.load(it) }
                     }
 
-                    val githubClientId = (localProps.getProperty("GITHUB_CLIENT_ID")
-                        ?: "Ov23linTY28VFpFjFiI9").trim()
+                    val manifestUrl = (localProps.getProperty("MANIFEST_URL")
+                        ?: "https://aejuice-component-store.s3.amazonaws.com/manifest.json").trim()
 
                     val versionName = libs.findVersion("projectVersionName").get().toString()
 
-                    buildConfigField(FieldSpec.Type.STRING, "GITHUB_CLIENT_ID", githubClientId)
+                    buildConfigField(FieldSpec.Type.STRING, "MANIFEST_URL", manifestUrl)
                     buildConfigField(FieldSpec.Type.STRING, "VERSION_NAME", versionName)
                 }
             }

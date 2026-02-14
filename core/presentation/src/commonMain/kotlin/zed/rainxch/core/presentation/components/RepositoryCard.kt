@@ -1,6 +1,5 @@
 package zed.rainxch.core.presentation.components
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -17,16 +16,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.filled.OpenInBrowser
-import androidx.compose.material.icons.filled.Star
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -34,7 +29,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.platform.LocalUriHandler
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -44,22 +38,18 @@ import com.skydoves.landscapist.crossfade.CrossfadePlugin
 import zed.rainxch.githubstore.core.presentation.res.*
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import zed.rainxch.core.domain.model.GithubRepoSummary
-import zed.rainxch.core.domain.model.GithubUser
+import zed.rainxch.core.domain.model.Component
+import zed.rainxch.core.domain.model.ComponentType
 import zed.rainxch.core.presentation.model.DiscoveryRepository
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
-import zed.rainxch.core.presentation.utils.formatReleasedAt
-import zed.rainxch.core.presentation.utils.formatUpdatedAt
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 fun RepositoryCard(
     discoveryRepository: DiscoveryRepository,
     onClick: () -> Unit,
-    onDeveloperClick: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val uriHandler = LocalUriHandler.current
     Card(
         modifier = modifier.fillMaxWidth(),
         onClick = onClick,
@@ -81,18 +71,6 @@ fun RepositoryCard(
                 )
             }
 
-            if (discoveryRepository.isStarred) {
-                Icon(
-                    imageVector = Icons.Default.Star,
-                    contentDescription = null,
-                    tint = MaterialTheme.colorScheme.secondary.copy(alpha = 0.08f),
-                    modifier = Modifier
-                        .size(120.dp)
-                        .align(Alignment.TopEnd)
-                        .offset(x = 32.dp, y = (-32).dp)
-                )
-            }
-
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -102,15 +80,9 @@ fun RepositoryCard(
                     verticalAlignment = Alignment.CenterVertically,
                     horizontalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
-                    Row (
-                        modifier = Modifier.clickable(onClick = {
-                            onDeveloperClick(discoveryRepository.repository.owner.login )
-                        }),
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(12.dp)
-                    ) {
+                    if (discoveryRepository.component.icon.isNotEmpty()) {
                         CoilImage(
-                            imageModel = { discoveryRepository.repository.owner.avatarUrl },
+                            imageModel = { discoveryRepository.component.icon },
                             modifier = Modifier
                                 .size(32.dp)
                                 .clip(CircleShape),
@@ -126,24 +98,24 @@ fun RepositoryCard(
                                 CrossfadePlugin()
                             }
                         )
-
-                        Text(
-                            text = discoveryRepository.repository.owner.login,
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.outline,
-                            maxLines = 1,
-                            softWrap = false,
-                            overflow = TextOverflow.Ellipsis
-                        )
                     }
 
                     Text(
-                        text = "/ ${discoveryRepository.repository.name}",
+                        text = discoveryRepository.component.author,
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.outline,
+                        maxLines = 1,
+                        softWrap = false,
+                        overflow = TextOverflow.Ellipsis
+                    )
+
+                    Text(
+                        text = "• ${discoveryRepository.component.type.name.lowercase().replaceFirstChar { it.uppercase() }}",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
                         softWrap = false,
                         overflow = TextOverflow.Ellipsis,
-                        maxLines = 1,
                         modifier = Modifier.weight(1f)
                     )
                 }
@@ -151,7 +123,7 @@ fun RepositoryCard(
                 Spacer(modifier = Modifier.height(4.dp))
 
                 Text(
-                    text = discoveryRepository.repository.name,
+                    text = discoveryRepository.component.name,
                     fontWeight = FontWeight.Bold,
                     style = MaterialTheme.typography.titleLarge,
                     color = MaterialTheme.colorScheme.onSurface,
@@ -162,16 +134,14 @@ fun RepositoryCard(
 
                 Spacer(modifier = Modifier.height(4.dp))
 
-                discoveryRepository.repository.description?.let {
-                    Text(
-                        text = it,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        maxLines = 2,
-                        overflow = TextOverflow.Ellipsis,
-                        style = MaterialTheme.typography.bodyLarge,
-                        softWrap = true
-                    )
-                }
+                Text(
+                    text = discoveryRepository.component.description,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    maxLines = 2,
+                    overflow = TextOverflow.Ellipsis,
+                    style = MaterialTheme.typography.bodyLarge,
+                    softWrap = true
+                )
 
                 Spacer(Modifier.height(16.dp))
 
@@ -181,7 +151,7 @@ fun RepositoryCard(
                     horizontalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Text(
-                        text = "⭐ ${discoveryRepository.repository.stargazersCount}",
+                        text = "v${discoveryRepository.component.version}",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,
@@ -190,24 +160,13 @@ fun RepositoryCard(
                     )
 
                     Text(
-                        text = "• 🌴 ${discoveryRepository.repository.forksCount}",
+                        text = "• ${discoveryRepository.component.category}",
                         style = MaterialTheme.typography.titleMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         maxLines = 1,
                         softWrap = false,
                         overflow = TextOverflow.Ellipsis
                     )
-
-                    discoveryRepository.repository.language?.let {
-                        Text(
-                            text = "• $it",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            maxLines = 1,
-                            softWrap = false,
-                            overflow = TextOverflow.Ellipsis
-                        )
-                    }
                 }
 
                 if (discoveryRepository.isInstalled) {
@@ -218,46 +177,13 @@ fun RepositoryCard(
                     )
                 }
 
-                Spacer(Modifier.height(12.dp))
-
-                Text(
-                    text = formatReleasedAt(discoveryRepository.repository.updatedAt),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.outline,
-                    maxLines = 1,
-                    softWrap = false,
-                    overflow = TextOverflow.Ellipsis
-                )
-
                 Spacer(Modifier.height(24.dp))
 
-                Row(
-                    modifier = Modifier.fillMaxWidth(),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    GithubStoreButton(
-                        text = stringResource(Res.string.home_view_details),
-                        onClick = onClick,
-                        modifier = Modifier.weight(1f)
-                    )
-
-                    IconButton(
-                        onClick = {
-                            uriHandler.openUri(discoveryRepository.repository.htmlUrl)
-                        },
-                        colors = IconButtonDefaults.iconButtonColors(
-                            containerColor = MaterialTheme.colorScheme.primaryContainer,
-                            contentColor = MaterialTheme.colorScheme.onPrimaryContainer
-                        ),
-                        shapes = IconButtonDefaults.shapes(),
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.OpenInBrowser,
-                            contentDescription = stringResource(Res.string.open_in_browser),
-                        )
-                    }
-                }
+                GithubStoreButton(
+                    text = stringResource(Res.string.home_view_details),
+                    onClick = onClick,
+                    modifier = Modifier.fillMaxWidth()
+                )
             }
         }
     }
@@ -324,33 +250,21 @@ fun RepositoryCardPreview() {
     GithubStoreTheme {
         RepositoryCard(
             discoveryRepository = DiscoveryRepository(
-                repository = GithubRepoSummary(
-                    id = 0L,
-                    name = "Hello",
-                    fullName = "JIFEOJEF",
-                    owner = GithubUser(
-                        id = 0L,
-                        login = "Skydoves",
-                        avatarUrl = "ewfew",
-                        htmlUrl = "grgrre"
-                    ),
-                    description = "Hello wolrd Hello wolrd Hello wolrd Hello wolrd Hello wolrd",
-                    htmlUrl = "",
-                    stargazersCount = 20,
-                    forksCount = 4,
-                    language = "Kotlin",
-                    topics = null,
-                    releasesUrl = "",
-                    updatedAt = "2025-12-01T12:00:00Z",
-                    defaultBranch = ""
+                component = Component(
+                    id = "auto-crop",
+                    name = "Auto Crop",
+                    type = ComponentType.PLUGIN,
+                    description = "Automatically crop layers to content bounds",
+                    version = "2.1.0",
+                    author = "AEJuice",
+                    category = "Plugins",
+                    icon = ""
                 ),
                 isUpdateAvailable = true,
                 isFavourite = true,
                 isInstalled = true,
-                isStarred = false
             ),
             onClick = { },
-            onDeveloperClick = { }
         )
     }
 }

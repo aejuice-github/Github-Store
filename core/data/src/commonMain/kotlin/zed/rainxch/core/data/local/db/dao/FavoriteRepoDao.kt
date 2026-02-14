@@ -1,7 +1,6 @@
 package zed.rainxch.core.data.local.db.dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -13,38 +12,18 @@ interface FavoriteRepoDao {
     @Query("SELECT * FROM favorite_repos ORDER BY addedAt DESC")
     fun getAllFavorites(): Flow<List<FavoriteRepoEntity>>
 
-    @Query("SELECT * FROM favorite_repos WHERE repoId = :repoId")
-    suspend fun getFavoriteById(repoId: Long): FavoriteRepoEntity?
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite_repos WHERE componentId = :componentId)")
+    fun isFavorite(componentId: String): Flow<Boolean>
 
-    @Query("SELECT EXISTS(SELECT 1 FROM favorite_repos WHERE repoId = :repoId)")
-    fun isFavorite(repoId: Long): Flow<Boolean>
-
-    @Query("SELECT EXISTS(SELECT 1 FROM favorite_repos WHERE repoId = :repoId)")
-    suspend fun isFavoriteSync(repoId: Long): Boolean
+    @Query("SELECT EXISTS(SELECT 1 FROM favorite_repos WHERE componentId = :componentId)")
+    suspend fun isFavoriteSync(componentId: String): Boolean
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertFavorite(repo: FavoriteRepoEntity)
+    suspend fun insert(favorite: FavoriteRepoEntity)
 
-    @Delete
-    suspend fun deleteFavorite(repo: FavoriteRepoEntity)
+    @Query("DELETE FROM favorite_repos WHERE componentId = :componentId")
+    suspend fun deleteByComponentId(componentId: String)
 
-    @Query("DELETE FROM favorite_repos WHERE repoId = :repoId")
-    suspend fun deleteFavoriteById(repoId: Long)
-
-    @Query("""
-        UPDATE favorite_repos 
-        SET isInstalled = :installed, 
-            installedPackageName = :packageName 
-        WHERE repoId = :repoId
-    """)
-    suspend fun updateInstallStatus(repoId: Long, installed: Boolean, packageName: String?)
-
-    @Query("""
-        UPDATE favorite_repos 
-        SET latestVersion = :version,
-            latestReleaseUrl = :releaseUrl,
-            lastSyncedAt = :timestamp
-        WHERE repoId = :repoId
-    """)
-    suspend fun updateLatestVersion(repoId: Long, version: String?, releaseUrl: String?, timestamp: Long)
+    @Query("UPDATE favorite_repos SET isInstalled = :installed WHERE componentId = :componentId")
+    suspend fun updateInstallStatus(componentId: String, installed: Boolean)
 }

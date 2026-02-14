@@ -1,6 +1,5 @@
 package zed.rainxch.home.presentation.components
 
-import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.FilterChip
@@ -14,32 +13,33 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import zed.rainxch.home.domain.model.HomeCategory
-import zed.rainxch.home.presentation.utils.displayText
 
 @Composable
-fun RowScope.HomeFilterChips(
+fun HomeFilterChip(
     selectedCategory: HomeCategory,
     category: HomeCategory,
     onClick: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
+    val label = if (category == HomeCategory.ALL) "All" else category.name
+
     FilterChip(
         label = {
             Text(
-                text = category.displayText(),
+                text = label,
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.bodyLarge,
                 fontWeight = FontWeight.Medium,
                 maxLines = 1,
                 softWrap = false,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier
-                    .fillMaxWidth()
+                modifier = Modifier.fillMaxWidth()
             )
         },
         shape = CircleShape,
         onClick = onClick,
         selected = selectedCategory == category,
-        modifier = Modifier.weight(1f),
+        modifier = modifier,
         colors = FilterChipDefaults.elevatedFilterChipColors(
             containerColor = Color.Transparent,
             selectedContainerColor = MaterialTheme.colorScheme.onPrimaryContainer,

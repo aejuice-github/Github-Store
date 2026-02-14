@@ -13,12 +13,6 @@ kotlin {
             }
         }
 
-        androidMain {
-            dependencies {
-
-            }
-        }
-
         jvmMain {
             dependencies {
 

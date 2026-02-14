@@ -1,0 +1,3786 @@
+{
+  "version": "1.0",
+  "categories": [
+    "AI",
+    "Animation",
+    "Audio",
+    "Color",
+    "Effects",
+    "Export",
+    "Glitch",
+    "Software",
+    "Stylize",
+    "Utilities"
+  ],
+  "components": [
+    {
+      "id": "ascii",
+      "name": "ASCII",
+      "type": "plugin",
+      "description": "Convert footage into ASCII character art with customizable density, font size, and color modes",
+      "tooltip": "Convert footage into ASCII character art with customizable density, font size, and color modes",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "ascii",
+        "text-art",
+        "character",
+        "stylize"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/ascii/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/ascii/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "audio-waveform",
+      "name": "Audio Waveform",
+      "type": "plugin",
+      "description": "Generate animated audio waveform visualizations synced to your audio layers",
+      "tooltip": "Generate animated audio waveform visualizations synced to your audio layers",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Audio",
+      "tags": [
+        "audio",
+        "waveform",
+        "visualization",
+        "music"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/audio-waveform/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/audio-waveform/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "auto-crop",
+      "name": "Auto Crop",
+      "type": "plugin",
+      "description": "Automatically crop layers to content bounds with one click. Supports batch processing",
+      "tooltip": "Automatically crop layers to content bounds with one click",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "crop",
+        "trim",
+        "bounds",
+        "batch"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/auto-crop/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/auto-crop/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "auto-cut",
+      "name": "Auto Cut",
+      "type": "plugin",
+      "description": "AI-powered automatic scene detection and cutting for video editing workflows",
+      "tooltip": "AI-powered automatic scene detection and cutting for video editing workflows",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "cut",
+        "scene-detection",
+        "ai",
+        "editing"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/auto-cut/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/auto-cut/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "auto-reframe",
+      "name": "Auto Reframe",
+      "type": "plugin",
+      "description": "AI-powered automatic reframing for social media formats including 9:16, 1:1, and 4:5",
+      "tooltip": "AI-powered automatic reframing for social media formats including 9:16, 1:1, and 4:5",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "reframe",
+        "social-media",
+        "ai",
+        "aspect-ratio"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/auto-reframe/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/auto-reframe/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "black-and-white",
+      "name": "Black & White",
+      "type": "plugin",
+      "description": "Advanced black and white conversion with channel mixing and tonal controls",
+      "tooltip": "Advanced black and white conversion with channel mixing and tonal controls",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "monochrome",
+        "grayscale",
+        "color",
+        "grading"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/black-and-white/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/black-and-white/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "cctv",
+      "name": "CCTV",
+      "type": "plugin",
+      "description": "Simulate security camera footage with timestamps, scanlines, and noise",
+      "tooltip": "Simulate security camera footage with timestamps, scanlines, and noise",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "security",
+        "surveillance",
+        "vintage",
+        "camera"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/cctv/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/cctv/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "change-color",
+      "name": "Change Color",
+      "type": "plugin",
+      "description": "Selectively change colors in footage with precise hue, saturation, and luminance controls",
+      "tooltip": "Selectively change colors in footage with precise hue, saturation, and luminance controls",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "color",
+        "hue",
+        "replace",
+        "selective"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/change-color/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/change-color/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "chromatic-aberration",
+      "name": "Chromatic Aberration",
+      "type": "plugin",
+      "description": "Add realistic RGB channel splitting and lens fringing effects",
+      "tooltip": "Add realistic RGB channel splitting and lens fringing effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "aberration",
+        "rgb",
+        "lens",
+        "distortion"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/chromatic-aberration/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/chromatic-aberration/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "color-curves",
+      "name": "Color Curves",
+      "type": "plugin",
+      "description": "Professional color grading with individual RGB curves and histogram display",
+      "tooltip": "Professional color grading with individual RGB curves and histogram display",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "curves",
+        "grading",
+        "rgb",
+        "histogram"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/color-curves/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/color-curves/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "color-match",
+      "name": "Color Match",
+      "type": "plugin",
+      "description": "Match color grading between clips automatically using reference frames",
+      "tooltip": "Match color grading between clips automatically using reference frames",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "match",
+        "grading",
+        "reference",
+        "correction"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/color-match/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/color-match/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "crt",
+      "name": "CRT",
+      "type": "plugin",
+      "description": "Classic CRT monitor simulation with curvature, scanlines, and phosphor glow",
+      "tooltip": "Classic CRT monitor simulation with curvature, scanlines, and phosphor glow",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "retro",
+        "monitor",
+        "scanlines",
+        "vintage"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/crt/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/crt/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "crystal-light",
+      "name": "Crystal Light",
+      "type": "plugin",
+      "description": "Create beautiful prismatic light leaks and crystal refraction effects",
+      "tooltip": "Create beautiful prismatic light leaks and crystal refraction effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "light",
+        "prism",
+        "rainbow",
+        "leak"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/crystal-light/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/crystal-light/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "deep-glow",
+      "name": "Deep Glow",
+      "type": "plugin",
+      "description": "Advanced glow effect with multi-pass rendering and customizable falloff",
+      "tooltip": "Advanced glow effect with multi-pass rendering and customizable falloff",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "glow",
+        "bloom",
+        "light",
+        "neon"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/deep-glow/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/deep-glow/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "depth-map",
+      "name": "Depth Map",
+      "type": "plugin",
+      "description": "AI-generated depth maps from 2D footage for parallax and focus effects",
+      "tooltip": "AI-generated depth maps from 2D footage for parallax and focus effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "depth",
+        "ai",
+        "3d",
+        "parallax"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/depth-map/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/depth-map/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "duotone",
+      "name": "Duotone",
+      "type": "plugin",
+      "description": "Map footage to two-color gradients for striking visual styles",
+      "tooltip": "Map footage to two-color gradients for striking visual styles",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "color",
+        "gradient",
+        "two-tone",
+        "stylize"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/duotone/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/duotone/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "8-bit",
+      "name": "8-Bit",
+      "type": "plugin",
+      "description": "Retro 8-bit pixel art style with reduced resolution and limited color palette",
+      "tooltip": "Retro 8-bit pixel art style with reduced resolution and limited color palette",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "pixel",
+        "retro",
+        "8bit",
+        "game"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/8-bit/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/8-bit/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "emboss",
+      "name": "Emboss",
+      "type": "plugin",
+      "description": "Create embossed and debossed surface effects with adjustable depth and lighting",
+      "tooltip": "Create embossed and debossed surface effects with adjustable depth and lighting",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "emboss",
+        "relief",
+        "texture",
+        "3d"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/emboss/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/emboss/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "explode-shape-layers",
+      "name": "Explode Shape Layers",
+      "type": "plugin",
+      "description": "Break compound shape layers into individual layers for easier editing",
+      "tooltip": "Break compound shape layers into individual layers for easier editing",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "shapes",
+        "layers",
+        "organize",
+        "split"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "face-detector",
+      "name": "Face Detector",
+      "type": "plugin",
+      "description": "AI-powered face detection and tracking with bounding box output",
+      "tooltip": "AI-powered face detection and tracking with bounding box output",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "face",
+        "ai",
+        "detection",
+        "tracking"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/face-detector/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/face-detector/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "film-grain",
+      "name": "Film Grain",
+      "type": "plugin",
+      "description": "Add realistic photographic film grain with customizable size and intensity",
+      "tooltip": "Add realistic photographic film grain with customizable size and intensity",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "grain",
+        "film",
+        "noise",
+        "analog"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/film-grain/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/film-grain/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "flow-lines",
+      "name": "Flow Lines",
+      "type": "plugin",
+      "description": "Generate animated flow field line effects following motion vectors",
+      "tooltip": "Generate animated flow field line effects following motion vectors",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "lines",
+        "flow",
+        "particles",
+        "abstract"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/flow-lines/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/flow-lines/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "glitch-maker",
+      "name": "Glitch Maker",
+      "type": "plugin",
+      "description": "Create digital glitch effects with RGB shift, block displacement, and noise",
+      "tooltip": "Create digital glitch effects with RGB shift, block displacement, and noise",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "glitch",
+        "digital",
+        "distortion",
+        "noise"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/glitch-maker/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/glitch-maker/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "halftone",
+      "name": "Halftone",
+      "type": "plugin",
+      "description": "Convert footage into halftone dot patterns with adjustable size and angle",
+      "tooltip": "Convert footage into halftone dot patterns with adjustable size and angle",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "halftone",
+        "dots",
+        "print",
+        "comic"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/halftone/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/halftone/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "hex-glitch",
+      "name": "Hex Glitch",
+      "type": "plugin",
+      "description": "Hexagonal grid-based glitch distortion with animated displacement",
+      "tooltip": "Hexagonal grid-based glitch distortion with animated displacement",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "hexagon",
+        "glitch",
+        "grid",
+        "displacement"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/hex-glitch/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/hex-glitch/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "infrared",
+      "name": "Infrared",
+      "type": "plugin",
+      "description": "Simulate infrared photography with false-color mapping and vegetation glow",
+      "tooltip": "Simulate infrared photography with false-color mapping and vegetation glow",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "infrared",
+        "thermal",
+        "false-color",
+        "photography"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/infrared/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/infrared/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "light-rays",
+      "name": "Light Rays",
+      "type": "plugin",
+      "description": "Generate volumetric light rays and god rays from bright areas in footage",
+      "tooltip": "Generate volumetric light rays and god rays from bright areas in footage",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "rays",
+        "volumetric",
+        "god-rays",
+        "light"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/light-rays/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/light-rays/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "motion-echo",
+      "name": "Motion Echo",
+      "type": "plugin",
+      "description": "Create motion trail and echo effects with customizable decay and blending",
+      "tooltip": "Create motion trail and echo effects with customizable decay and blending",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "echo",
+        "trail",
+        "motion",
+        "blur"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/motion-echo/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/motion-echo/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "night-vision",
+      "name": "Night Vision",
+      "type": "plugin",
+      "description": "Military-style night vision effect with green phosphor glow and noise",
+      "tooltip": "Military-style night vision effect with green phosphor glow and noise",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "night",
+        "military",
+        "green",
+        "surveillance"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/night-vision/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/night-vision/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "noise-sort",
+      "name": "Noise Sort",
+      "type": "plugin",
+      "description": "Pixel sorting effect based on luminance, creating waterfall-like distortions",
+      "tooltip": "Pixel sorting effect based on luminance, creating waterfall-like distortions",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "sorting",
+        "pixels",
+        "noise",
+        "waterfall"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/noise-sort/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/noise-sort/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "nostalgia",
+      "name": "Nostalgia",
+      "type": "plugin",
+      "description": "Vintage film look with light leaks, vignette, and color fading",
+      "tooltip": "Vintage film look with light leaks, vignette, and color fading",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "vintage",
+        "retro",
+        "film",
+        "leak"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/nostalgia/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/nostalgia/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "ntsc",
+      "name": "NTSC",
+      "type": "plugin",
+      "description": "Simulate NTSC video artifacts including color bleeding and chroma noise",
+      "tooltip": "Simulate NTSC video artifacts including color bleeding and chroma noise",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "ntsc",
+        "analog",
+        "video",
+        "artifact"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/ntsc/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/ntsc/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "object-detector",
+      "name": "Object Detector",
+      "type": "plugin",
+      "description": "AI-powered object detection and classification with bounding box output",
+      "tooltip": "AI-powered object detection and classification with bounding box output",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "object",
+        "ai",
+        "detection",
+        "classification"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/object-detector/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/object-detector/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "optical-flares",
+      "name": "Optical Flares",
+      "type": "plugin",
+      "description": "Generate realistic lens flares with customizable elements and animation",
+      "tooltip": "Generate realistic lens flares with customizable elements and animation",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "flare",
+        "lens",
+        "light",
+        "sun"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/optical-flares/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/optical-flares/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "path-fire",
+      "name": "Path Fire",
+      "type": "plugin",
+      "description": "Create animated fire effects that follow mask paths",
+      "tooltip": "Create animated fire effects that follow mask paths",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "fire",
+        "path",
+        "particles",
+        "animation"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/path-fire/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/path-fire/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "pixel-shifter",
+      "name": "Pixel Shifter",
+      "type": "plugin",
+      "description": "Displace pixels in patterns creating digital displacement effects",
+      "tooltip": "Displace pixels in patterns creating digital displacement effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "pixel",
+        "displacement",
+        "digital",
+        "shift"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/pixel-shifter/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/pixel-shifter/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "prism-echo",
+      "name": "Prism Echo",
+      "type": "plugin",
+      "description": "Prismatic RGB splitting with echo trails and rainbow chromatic effects",
+      "tooltip": "Prismatic RGB splitting with echo trails and rainbow chromatic effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "prism",
+        "rgb",
+        "echo",
+        "rainbow"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/prism-echo/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/prism-echo/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "privacy-blur",
+      "name": "Privacy Blur",
+      "type": "plugin",
+      "description": "Apply tracked blur or pixelation to faces and sensitive areas",
+      "tooltip": "Apply tracked blur or pixelation to faces and sensitive areas",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "blur",
+        "privacy",
+        "face",
+        "censor"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/privacy-blur/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/privacy-blur/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "psychedelic",
+      "name": "Psychedelic",
+      "type": "plugin",
+      "description": "Trippy color cycling and kaleidoscopic pattern generation",
+      "tooltip": "Trippy color cycling and kaleidoscopic pattern generation",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "psychedelic",
+        "trippy",
+        "color-cycle",
+        "kaleidoscope"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/psychedelic/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/psychedelic/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "quantize",
+      "name": "Quantize",
+      "type": "plugin",
+      "description": "Reduce color palette to create posterized and banded color effects",
+      "tooltip": "Reduce color palette to create posterized and banded color effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "posterize",
+        "color-reduce",
+        "bands",
+        "stylize"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/quantize/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/quantize/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "real-vhs",
+      "name": "Real VHS",
+      "type": "plugin",
+      "description": "Authentic VHS tape simulation with tracking errors, dropout, and head switching noise",
+      "tooltip": "Authentic VHS tape simulation with tracking errors, dropout, and head switching noise",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "vhs",
+        "tape",
+        "tracking",
+        "analog"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/real-vhs/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/real-vhs/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "repeater",
+      "name": "Repeater",
+      "type": "plugin",
+      "description": "Create kaleidoscopic and tiled repetition effects with rotation and scaling",
+      "tooltip": "Create kaleidoscopic and tiled repetition effects with rotation and scaling",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "repeat",
+        "tile",
+        "kaleidoscope",
+        "pattern"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/repeater/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/repeater/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "resize-blur",
+      "name": "Resize Blur",
+      "type": "plugin",
+      "description": "Directional blur based on scaling for motion and zoom blur effects",
+      "tooltip": "Directional blur based on scaling for motion and zoom blur effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "blur",
+        "zoom",
+        "motion",
+        "directional"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/resize-blur/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/resize-blur/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "soft-glow",
+      "name": "Soft Glow",
+      "type": "plugin",
+      "description": "Gentle diffusion glow that softens highlights and adds a dreamy quality",
+      "tooltip": "Gentle diffusion glow that softens highlights and adds a dreamy quality",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "glow",
+        "soft",
+        "diffusion",
+        "dreamy"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/soft-glow/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/soft-glow/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "stop-motion",
+      "name": "Stop Motion",
+      "type": "plugin",
+      "description": "Simulate stop motion animation by reducing frame rate with frame blending options",
+      "tooltip": "Simulate stop motion animation by reducing frame rate with frame blending options",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "stop-motion",
+        "frame-rate",
+        "animation",
+        "clay"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/stop-motion/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/stop-motion/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "thermal-vision",
+      "name": "Thermal Vision",
+      "type": "plugin",
+      "description": "Simulate thermal camera imagery with heat-map color mapping",
+      "tooltip": "Simulate thermal camera imagery with heat-map color mapping",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "thermal",
+        "heat",
+        "infrared",
+        "camera"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/thermal-vision/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/thermal-vision/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "tilt-shift",
+      "name": "Tilt Shift",
+      "type": "plugin",
+      "description": "Miniature effect with selective focus blur simulating tilt-shift photography",
+      "tooltip": "Miniature effect with selective focus blur simulating tilt-shift photography",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "tilt-shift",
+        "miniature",
+        "focus",
+        "blur"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/tilt-shift/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/tilt-shift/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "track",
+      "name": "Track",
+      "type": "plugin",
+      "description": "GPU-accelerated point tracking for motion stabilization and matchmoving",
+      "tooltip": "GPU-accelerated point tracking for motion stabilization and matchmoving",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "tracking",
+        "stabilize",
+        "motion",
+        "gpu"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/track/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/track/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "vhs",
+      "name": "VHS",
+      "type": "plugin",
+      "description": "Classic VHS video effect with scanlines, noise, and color distortion",
+      "tooltip": "Classic VHS video effect with scanlines, noise, and color distortion",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "vhs",
+        "retro",
+        "scanlines",
+        "noise"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/vhs/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/vhs/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "voronoi-glitch",
+      "name": "Voronoi Glitch",
+      "type": "plugin",
+      "description": "Voronoi cell-based displacement creating shattered glass glitch effects",
+      "tooltip": "Voronoi cell-based displacement creating shattered glass glitch effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "voronoi",
+        "glitch",
+        "shatter",
+        "cells"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/voronoi-glitch/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/voronoi-glitch/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "wave",
+      "name": "Wave",
+      "type": "plugin",
+      "description": "Animated wave distortion with customizable frequency, amplitude, and direction",
+      "tooltip": "Animated wave distortion with customizable frequency, amplitude, and direction",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Glitch",
+      "tags": [
+        "wave",
+        "distortion",
+        "ripple",
+        "liquid"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/wave/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/wave/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "x-ray",
+      "name": "X-Ray",
+      "type": "plugin",
+      "description": "Simulate X-ray imaging with inverted luminance and blue-tinted overlay",
+      "tooltip": "Simulate X-ray imaging with inverted luminance and blue-tinted overlay",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Stylize",
+      "tags": [
+        "xray",
+        "invert",
+        "medical",
+        "stylize"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/x-ray/latest/win.zip",
+          "sha256": "",
+          "size": 3500000,
+          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/x-ray/latest/mac.zip",
+          "sha256": "",
+          "size": 3200000,
+          "installPath": "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-bounce-expression",
+      "name": "Add Bounce Expression",
+      "type": "script",
+      "description": "Add elastic bounce animation to any property with one click",
+      "tooltip": "Add elastic bounce animation to any property with one click",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "bounce",
+        "expression",
+        "elastic",
+        "animation"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-bounce-expression/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-bounce-expression/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-color-controls",
+      "name": "Add Color Controls",
+      "type": "script",
+      "description": "Add organized color picker controls to a control layer for easy adjustment",
+      "tooltip": "Add organized color picker controls to a control layer for easy adjustment",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Color",
+      "tags": [
+        "color",
+        "controls",
+        "picker",
+        "template"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-color-controls/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-color-controls/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-dynamic-text-box",
+      "name": "Add Dynamic Text Box",
+      "type": "script",
+      "description": "Create auto-sizing text boxes that resize with text content",
+      "tooltip": "Create auto-sizing text boxes that resize with text content",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "text",
+        "box",
+        "auto-size",
+        "responsive"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-dynamic-text-box/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-dynamic-text-box/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-glow",
+      "name": "Add Glow",
+      "type": "script",
+      "description": "Quick glow effect application with pre-configured settings",
+      "tooltip": "Quick glow effect application with pre-configured settings",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "glow",
+        "quick",
+        "effect",
+        "preset"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-glow/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-glow/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-null-at-point",
+      "name": "Add Null at Point",
+      "type": "script",
+      "description": "Create a null object at any clicked point in the composition",
+      "tooltip": "Create a null object at any clicked point in the composition",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "null",
+        "point",
+        "helper",
+        "control"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-null-at-point/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-null-at-point/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-text-controls",
+      "name": "Add Text Controls",
+      "type": "script",
+      "description": "Add text source controls to a control layer for template customization",
+      "tooltip": "Add text source controls to a control layer for template customization",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "text",
+        "controls",
+        "template",
+        "source"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-text-controls/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-text-controls/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-texture",
+      "name": "Add Texture",
+      "type": "script",
+      "description": "Apply texture overlays to layers with blending mode presets",
+      "tooltip": "Apply texture overlays to layers with blending mode presets",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "texture",
+        "overlay",
+        "blend",
+        "surface"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-texture/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-texture/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "add-typing-cursor",
+      "name": "Add Typing Cursor",
+      "type": "script",
+      "description": "Add an animated blinking cursor to text layers for typing animations",
+      "tooltip": "Add an animated blinking cursor to text layers for typing animations",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "cursor",
+        "typing",
+        "text",
+        "animation"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/add-typing-cursor/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/add-typing-cursor/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "audio-to-markers",
+      "name": "Audio to Markers",
+      "type": "script",
+      "description": "Convert audio beats and peaks to composition markers automatically",
+      "tooltip": "Convert audio beats and peaks to composition markers automatically",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Audio",
+      "tags": [
+        "audio",
+        "markers",
+        "beats",
+        "sync"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/audio-to-markers/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/audio-to-markers/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "autopodcast-ai",
+      "name": "Autopodcast AI",
+      "type": "script",
+      "description": "AI-powered podcast video editing with automatic speaker detection and framing",
+      "tooltip": "AI-powered podcast video editing with automatic speaker detection and framing",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "podcast",
+        "ai",
+        "speaker",
+        "multicam"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/autopodcast-ai/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/autopodcast-ai/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "autoresize",
+      "name": "Autoresize",
+      "type": "script",
+      "description": "Automatically resize compositions to fit content or custom dimensions",
+      "tooltip": "Automatically resize compositions to fit content or custom dimensions",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "resize",
+        "composition",
+        "dimensions",
+        "scale"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/autoresize/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/autoresize/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "bake-expressions",
+      "name": "Bake Expressions",
+      "type": "script",
+      "description": "Convert expressions to keyframes for better performance and compatibility",
+      "tooltip": "Convert expressions to keyframes for better performance and compatibility",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "expressions",
+        "keyframes",
+        "convert",
+        "performance"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/bake-expressions/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/bake-expressions/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "collect-fonts",
+      "name": "Collect Fonts",
+      "type": "script",
+      "description": "Gather all fonts used in a project into a single folder for archiving",
+      "tooltip": "Gather all fonts used in a project into a single folder for archiving",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "fonts",
+        "collect",
+        "archive",
+        "typography"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/collect-fonts/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/collect-fonts/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "comp-to-spreadsheet",
+      "name": "Comp to Spreadsheet",
+      "type": "script",
+      "description": "Export composition data and layer information to CSV spreadsheets",
+      "tooltip": "Export composition data and layer information to CSV spreadsheets",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "spreadsheet",
+        "csv",
+        "export",
+        "data"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/comp-to-spreadsheet/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/comp-to-spreadsheet/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "cursor-toolkit",
+      "name": "Cursor Toolkit",
+      "type": "script",
+      "description": "Animated cursor effects for screen recordings and tutorials",
+      "tooltip": "Animated cursor effects for screen recordings and tutorials",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "cursor",
+        "mouse",
+        "tutorial",
+        "screen-recording"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/cursor-toolkit/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/cursor-toolkit/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "duplicate",
+      "name": "Duplicate",
+      "type": "script",
+      "description": "Smart duplication with offset controls for creating grids and patterns",
+      "tooltip": "Smart duplication with offset controls for creating grids and patterns",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "duplicate",
+        "clone",
+        "grid",
+        "pattern"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/duplicate/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/duplicate/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "explode-shape-layers-script",
+      "name": "Explode Shape Layers",
+      "type": "script",
+      "description": "Break compound shape layers into individual layers for easier editing",
+      "tooltip": "Break compound shape layers into individual layers for easier editing",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "shapes",
+        "layers",
+        "organize",
+        "split"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/explode-shape-layers/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "export-gif",
+      "name": "Export GIF",
+      "type": "script",
+      "description": "Export compositions as optimized animated GIFs with palette controls",
+      "tooltip": "Export compositions as optimized animated GIFs with palette controls",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Export",
+      "tags": [
+        "gif",
+        "export",
+        "animated",
+        "web"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/export-gif/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/export-gif/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "export-mp4",
+      "name": "Export MP4",
+      "type": "script",
+      "description": "Quick MP4 export with H.264 encoding and quality presets",
+      "tooltip": "Quick MP4 export with H",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Export",
+      "tags": [
+        "mp4",
+        "export",
+        "h264",
+        "video"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/export-mp4/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/export-mp4/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "export-png",
+      "name": "Export PNG",
+      "type": "script",
+      "description": "Export current frame or sequence as PNG with transparency support",
+      "tooltip": "Export current frame or sequence as PNG with transparency support",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Export",
+      "tags": [
+        "png",
+        "export",
+        "frame",
+        "transparency"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/export-png/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/export-png/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "find",
+      "name": "Find",
+      "type": "script",
+      "description": "Search and filter layers, effects, and properties across your project",
+      "tooltip": "Search and filter layers, effects, and properties across your project",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "search",
+        "filter",
+        "layers",
+        "effects"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/find/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/find/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "find-missing-files",
+      "name": "Find Missing Files",
+      "type": "script",
+      "description": "Locate and relink missing footage files in your project",
+      "tooltip": "Locate and relink missing footage files in your project",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "missing",
+        "relink",
+        "footage",
+        "files"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/find-missing-files/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/find-missing-files/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "fix-legacy-expressions",
+      "name": "Fix Legacy Expressions",
+      "type": "script",
+      "description": "Batch convert legacy expressions to modern syntax automatically",
+      "tooltip": "Batch convert legacy expressions to modern syntax automatically",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "expressions",
+        "legacy",
+        "fix",
+        "update"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/fix-legacy-expressions/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/fix-legacy-expressions/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "footages-to-comps",
+      "name": "Footages to Comps",
+      "type": "script",
+      "description": "Create individual compositions from selected footage items",
+      "tooltip": "Create individual compositions from selected footage items",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "footage",
+        "compositions",
+        "batch",
+        "create"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/footages-to-comps/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/footages-to-comps/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "freeze-frame",
+      "name": "Freeze Frame",
+      "type": "script",
+      "description": "Create freeze frame effects with time remapping at current time",
+      "tooltip": "Create freeze frame effects with time remapping at current time",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "freeze",
+        "frame",
+        "hold",
+        "time-remap"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/freeze-frame/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/freeze-frame/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "import-sequences",
+      "name": "Import Sequences",
+      "type": "script",
+      "description": "Batch import image sequences with automatic frame rate detection",
+      "tooltip": "Batch import image sequences with automatic frame rate detection",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "import",
+        "sequence",
+        "batch",
+        "frames"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/import-sequences/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/import-sequences/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "increase-comp-duration",
+      "name": "Increase Comp Duration",
+      "type": "script",
+      "description": "Extend composition duration while preserving all layer timing",
+      "tooltip": "Extend composition duration while preserving all layer timing",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "duration",
+        "extend",
+        "composition",
+        "time"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/increase-comp-duration/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/increase-comp-duration/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "localize-ai",
+      "name": "Localize AI",
+      "type": "script",
+      "description": "AI-powered automatic translation of text layers to multiple languages",
+      "tooltip": "AI-powered automatic translation of text layers to multiple languages",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "translate",
+        "localize",
+        "ai",
+        "language"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/localize-ai/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/localize-ai/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "loop",
+      "name": "Loop",
+      "type": "script",
+      "description": "Add loop expressions to selected properties with pingpong and offset options",
+      "tooltip": "Add loop expressions to selected properties with pingpong and offset options",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "loop",
+        "expression",
+        "cycle",
+        "repeat"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/loop/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/loop/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "move-to",
+      "name": "Move to",
+      "type": "script",
+      "description": "Move layers to specific positions, times, or compositions with precision",
+      "tooltip": "Move layers to specific positions, times, or compositions with precision",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "move",
+        "position",
+        "organize",
+        "layers"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/move-to/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/move-to/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "pixelate",
+      "name": "Pixelate",
+      "type": "script",
+      "description": "Apply pixelation mosaic effect with adjustable block size",
+      "tooltip": "Apply pixelation mosaic effect with adjustable block size",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Effects",
+      "tags": [
+        "pixel",
+        "mosaic",
+        "censor",
+        "block"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/pixelate/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/pixelate/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "points-to-nulls",
+      "name": "Points to Nulls",
+      "type": "script",
+      "description": "Convert mask or shape path points to null objects for animation control",
+      "tooltip": "Convert mask or shape path points to null objects for animation control",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "points",
+        "nulls",
+        "mask",
+        "control"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/points-to-nulls/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/points-to-nulls/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "precomp",
+      "name": "Precomp",
+      "type": "script",
+      "description": "Smart pre-composition with options for moving attributes and adjusting timing",
+      "tooltip": "Smart pre-composition with options for moving attributes and adjusting timing",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "precompose",
+        "organize",
+        "nest",
+        "attributes"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/precomp/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/precomp/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "prerender",
+      "name": "Prerender",
+      "type": "script",
+      "description": "Pre-render compositions to video files for faster playback",
+      "tooltip": "Pre-render compositions to video files for faster playback",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "render",
+        "cache",
+        "performance",
+        "proxy"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/prerender/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/prerender/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "quick-folders",
+      "name": "Quick Folders",
+      "type": "script",
+      "description": "Organize project panel with auto-generated folder structures",
+      "tooltip": "Organize project panel with auto-generated folder structures",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "folders",
+        "organize",
+        "project",
+        "structure"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/quick-folders/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/quick-folders/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "remove-silence",
+      "name": "Remove Silence",
+      "type": "script",
+      "description": "Automatically detect and remove silent portions from audio layers",
+      "tooltip": "Automatically detect and remove silent portions from audio layers",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "silence",
+        "audio",
+        "remove",
+        "detect"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/remove-silence/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/remove-silence/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "rename-controls",
+      "name": "Rename Controls",
+      "type": "script",
+      "description": "Batch rename effect controls and expressions with find-and-replace",
+      "tooltip": "Batch rename effect controls and expressions with find-and-replace",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "rename",
+        "controls",
+        "batch",
+        "expressions"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/rename-controls/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/rename-controls/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "replace-expressions",
+      "name": "Replace Expressions",
+      "type": "script",
+      "description": "Find and replace text within expressions across multiple layers",
+      "tooltip": "Find and replace text within expressions across multiple layers",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "expressions",
+        "find-replace",
+        "batch",
+        "text"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/replace-expressions/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/replace-expressions/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "reposition-anchor-point",
+      "name": "Reposition Anchor Point",
+      "type": "script",
+      "description": "Move anchor point to predefined positions without shifting the layer",
+      "tooltip": "Move anchor point to predefined positions without shifting the layer",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "anchor",
+        "position",
+        "center",
+        "align"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/reposition-anchor-point/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/reposition-anchor-point/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "round-cap",
+      "name": "Round Cap",
+      "type": "script",
+      "description": "Convert stroke line caps to round caps on shape layers",
+      "tooltip": "Convert stroke line caps to round caps on shape layers",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "stroke",
+        "cap",
+        "round",
+        "shape"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/round-cap/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/round-cap/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "set-rasterize",
+      "name": "Set Rasterize",
+      "type": "script",
+      "description": "Toggle continuously rasterize on multiple layers at once",
+      "tooltip": "Toggle continuously rasterize on multiple layers at once",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "rasterize",
+        "vector",
+        "toggle",
+        "batch"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/set-rasterize/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/set-rasterize/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "text-to-layers",
+      "name": "Text to Layers",
+      "type": "script",
+      "description": "Split text layers into individual per-character or per-word layers",
+      "tooltip": "Split text layers into individual per-character or per-word layers",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "text",
+        "split",
+        "characters",
+        "words"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/text-to-layers/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/text-to-layers/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "unprecomp",
+      "name": "Unprecomp",
+      "type": "script",
+      "description": "Extract layers from pre-compositions back to the parent composition",
+      "tooltip": "Extract layers from pre-compositions back to the parent composition",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Utilities",
+      "tags": [
+        "unprecomp",
+        "extract",
+        "flatten",
+        "layers"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/unprecomp/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/unprecomp/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "anti-static-toolbox",
+      "name": "Anti-Static ToolBox",
+      "type": "script",
+      "description": "Motion graphics toolbox with shape generators and animation presets",
+      "tooltip": "Motion graphics toolbox with shape generators and animation presets",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "motion-graphics",
+        "shapes",
+        "presets",
+        "tools"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/anti-static-toolbox/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/anti-static-toolbox/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "anti-static-dominion",
+      "name": "Anti-Static Dominion",
+      "type": "script",
+      "description": "Advanced motion design toolkit with procedural animation tools",
+      "tooltip": "Advanced motion design toolkit with procedural animation tools",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Animation",
+      "tags": [
+        "motion-design",
+        "procedural",
+        "animation",
+        "tools"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/anti-static-dominion/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/anti-static-dominion/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "stable-diffusion-ai",
+      "name": "Stable Diffusion AI",
+      "type": "script",
+      "description": "Generate AI images directly in After Effects using Stable Diffusion",
+      "tooltip": "Generate AI images directly in After Effects using Stable Diffusion",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "AI",
+      "tags": [
+        "ai",
+        "image-generation",
+        "diffusion",
+        "creative"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/stable-diffusion-ai/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/stable-diffusion-ai/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "duik-angela",
+      "name": "Duik Angela",
+      "type": "script",
+      "description": "Professional character rigging and animation toolkit for After Effects",
+      "tooltip": "Professional character rigging and animation toolkit for After Effects",
+      "version": "17.1.20",
+      "author": "Community",
+      "category": "Animation",
+      "tags": [
+        "rigging",
+        "character",
+        "ik",
+        "animation"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/duik-angela/latest/win.zip",
+          "sha256": "",
+          "size": 256000,
+          "installPath": "",
+          "requiresAdmin": false
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/duik-angela/latest/mac.zip",
+          "sha256": "",
+          "size": 250000,
+          "installPath": "",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 17.1.20\n- Latest release"
+    },
+    {
+      "id": "bodymovin",
+      "name": "Bodymovin",
+      "type": "extension",
+      "description": "Export After Effects animations as Lottie JSON for web and mobile apps",
+      "tooltip": "Export After Effects animations as Lottie JSON for web and mobile apps",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Export",
+      "tags": [
+        "lottie",
+        "json",
+        "web",
+        "export"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/bodymovin/latest/win.zip",
+          "sha256": "",
+          "size": 1500000,
+          "installPath": "C:/Program Files/Common Files/Adobe/CEP/extensions/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/bodymovin/latest/mac.zip",
+          "sha256": "",
+          "size": 1400000,
+          "installPath": "/Library/Application Support/Adobe/CEP/extensions/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": false,
+      "changelog": "### 1.0.0\n- Latest release"
+    },
+    {
+      "id": "gyroflow",
+      "name": "Gyroflow",
+      "type": "software",
+      "description": "Stabilize video footage using gyroscope data from action cameras",
+      "tooltip": "Stabilize video footage using gyroscope data from action cameras",
+      "version": "1.6.3",
+      "author": "Community",
+      "category": "Software",
+      "tags": [
+        "stabilize",
+        "gyroscope",
+        "action-camera",
+        "video"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/gyroflow/latest/win.zip",
+          "sha256": "",
+          "size": 85000000,
+          "installPath": "C:/Program Files/AEJuice/Gyroflow/",
+          "requiresAdmin": true
+        },
+        "macos": {
+          "url": "https://cdn.aejuice.com/components/gyroflow/latest/mac.zip",
+          "sha256": "",
+          "size": 82000000,
+          "installPath": "/Applications/Gyroflow.app/",
+          "requiresAdmin": false
+        }
+      },
+      "dependencies": [],
+      "runnable": true,
+      "changelog": "### 1.6.3\n- Latest release",
+      "runCommand": "gyroflow"
+    },
+    {
+      "id": "aejuice-video-editor",
+      "name": "AEJuice Video Editor",
+      "type": "software",
+      "description": "Standalone video editing application with timeline and effects",
+      "tooltip": "Standalone video editing application with timeline and effects",
+      "version": "1.0.0",
+      "author": "AEJuice",
+      "category": "Software",
+      "tags": [
+        "editor",
+        "video",
+        "timeline",
+        "standalone"
+      ],
+      "icon": "",
+      "screenshots": [],
+      "platforms": {
+        "windows": {
+          "url": "https://cdn.aejuice.com/components/aejuice-video-editor/latest/win.zip",
+          "sha256": "",
+          "size": 85000000,
+          "installPath": "C:/Program Files/AEJuice/AEJuice Video Editor/",
+          "requiresAdmin": true
+        }
+      },
+      "dependencies": [],
+      "runnable": true,
+      "changelog": "### 1.0.0\n- Latest release",
+      "runCommand": "aejuice-video-editor"
+    }
+  ]
+}

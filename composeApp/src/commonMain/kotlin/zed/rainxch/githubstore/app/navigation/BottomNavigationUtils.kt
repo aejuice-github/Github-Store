@@ -11,8 +11,6 @@ import androidx.compose.material.icons.outlined.Person2
 import androidx.compose.material.icons.outlined.Search
 import androidx.compose.ui.graphics.vector.ImageVector
 import org.jetbrains.compose.resources.StringResource
-import zed.rainxch.core.domain.getPlatform
-import zed.rainxch.core.domain.model.Platform
 import zed.rainxch.githubstore.core.presentation.res.*
 
 data class BottomNavigationItem(
@@ -50,10 +48,5 @@ object BottomNavigationUtils {
         )
     )
 
-    fun allowedScreens(): List<GithubStoreGraph> = items()
-        .filterNot {
-            getPlatform() != Platform.ANDROID &&
-                    it.screen == GithubStoreGraph.AppsScreen
-        }
-        .map { it.screen }
+    fun allowedScreens(): List<GithubStoreGraph> = items().map { it.screen }
 }

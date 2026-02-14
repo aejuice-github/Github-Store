@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.convention.kmp.library)
-
 }
 
 kotlin {
@@ -12,17 +11,9 @@ kotlin {
             }
         }
 
-        androidMain {
-            dependencies {
-
-            }
-        }
-
         jvmMain {
             dependencies {
-
             }
         }
     }
-
 }

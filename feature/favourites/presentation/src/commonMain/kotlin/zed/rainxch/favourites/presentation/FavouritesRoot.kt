@@ -6,9 +6,8 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
-import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
-import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.CircularWavyProgressIndicator
@@ -38,8 +37,7 @@ import zed.rainxch.favourites.presentation.components.FavouriteRepositoryItem
 @Composable
 fun FavouritesRoot(
     onNavigateBack: () -> Unit,
-    onNavigateToDetails: (repoId: Long) -> Unit,
-    onNavigateToDeveloperProfile: (username: String) -> Unit,
+    onNavigateToDetails: (String) -> Unit,
     viewModel: FavouritesViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -48,16 +46,12 @@ fun FavouritesRoot(
         state = state,
         onAction = { action ->
             when (action) {
-                FavouritesAction.OnNavigateBackClick -> {
+                FavouritesAction.OnNavigateBack -> {
                     onNavigateBack()
                 }
 
-                is FavouritesAction.OnRepositoryClick -> {
-                    onNavigateToDetails(action.favouriteRepository.repoId)
-                }
-
-                is FavouritesAction.OnDeveloperProfileClick -> {
-                    onNavigateToDeveloperProfile(action.username)
+                is FavouritesAction.OnComponentClick -> {
+                    onNavigateToDetails(action.componentId)
                 }
 
                 else -> {
@@ -85,31 +79,24 @@ fun FavouritesScreen(
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            LazyVerticalStaggeredGrid(
-                columns = StaggeredGridCells.Adaptive(
-                    350.dp
-                ),
-                verticalItemSpacing = 12.dp,
-                horizontalArrangement = Arrangement.spacedBy(12.dp),
+            LazyColumn(
+                verticalArrangement = Arrangement.spacedBy(12.dp),
                 contentPadding = PaddingValues(horizontal = 8.dp, vertical = 12.dp),
                 modifier = Modifier.fillMaxSize()
             ) {
                 items(
-                    items = state.favouriteRepositories,
-                    key = { it.repoId }
-                ) { repo ->
+                    items = state.favourites,
+                    key = { it.componentId }
+                ) { favourite ->
                     FavouriteRepositoryItem(
-                        favouriteRepository = repo,
+                        favouriteRepository = favourite,
                         onToggleFavouriteClick = {
-                            onAction(FavouritesAction.OnToggleFavorite(repo))
+                            onAction(FavouritesAction.OnToggleFavourite(favourite.componentId))
                         },
                         onItemClick = {
-                            onAction(FavouritesAction.OnRepositoryClick(repo))
+                            onAction(FavouritesAction.OnComponentClick(favourite.componentId))
                         },
-                        onDevProfileClick = {
-                            onAction(FavouritesAction.OnDeveloperProfileClick(repo.repoOwner))
-                        },
-                        modifier = Modifier.Companion.animateItem()
+                        modifier = Modifier.animateItem()
                     )
                 }
             }
@@ -141,7 +128,7 @@ private fun FavouritesTopbar(
             IconButton(
                 shapes = IconButtonDefaults.shapes(),
                 onClick = {
-                    onAction(FavouritesAction.OnNavigateBackClick)
+                    onAction(FavouritesAction.OnNavigateBack)
                 }
             ) {
                 Icon(

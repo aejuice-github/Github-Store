@@ -6,21 +6,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.staggeredgrid.LazyStaggeredGridState
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
@@ -30,18 +29,13 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -54,22 +48,20 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
-import zed.rainxch.core.domain.model.GithubRepoSummary
+import zed.rainxch.core.domain.model.Component
 import zed.rainxch.core.presentation.components.GithubStoreButton
 import zed.rainxch.core.presentation.components.RepositoryCard
 import zed.rainxch.core.presentation.locals.LocalBottomNavigationLiquid
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
 import zed.rainxch.core.presentation.utils.ObserveAsEvents
-import zed.rainxch.home.presentation.components.HomeFilterChips
-import zed.rainxch.home.domain.model.HomeCategory
+import zed.rainxch.home.presentation.components.HomeFilterChip
 
 @Composable
 fun HomeRoot(
     onNavigateToSettings: () -> Unit,
     onNavigateToSearch: () -> Unit,
     onNavigateToApps: () -> Unit,
-    onNavigateToDetails: (GithubRepoSummary) -> Unit,
-    onNavigateToDeveloperProfile: (username: String) -> Unit,
+    onNavigateToDetails: (Component) -> Unit,
     viewModel: HomeViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -102,12 +94,8 @@ fun HomeRoot(
                     onNavigateToApps()
                 }
 
-                is HomeAction.OnRepositoryClick -> {
-                    onNavigateToDetails(action.repo)
-                }
-
-                is HomeAction.OnRepositoryDeveloperClick -> {
-                    onNavigateToDeveloperProfile(action.username)
+                is HomeAction.OnComponentClick -> {
+                    onNavigateToDetails(action.component)
                 }
 
                 else -> {
@@ -128,32 +116,9 @@ fun HomeScreen(
 ) {
     val liquidState = LocalBottomNavigationLiquid.current
 
-    val shouldLoadMore by remember {
-        derivedStateOf {
-            val layoutInfo = listState.layoutInfo
-            val totalItems = layoutInfo.totalItemsCount
-            val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()
-
-            totalItems > 0 &&
-                    lastVisibleItem != null &&
-                    lastVisibleItem.index >= (totalItems - 5) &&
-                    !state.isLoadingMore &&
-                    !state.isLoading &&
-                    state.hasMorePages
-        }
-    }
-
-    val currentOnAction by rememberUpdatedState(onAction)
-
-    LaunchedEffect(shouldLoadMore) {
-        if (shouldLoadMore) {
-            currentOnAction(HomeAction.LoadMore)
-        }
-    }
-
     Scaffold(
         topBar = {
-            TopAppBar()
+            HomeTopAppBar()
         },
         containerColor = MaterialTheme.colorScheme.background
     ) { innerPadding ->
@@ -189,7 +154,7 @@ private fun MainState(
     onAction: (HomeAction) -> Unit,
     liquidState: LiquidState
 ) {
-    if (state.repos.isNotEmpty()) {
+    if (state.components.isNotEmpty()) {
         LazyVerticalStaggeredGrid(
             state = listState,
             columns = StaggeredGridCells.Adaptive(350.dp),
@@ -199,64 +164,19 @@ private fun MainState(
             modifier = Modifier.fillMaxSize()
         ) {
             items(
-                items = state.repos,
-                key = { it.repository.id },
-                contentType = { "repo" }
-            ) { homeRepo ->
+                items = state.components,
+                key = { it.component.id },
+                contentType = { "component" }
+            ) { item ->
                 RepositoryCard(
-                    discoveryRepository = homeRepo,
+                    discoveryRepository = item,
                     onClick = {
-                        onAction(HomeAction.OnRepositoryClick(homeRepo.repository))
-                    },
-                    onDeveloperClick = { username ->
-                        onAction(HomeAction.OnRepositoryDeveloperClick(username))
+                        onAction(HomeAction.OnComponentClick(item.component))
                     },
                     modifier = Modifier
                         .animateItem()
                         .liquefiable(liquidState)
                 )
-            }
-
-            if (state.isLoadingMore) {
-                item(key = "loading_indicator") {
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        contentAlignment = Alignment.Center
-                    ) {
-                        Row(
-                            horizontalArrangement = Arrangement.Center,
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(20.dp)
-                            )
-
-                            Spacer(modifier = Modifier.width(8.dp))
-
-                            Text(
-                                text = stringResource(Res.string.home_loading_more),
-                                style = MaterialTheme.typography.titleMedium,
-                                color = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-                }
-            }
-
-            if (!state.hasMorePages && !state.isLoadingMore) {
-                item(key = "end_message") {
-                    Text(
-                        text = stringResource(Res.string.home_no_more_repositories),
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(16.dp),
-                        textAlign = TextAlign.Center,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant,
-                        style = MaterialTheme.typography.titleMedium
-                    )
-                }
             }
         }
     }
@@ -265,7 +185,7 @@ private fun MainState(
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun LoadingState(state: HomeState) {
-    if (state.isLoading && state.repos.isEmpty()) {
+    if (state.isLoading && state.components.isEmpty()) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
@@ -290,7 +210,7 @@ private fun ErrorState(
     state: HomeState,
     onAction: (HomeAction) -> Unit
 ) {
-    if (state.errorMessage != null && state.repos.isEmpty()) {
+    if (state.errorMessage != null && state.components.isEmpty()) {
         Box(
             modifier = Modifier.fillMaxSize(),
             contentAlignment = Alignment.Center
@@ -323,17 +243,18 @@ private fun FilterChips(
     state: HomeState,
     onAction: (HomeAction) -> Unit
 ) {
-    Row(
+    LazyRow(
         modifier = Modifier
             .fillMaxWidth()
-            .background(
-                MaterialTheme.colorScheme.primaryContainer, CircleShape
-            )
+            .background(MaterialTheme.colorScheme.primaryContainer, CircleShape)
             .padding(horizontal = 8.dp),
         horizontalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        HomeCategory.entries.forEach { category ->
-            HomeFilterChips(
+        items(
+            items = state.categories,
+            key = { it.name }
+        ) { category ->
+            HomeFilterChip(
                 selectedCategory = state.currentCategory,
                 category = category,
                 onClick = {
@@ -346,7 +267,7 @@ private fun FilterChips(
 
 @Composable
 @OptIn(ExperimentalMaterial3Api::class)
-private fun TopAppBar() {
+private fun HomeTopAppBar() {
     TopAppBar(
         navigationIcon = {
             Image(

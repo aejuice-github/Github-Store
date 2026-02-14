@@ -54,11 +54,10 @@ import io.github.fletchmckee.liquid.rememberLiquidState
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
-import zed.rainxch.core.domain.getPlatform
-import zed.rainxch.core.domain.model.Platform
 import zed.rainxch.core.presentation.locals.LocalBottomNavigationLiquid
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
-import zed.rainxch.details.presentation.utils.isLiquidFrostAvailable
+// Liquid frost is always available on desktop JVM
+private fun isLiquidFrostAvailable(): Boolean = true
 
 @Composable
 fun BottomNavigation(
@@ -71,10 +70,7 @@ fun BottomNavigation(
     if (currentScreen !in BottomNavigationUtils.allowedScreens()) return
 
     val visibleItems = remember {
-        BottomNavigationUtils.items().filterNot {
-            getPlatform() != Platform.ANDROID &&
-                    it.screen == GithubStoreGraph.AppsScreen
-        }
+        BottomNavigationUtils.items()
     }
 
     val selectedIndex = visibleItems.indexOfFirst { it.screen == currentScreen }

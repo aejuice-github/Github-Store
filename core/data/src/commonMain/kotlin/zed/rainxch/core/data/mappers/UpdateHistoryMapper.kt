@@ -6,29 +6,24 @@ import zed.rainxch.core.domain.model.UpdateHistory
 fun UpdateHistory.toEntity(): UpdateHistoryEntity {
     return UpdateHistoryEntity(
         id = id,
-        packageName = packageName,
-        appName = appName,
-        repoOwner = repoOwner,
-        repoName = repoName,
+        componentId = componentId,
+        name = name,
         fromVersion = fromVersion,
         toVersion = toVersion,
         updatedAt = updatedAt,
-        updateSource = updateSource,
         success = success,
         errorMessage = errorMessage
     )
 }
+
 fun UpdateHistoryEntity.toDomain(): UpdateHistory {
     return UpdateHistory(
         id = id,
-        packageName = packageName,
-        appName = appName,
-        repoOwner = repoOwner,
-        repoName = repoName,
+        componentId = componentId,
+        name = name,
         fromVersion = fromVersion,
         toVersion = toVersion,
         updatedAt = updatedAt,
-        updateSource = updateSource,
         success = success,
         errorMessage = errorMessage
     )

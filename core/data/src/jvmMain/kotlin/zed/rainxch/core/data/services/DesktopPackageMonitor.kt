@@ -1,19 +1,24 @@
 package zed.rainxch.core.data.services
 
-import zed.rainxch.core.domain.model.SystemPackageInfo
 import zed.rainxch.core.domain.system.PackageMonitor
+import java.io.File
 
 class DesktopPackageMonitor : PackageMonitor {
-    override suspend fun isPackageInstalled(packageName: String): Boolean {
+    override suspend fun isComponentInstalled(componentId: String): Boolean {
         return false
     }
 
-    override suspend fun getInstalledPackageInfo(packageName: String): SystemPackageInfo? {
-        return null
+    override suspend fun getAllInstalledComponentIds(): Set<String> {
+        return emptySet()
     }
 
-    override suspend fun getAllInstalledPackageNames(): Set<String> {
-        return setOf()
+    override suspend fun verifyInstallation(
+        componentId: String,
+        installPath: String,
+        files: List<String>
+    ): Boolean {
+        val dir = File(installPath)
+        if (!dir.exists()) return false
+        return files.all { File(dir, it).exists() }
     }
-
 }

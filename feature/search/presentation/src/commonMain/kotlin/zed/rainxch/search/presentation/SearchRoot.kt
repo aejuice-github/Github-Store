@@ -13,26 +13,19 @@ import androidx.compose.foundation.layout.imePadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
-import androidx.compose.foundation.lazy.staggeredgrid.rememberLazyStaggeredGridState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.outlined.KeyboardArrowDown
 import androidx.compose.material3.Button
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.CircularWavyProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
-import androidx.compose.material3.FilterChip
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -42,16 +35,13 @@ import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberUpdatedState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextOverflow
@@ -59,55 +49,33 @@ import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.fletchmckee.liquid.liquefiable
 import zed.rainxch.githubstore.core.presentation.res.*
-import kotlinx.coroutines.delay
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
-import zed.rainxch.core.domain.model.GithubRepoSummary
+import zed.rainxch.core.domain.model.Component
 import zed.rainxch.core.presentation.components.RepositoryCard
 import zed.rainxch.core.presentation.locals.LocalBottomNavigationLiquid
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
-import zed.rainxch.domain.model.ProgrammingLanguage
-import zed.rainxch.domain.model.SearchPlatform
-import zed.rainxch.search.presentation.components.LanguageFilterBottomSheet
-import zed.rainxch.search.presentation.utils.label
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SearchRoot(
     onNavigateBack: () -> Unit,
-    onNavigateToDetails: (GithubRepoSummary) -> Unit,
-    onNavigateToDeveloperProfile: (username: String) -> Unit,
+    onNavigateToDetails: (Component) -> Unit,
     viewModel: SearchViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
-
-    if (state.isLanguageSheetVisible) {
-        LanguageFilterBottomSheet(
-            selectedLanguage = state.selectedLanguage,
-            onLanguageSelected = { language ->
-                viewModel.onAction(SearchAction.OnLanguageSelected(language))
-            },
-            onDismissRequest = {
-                viewModel.onAction(SearchAction.OnToggleLanguageSheetVisibility)
-            }
-        )
-    }
 
     SearchScreen(
         state = state,
         onAction = { action ->
             when (action) {
-                is SearchAction.OnRepositoryClick -> {
-                    onNavigateToDetails(action.repository)
+                is SearchAction.OnComponentClick -> {
+                    onNavigateToDetails(action.component)
                 }
 
                 SearchAction.OnNavigateBackClick -> {
                     onNavigateBack()
-                }
-
-                is SearchAction.OnRepositoryDeveloperClick -> {
-                    onNavigateToDeveloperProfile(action.username)
                 }
 
                 else -> {
@@ -125,63 +93,7 @@ fun SearchScreen(
     onAction: (SearchAction) -> Unit,
 ) {
     val focusRequester = remember { FocusRequester() }
-    val listState = rememberLazyStaggeredGridState()
     val liquidState = LocalBottomNavigationLiquid.current
-
-    val shouldLoadMore by remember {
-        derivedStateOf {
-            val layoutInfo = listState.layoutInfo
-            val totalItems = layoutInfo.totalItemsCount
-            val visibleItems = layoutInfo.visibleItemsInfo
-
-            if (totalItems == 0 ||
-                state.isLoadingMore ||
-                state.isLoading ||
-                !state.hasMorePages) {
-                return@derivedStateOf false
-            }
-
-            val lastVisibleItem = visibleItems.lastOrNull() ?: return@derivedStateOf false
-            val viewportEndOffset = layoutInfo.viewportEndOffset
-
-            val hasEmptySpaceAtBottom = lastVisibleItem.index == totalItems - 1 &&
-                    lastVisibleItem.offset.y + lastVisibleItem.size.height < viewportEndOffset
-
-            val threshold = (totalItems * 0.8f).toInt()
-            val isNearEnd = lastVisibleItem.index >= threshold
-
-            isNearEnd || hasEmptySpaceAtBottom
-        }
-    }
-
-    val currentOnAction by rememberUpdatedState(onAction)
-
-    LaunchedEffect(shouldLoadMore) {
-        if (shouldLoadMore) {
-            currentOnAction(SearchAction.LoadMore)
-        }
-    }
-
-    LaunchedEffect(listState.layoutInfo.totalItemsCount, listState.layoutInfo.viewportEndOffset) {
-        val layoutInfo = listState.layoutInfo
-        val visibleItems = layoutInfo.visibleItemsInfo
-        val lastVisible = visibleItems.lastOrNull()
-
-        if (lastVisible != null &&
-            layoutInfo.totalItemsCount > 0 &&
-            !state.isLoadingMore &&
-            !state.isLoading &&
-            state.hasMorePages) {
-
-            val hasEmptySpace = lastVisible.index == layoutInfo.totalItemsCount - 1 &&
-                    lastVisible.offset.y + lastVisible.size.height < layoutInfo.viewportEndOffset
-
-            if (hasEmptySpace) {
-                delay(100)
-                currentOnAction(SearchAction.LoadMore)
-            }
-        }
-    }
 
     LaunchedEffect(Unit) {
         if (state.query.isEmpty()) {
@@ -206,102 +118,8 @@ fun SearchScreen(
                 .padding(innerPadding)
                 .padding(horizontal = 8.dp)
         ) {
-            LazyRow(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                items(SearchPlatform.entries.toList()) { sortBy ->
-                    FilterChip(
-                        selected = state.selectedSearchPlatform == sortBy,
-                        label = {
-                            Text(
-                                text = sortBy.name.lowercase().replaceFirstChar { it.uppercase() },
-                                style = MaterialTheme.typography.titleSmall,
-                                fontWeight = FontWeight.Medium,
-                                color = MaterialTheme.colorScheme.onBackground
-                            )
-                        },
-                        onClick = {
-                            onAction(SearchAction.OnPlatformTypeSelected(sortBy))
-                        }
-                    )
-                }
-            }
-
-            Spacer(Modifier.height(4.dp))
-
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = stringResource(Res.string.language_label),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontWeight = FontWeight.Medium
-                )
-
-                FilterChip(
-                    selected = state.selectedLanguage != ProgrammingLanguage.All,
-                    onClick = {
-                        onAction(SearchAction.OnToggleLanguageSheetVisibility)
-                    },
-                    label = {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically,
-                            horizontalArrangement = Arrangement.spacedBy(4.dp)
-                        ) {
-                            Text(
-                                text = stringResource(state.selectedLanguage.label()),
-                                style = MaterialTheme.typography.bodyMedium,
-                                fontWeight = FontWeight.Medium
-                            )
-                            Icon(
-                                imageVector = Icons.Outlined.KeyboardArrowDown,
-                                contentDescription = null,
-                                modifier = Modifier.size(18.dp)
-                            )
-                        }
-                    }
-                )
-
-                if (state.selectedLanguage != ProgrammingLanguage.All) {
-                    IconButton(
-                        onClick = {
-                            onAction(SearchAction.OnLanguageSelected(ProgrammingLanguage.All))
-                        },
-                        modifier = Modifier.size(32.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Close,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                            tint = MaterialTheme.colorScheme.onSurfaceVariant
-                        )
-                    }
-                }
-            }
-
-            Spacer(Modifier.height(12.dp))
-
-            if (state.totalCount != null) {
-                Text(
-                    text = stringResource(
-                        Res.string.results_found,
-                        state.totalCount
-                    ),
-                    style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.outline,
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(bottom = 8.dp)
-                )
-            }
-
             Box(Modifier.fillMaxSize()) {
-                if (state.isLoading && state.repositories.isEmpty()) {
+                if (state.isLoading && state.results.isEmpty()) {
                     Box(
                         modifier = Modifier.fillMaxSize().imePadding(),
                         contentAlignment = Alignment.Center
@@ -310,7 +128,7 @@ fun SearchScreen(
                     }
                 }
 
-                if (state.errorMessage != null && state.repositories.isEmpty()) {
+                if (state.errorMessage != null && state.results.isEmpty()) {
                     Box(
                         modifier = Modifier.fillMaxSize(),
                         contentAlignment = Alignment.Center
@@ -331,9 +149,8 @@ fun SearchScreen(
                     }
                 }
 
-                if (state.repositories.isNotEmpty()) {
+                if (state.results.isNotEmpty()) {
                     LazyVerticalStaggeredGrid(
-                        state = listState,
                         columns = StaggeredGridCells.Adaptive(350.dp),
                         verticalItemSpacing = 12.dp,
                         horizontalArrangement = Arrangement.spacedBy(12.dp),
@@ -343,36 +160,18 @@ fun SearchScreen(
                             .liquefiable(liquidState)
                     ) {
                         items(
-                            items = state.repositories,
-                            key = { it.repository.id },
+                            items = state.results,
+                            key = { it.component.id },
                         ) { discoveryRepository ->
                             RepositoryCard(
                                 discoveryRepository = discoveryRepository,
                                 onClick = {
-                                    onAction(SearchAction.OnRepositoryClick(discoveryRepository.repository))
-                                },
-                                onDeveloperClick = { username ->
-                                    onAction(SearchAction.OnRepositoryDeveloperClick(username))
+                                    onAction(SearchAction.OnComponentClick(discoveryRepository.component))
                                 },
                                 modifier = Modifier
                                     .animateItem()
                                     .liquefiable(liquidState)
                             )
-                        }
-
-                        item {
-                            if (state.isLoadingMore) {
-                                Box(
-                                    modifier = Modifier
-                                        .fillMaxWidth()
-                                        .padding(16.dp),
-                                    contentAlignment = Alignment.Center
-                                ) {
-                                    CircularProgressIndicator(
-                                        modifier = Modifier.size(24.dp)
-                                    )
-                                }
-                            }
                         }
                     }
                 }
@@ -381,7 +180,6 @@ fun SearchScreen(
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 private fun SearchTopbar(
     onAction: (SearchAction) -> Unit,

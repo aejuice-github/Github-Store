@@ -1,20 +1,11 @@
 package zed.rainxch.search.presentation
 
-import zed.rainxch.core.domain.model.GithubRepoSummary
-import zed.rainxch.domain.model.ProgrammingLanguage
-import zed.rainxch.domain.model.SearchPlatform
-import zed.rainxch.domain.model.SortBy
+import zed.rainxch.core.domain.model.Component
 
 sealed interface SearchAction {
     data class OnSearchChange(val query: String) : SearchAction
-    data class OnPlatformTypeSelected(val searchPlatform: SearchPlatform) : SearchAction
-    data class OnLanguageSelected(val language: ProgrammingLanguage) : SearchAction
-    data class OnSortBySelected(val sortBy: SortBy) : SearchAction
-    data class OnRepositoryClick(val repository: GithubRepoSummary) : SearchAction
-    data class OnRepositoryDeveloperClick(val username: String) : SearchAction
-    data object OnSearchImeClick : SearchAction
+    data class OnComponentClick(val component: Component) : SearchAction
     data object OnNavigateBackClick : SearchAction
-    data object LoadMore : SearchAction
+    data object OnSearchImeClick : SearchAction
     data object Retry : SearchAction
-    data object OnToggleLanguageSheetVisibility : SearchAction
 }

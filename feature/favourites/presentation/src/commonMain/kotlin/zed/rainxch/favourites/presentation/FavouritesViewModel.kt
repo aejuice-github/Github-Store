@@ -2,7 +2,6 @@ package zed.rainxch.favourites.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.collections.immutable.toImmutableList
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
@@ -12,11 +11,8 @@ import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
-import zed.rainxch.core.domain.model.FavoriteRepo
 import zed.rainxch.core.domain.repository.FavouritesRepository
 import zed.rainxch.favourites.presentation.mappers.toFavouriteRepositoryUi
-import kotlin.time.Clock
-import kotlin.time.ExperimentalTime
 
 class FavouritesViewModel(
     private val favouritesRepository: FavouritesRepository
@@ -28,8 +24,7 @@ class FavouritesViewModel(
     val state = _state
         .onStart {
             if (!hasLoadedInitialData) {
-                loadFavouriteRepos()
-
+                loadFavourites()
                 hasLoadedInitialData = true
             }
         }
@@ -39,57 +34,45 @@ class FavouritesViewModel(
             initialValue = FavouritesState()
         )
 
-    private fun loadFavouriteRepos() {
+    private fun loadFavourites() {
         viewModelScope.launch {
             favouritesRepository
                 .getAllFavorites()
-                .map { it.map { it.toFavouriteRepositoryUi() } }
+                .map { list -> list.map { it.toFavouriteRepositoryUi() } }
                 .flowOn(Dispatchers.Default)
-                .collect { favoriteRepos ->
+                .collect { favourites ->
                     _state.update { it.copy(
-                        favouriteRepositories = favoriteRepos.toImmutableList()
+                        favourites = favourites
                     ) }
                 }
         }
     }
 
-    @OptIn(ExperimentalTime::class)
     fun onAction(action: FavouritesAction) {
         when (action) {
-            FavouritesAction.OnNavigateBackClick -> {
+            FavouritesAction.OnNavigateBack -> {
                 // Handled in composable
             }
 
-            is FavouritesAction.OnRepositoryClick -> {
+            is FavouritesAction.OnComponentClick -> {
                 // Handled in composable
             }
 
-            is FavouritesAction.OnDeveloperProfileClick -> {
-                // Handled in composable
-            }
-
-            is FavouritesAction.OnToggleFavorite -> {
+            is FavouritesAction.OnToggleFavourite -> {
                 viewModelScope.launch {
-                    val repo = action.favouriteRepository
-
-                    val favoriteRepo = FavoriteRepo(
-                        repoId = repo.repoId,
-                        repoName = repo.repoName,
-                        repoOwner = repo.repoOwner,
-                        repoOwnerAvatarUrl = repo.repoOwnerAvatarUrl,
-                        repoDescription = repo.repoDescription,
-                        primaryLanguage = repo.primaryLanguage,
-                        repoUrl = repo.repoUrl,
-                        latestVersion = repo.latestRelease,
-                        latestReleaseUrl = repo.latestReleaseUrl,
-                        addedAt = Clock.System.now().toEpochMilliseconds(),
-                        lastSyncedAt = Clock.System.now().toEpochMilliseconds()
-                    )
-
-                    favouritesRepository.toggleFavorite(favoriteRepo)
+                    val componentId = action.componentId
+                    val isFavourite = favouritesRepository.isFavoriteSync(componentId)
+                    if (isFavourite) {
+                        favouritesRepository.toggleFavorite(
+                            zed.rainxch.core.domain.model.FavoriteRepo(
+                                componentId = componentId,
+                                name = "",
+                                author = ""
+                            )
+                        )
+                    }
                 }
             }
         }
     }
-
 }

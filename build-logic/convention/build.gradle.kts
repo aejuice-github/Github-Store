@@ -1,4 +1,3 @@
-import org.gradle.kotlin.dsl.compileOnly
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
@@ -38,14 +37,6 @@ tasks {
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
-            id = "zed.rainxch.convention.android.application"
-            implementationClass = "AndroidApplicationConventionPlugin"
-        }
-        register("androidComposeApplication") {
-            id = "zed.rainxch.convention.android.application.compose"
-            implementationClass = "AndroidApplicationComposeConventionPlugin"
-        }
         register("cmpApplication") {
             id = "zed.rainxch.convention.cmp.application"
             implementationClass = "CmpApplicationConventionPlugin"

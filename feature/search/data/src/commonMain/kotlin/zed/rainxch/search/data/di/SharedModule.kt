@@ -7,7 +7,7 @@ import zed.rainxch.search.data.repository.SearchRepositoryImpl
 val searchModule = module {
     single<SearchRepository> {
         SearchRepositoryImpl(
-            httpClient = get(),
+            componentRepository = get(),
         )
     }
 }

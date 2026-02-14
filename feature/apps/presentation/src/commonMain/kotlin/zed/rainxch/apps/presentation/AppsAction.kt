@@ -7,9 +7,8 @@ sealed interface AppsAction {
     data class OnSearchChange(val query: String) : AppsAction
     data class OnOpenApp(val app: InstalledApp) : AppsAction
     data class OnUpdateApp(val app: InstalledApp) : AppsAction
-    data class OnCancelUpdate(val packageName: String) : AppsAction
+    data class OnUninstallApp(val app: InstalledApp) : AppsAction
     data object OnUpdateAll : AppsAction
     data object OnCancelUpdateAll : AppsAction
-    data object OnCheckAllForUpdates : AppsAction
-    data class OnNavigateToRepo(val repoId: Long) : AppsAction
+    data class OnNavigateToComponent(val componentId: String) : AppsAction
 }

@@ -5,10 +5,5 @@ import zed.rainxch.settings.data.repository.SettingsRepositoryImpl
 import zed.rainxch.settings.domain.repository.SettingsRepository
 
 val settingsModule = module {
-    single<SettingsRepository> {
-        SettingsRepositoryImpl(
-            authenticationState = get(),
-            tokenStore = get()
-        )
-    }
+    single<SettingsRepository> { SettingsRepositoryImpl() }
 }

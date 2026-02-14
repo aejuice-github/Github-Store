@@ -4,13 +4,10 @@ import zed.rainxch.core.domain.model.AppTheme
 import zed.rainxch.core.domain.model.FontTheme
 
 sealed interface SettingsAction {
-    data object OnNavigateBackClick : SettingsAction
-    data class OnThemeColorSelected(val themeColor: AppTheme) : SettingsAction
-    data class OnAmoledThemeToggled(val enabled: Boolean) : SettingsAction
-    data class OnDarkThemeChange(val isDarkTheme: Boolean?) : SettingsAction
-    data object OnLogoutClick : SettingsAction
-    data object OnLogoutConfirmClick : SettingsAction
-    data object OnLogoutDismiss : SettingsAction
-    data object OnHelpClick : SettingsAction
+    data object OnNavigateBack : SettingsAction
+    data class OnThemeColorSelected(val theme: AppTheme) : SettingsAction
+    data class OnAmoledThemeSelected(val isAmoled: Boolean) : SettingsAction
+    data class OnDarkThemeSelected(val isDark: Boolean?) : SettingsAction
     data class OnFontThemeSelected(val fontTheme: FontTheme) : SettingsAction
+    data object OnHelpClick : SettingsAction
 }

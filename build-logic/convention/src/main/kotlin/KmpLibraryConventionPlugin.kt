@@ -1,30 +1,28 @@
-import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.dependencies
-import zed.rainxch.githubstore.convention.configureKotlinAndroid
-import zed.rainxch.githubstore.convention.configureKotlinMultiplatform
+import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
+import zed.rainxch.githubstore.convention.configureJvmTarget
 import zed.rainxch.githubstore.convention.libs
-import zed.rainxch.githubstore.convention.pathToResourcePrefix
 
 class KmpLibraryConventionPlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-             with(pluginManager) {
-                apply("com.android.library")
+            with(pluginManager) {
                 apply("org.jetbrains.kotlin.multiplatform")
                 apply("org.jetbrains.kotlin.plugin.serialization")
             }
 
-            configureKotlinMultiplatform()
+            configureJvmTarget()
 
-            extensions.configure<LibraryExtension> {
-                configureKotlinAndroid(this)
-
-                resourcePrefix = this@with.pathToResourcePrefix()
-
-                experimentalProperties["android.experimental.kmp.enableAndroidResources"] = "true"
+            extensions.configure<KotlinMultiplatformExtension> {
+                compilerOptions {
+                    freeCompilerArgs.add("-Xexpect-actual-classes")
+                    freeCompilerArgs.add("-Xmulti-dollar-interpolation")
+                    freeCompilerArgs.add("-opt-in=kotlin.RequiresOptIn")
+                    freeCompilerArgs.add("-opt-in=kotlin.time.ExperimentalTime")
+                }
             }
 
             dependencies {

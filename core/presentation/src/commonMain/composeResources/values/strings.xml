@@ -15,6 +15,8 @@
     <string name="update_all_failed">Update all failed: %1$s</string>
     <string name="all_apps_updated_successfully">All apps updated successfully</string>
     <string name="no_updates_available">No updates available</string>
+    <string name="uninstalled_successfully">%1$s uninstalled successfully</string>
+    <string name="failed_to_uninstall">Failed to uninstall %1$s: %2$s</string>
 
     <!-- Apps feature - Search -->
     <string name="search_your_apps">Search your apps</string>
@@ -214,9 +216,10 @@
     <string name="error_asset_not_supported">Asset type .%1$s not supported</string>
     <string name="error_file_not_found">Downloaded file not found</string>
 
-    <string name="home_category_trending">Trending</string>
-    <string name="home_category_hot_release">Hot release</string>
-    <string name="home_category_most_popular">Most popular</string>
+    <string name="home_category_plugins">Plugins</string>
+    <string name="home_category_scripts">Scripts</string>
+    <string name="home_category_extensions">Extensions</string>
+    <string name="home_category_software">Software</string>
 
     <string name="home_finding_repositories">Finding repositories...</string>
     <string name="home_loading_more">Loading more...</string>

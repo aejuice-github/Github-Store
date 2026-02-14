@@ -9,8 +9,7 @@ val appsModule = module {
         AppsRepositoryImpl(
             appLauncher = get(),
             appsRepository = get(),
-            logger = get(),
-            httpClient = get()
+            logger = get()
         )
     }
 }

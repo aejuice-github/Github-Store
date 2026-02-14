@@ -20,10 +20,11 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.automirrored.filled.OpenInNew
-import androidx.compose.material.icons.filled.Cancel
 import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.filled.Close
-import androidx.compose.material.icons.filled.Refresh
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Info
+import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Update
 import androidx.compose.material3.Button
@@ -37,6 +38,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.LinearWavyProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
@@ -73,7 +75,7 @@ import zed.rainxch.core.presentation.utils.ObserveAsEvents
 @Composable
 fun AppsRoot(
     onNavigateBack: () -> Unit,
-    onNavigateToRepo: (repoId: Long) -> Unit,
+    onNavigateToComponent: (String) -> Unit,
     viewModel: AppsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -82,8 +84,8 @@ fun AppsRoot(
 
     ObserveAsEvents(viewModel.events) { event ->
         when (event) {
-            is AppsEvent.NavigateToRepo -> {
-                onNavigateToRepo(event.repoId)
+            is AppsEvent.NavigateToComponent -> {
+                onNavigateToComponent(event.componentId)
             }
 
             is AppsEvent.ShowError -> {
@@ -144,16 +146,6 @@ fun AppsScreen(
                         fontWeight = FontWeight.SemiBold,
                         color = MaterialTheme.colorScheme.onSurface
                     )
-                },
-                actions = {
-                    IconButton(
-                        onClick = { onAction(AppsAction.OnCheckAllForUpdates) }
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.Refresh,
-                            contentDescription = stringResource(Res.string.check_for_updates)
-                        )
-                    }
                 }
             )
         },
@@ -218,11 +210,15 @@ fun AppsScreen(
                     state.apps
                 } else {
                     state.apps.filter { appItem ->
-                        appItem.installedApp.appName.contains(
+                        appItem.installedApp.name.contains(
                             state.searchQuery,
                             ignoreCase = true
                         ) ||
-                                appItem.installedApp.repoOwner.contains(
+                                appItem.installedApp.author.contains(
+                                    state.searchQuery,
+                                    ignoreCase = true
+                                ) ||
+                                appItem.installedApp.category.contains(
                                     state.searchQuery,
                                     ignoreCase = true
                                 )
@@ -257,14 +253,14 @@ fun AppsScreen(
                     ) {
                         items(
                             items = filteredApps,
-                            key = { it.installedApp.packageName }
+                            key = { it.installedApp.componentId }
                         ) { appItem ->
                             AppItemCard(
                                 appItem = appItem,
                                 onOpenClick = { onAction(AppsAction.OnOpenApp(appItem.installedApp)) },
                                 onUpdateClick = { onAction(AppsAction.OnUpdateApp(appItem.installedApp)) },
-                                onCancelClick = { onAction(AppsAction.OnCancelUpdate(appItem.installedApp.packageName)) },
-                                onRepoClick = { onAction(AppsAction.OnNavigateToRepo(appItem.installedApp.repoId)) },
+                                onUninstallClick = { onAction(AppsAction.OnUninstallApp(appItem.installedApp)) },
+                                onDetailsClick = { onAction(AppsAction.OnNavigateToComponent(appItem.installedApp.componentId)) },
                                 modifier = Modifier.liquefiable(liquidState)
                             )
                         }
@@ -335,15 +331,15 @@ fun AppItemCard(
     appItem: AppItem,
     onOpenClick: () -> Unit,
     onUpdateClick: () -> Unit,
-    onCancelClick: () -> Unit,
-    onRepoClick: () -> Unit,
+    onUninstallClick: () -> Unit,
+    onDetailsClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val app = appItem.installedApp
 
     Card(
         modifier = modifier.fillMaxWidth(),
-        onClick = onRepoClick
+        onClick = onDetailsClick
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
@@ -352,34 +348,46 @@ fun AppItemCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(12.dp)
             ) {
-                CoilImage(
-                    imageModel = { app.repoOwnerAvatarUrl },
-                    modifier = Modifier
-                        .size(48.dp)
-                        .clip(CircleShape),
-                    loading = {
-                        Box(
-                            modifier = Modifier.fillMaxSize(),
-                            contentAlignment = Alignment.Center
-                        ) {
-                            CircularWavyProgressIndicator()
+                if (app.icon.isNotBlank()) {
+                    CoilImage(
+                        imageModel = { app.icon },
+                        modifier = Modifier
+                            .size(48.dp)
+                            .clip(CircleShape),
+                        loading = {
+                            Box(
+                                modifier = Modifier.fillMaxSize(),
+                                contentAlignment = Alignment.Center
+                            ) {
+                                CircularWavyProgressIndicator()
+                            }
                         }
-                    }
-                )
+                    )
+                }
 
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
-                        text = app.appName,
+                        text = app.name,
                         style = MaterialTheme.typography.titleMedium
                     )
 
-                    Text(
-                        text = app.repoOwner,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+                    if (app.author.isNotBlank()) {
+                        Text(
+                            text = app.author,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
 
-                    if (app.isUpdateAvailable) {
+                    if (app.category.isNotBlank()) {
+                        Text(
+                            text = app.category,
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+
+                    if (app.isUpdateAvailable && app.latestVersion != null) {
                         Text(
                             text = "${app.installedVersion} → ${app.latestVersion}",
                             style = MaterialTheme.typography.bodySmall,
@@ -395,11 +403,12 @@ fun AppItemCard(
                 }
             }
 
-            if (app.repoDescription != null) {
+            val description = app.description
+            if (!description.isNullOrBlank()) {
                 Spacer(Modifier.height(8.dp))
 
                 Text(
-                    text = app.repoDescription!!,
+                    text = description,
                     style = MaterialTheme.typography.bodySmall,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis
@@ -503,65 +512,66 @@ fun AppItemCard(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                Button(
-                    onClick = onOpenClick,
-                    modifier = Modifier.weight(1f),
+                if (app.runnable) {
+                    Button(
+                        onClick = onOpenClick,
+                        modifier = Modifier.weight(1f),
+                        enabled = appItem.updateState !is UpdateState.Downloading &&
+                                appItem.updateState !is UpdateState.Installing
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.PlayArrow,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(Modifier.width(4.dp))
+                        Text(
+                            text = stringResource(Res.string.open)
+                        )
+                    }
+                }
+
+                if (app.isUpdateAvailable &&
+                    appItem.updateState !is UpdateState.Downloading &&
+                    appItem.updateState !is UpdateState.Installing &&
+                    appItem.updateState !is UpdateState.CheckingUpdate
+                ) {
+                    Button(
+                        onClick = onUpdateClick,
+                        modifier = Modifier.weight(1f)
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Update,
+                            contentDescription = null,
+                            modifier = Modifier.size(18.dp)
+                        )
+                        Spacer(Modifier.width(4.dp))
+                        Text(
+                            text = stringResource(Res.string.update)
+                        )
+                    }
+                }
+
+                OutlinedButton(
+                    onClick = onUninstallClick,
                     enabled = appItem.updateState !is UpdateState.Downloading &&
                             appItem.updateState !is UpdateState.Installing
                 ) {
                     Icon(
-                        imageVector = Icons.AutoMirrored.Filled.OpenInNew,
+                        imageVector = Icons.Default.Delete,
                         contentDescription = null,
                         modifier = Modifier.size(18.dp)
                     )
-                    Spacer(Modifier.width(4.dp))
-                    Text(
-                        text = stringResource(Res.string.open)
-                    )
                 }
 
-                when (appItem.updateState) {
-                    is UpdateState.Downloading, is UpdateState.Installing, is UpdateState.CheckingUpdate -> {
-                        Button(
-                            onClick = onCancelClick,
-                            modifier = Modifier.weight(1f),
-                            colors = ButtonDefaults.buttonColors(
-                                containerColor = MaterialTheme.colorScheme.errorContainer,
-                                contentColor = MaterialTheme.colorScheme.onErrorContainer
-                            )
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Cancel,
-                                contentDescription = stringResource(Res.string.cancel),
-                                modifier = Modifier.size(18.dp)
-                            )
-
-                            Spacer(Modifier.width(4.dp))
-
-                            Text(
-                                text = stringResource(Res.string.cancel)
-                            )
-                        }
-                    }
-
-                    else -> {
-                        if (app.isUpdateAvailable) {
-                            Button(
-                                onClick = onUpdateClick,
-                                modifier = Modifier.weight(1f)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.Update,
-                                    contentDescription = null,
-                                    modifier = Modifier.size(18.dp)
-                                )
-                                Spacer(Modifier.width(4.dp))
-                                Text(
-                                    text = stringResource(Res.string.update)
-                                )
-                            }
-                        }
-                    }
+                OutlinedButton(
+                    onClick = onDetailsClick
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Info,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
                 }
             }
         }

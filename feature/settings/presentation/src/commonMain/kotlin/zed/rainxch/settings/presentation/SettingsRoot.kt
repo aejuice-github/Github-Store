@@ -22,26 +22,20 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import io.github.fletchmckee.liquid.liquefiable
 import zed.rainxch.githubstore.core.presentation.res.*
-import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.getString
 import org.jetbrains.compose.resources.stringResource
 import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
 import zed.rainxch.core.domain.model.FontTheme
 import zed.rainxch.core.presentation.locals.LocalBottomNavigationLiquid
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
-import zed.rainxch.core.presentation.utils.ObserveAsEvents
-import zed.rainxch.settings.presentation.components.LogoutDialog
 import zed.rainxch.settings.presentation.components.sections.about
 import zed.rainxch.settings.presentation.components.sections.appearance
-import zed.rainxch.settings.presentation.components.sections.logout
 
 @Composable
 fun SettingsRoot(
@@ -50,31 +44,12 @@ fun SettingsRoot(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     val snackbarState = remember { SnackbarHostState() }
-    val coroutineScope = rememberCoroutineScope()
-
-    ObserveAsEvents(viewModel.events) { event ->
-        when (event) {
-            SettingsEvent.OnLogoutSuccessful -> {
-                coroutineScope.launch {
-                    snackbarState.showSnackbar(getString(Res.string.logout_success))
-
-                    onNavigateBack()
-                }
-            }
-
-            is SettingsEvent.OnLogoutError -> {
-                coroutineScope.launch {
-                    snackbarState.showSnackbar(event.message)
-                }
-            }
-        }
-    }
 
     SettingsScreen(
         state = state,
         onAction = { action ->
             when (action) {
-                SettingsAction.OnNavigateBackClick -> {
+                SettingsAction.OnNavigateBack -> {
                     onNavigateBack()
                 }
 
@@ -85,17 +60,6 @@ fun SettingsRoot(
         },
         snackbarState = snackbarState
     )
-
-    if (state.isLogoutDialogVisible) {
-        LogoutDialog(
-            onDismissRequest = {
-                viewModel.onAction(SettingsAction.OnLogoutDismiss)
-            },
-            onLogout = {
-                viewModel.onAction(SettingsAction.OnLogoutConfirmClick)
-            }
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
@@ -111,7 +75,7 @@ fun SettingsScreen(
             SnackbarHost(hostState = snackbarState)
         },
         topBar = {
-            TopAppBar(onAction)
+            SettingsTopAppBar(onAction)
         },
         containerColor = MaterialTheme.colorScheme.background,
         modifier = Modifier.liquefiable(liquidState)
@@ -123,17 +87,17 @@ fun SettingsScreen(
                 .padding(16.dp)
         ) {
             appearance(
-                selectedThemeColor = state.selectedThemeColor,
+                selectedThemeColor = state.selectedColorTheme,
                 onThemeColorSelected = { theme ->
                     onAction(SettingsAction.OnThemeColorSelected(theme))
                 },
                 isAmoledThemeEnabled = state.isAmoledThemeEnabled,
                 onAmoledThemeToggled = { enabled ->
-                    onAction(SettingsAction.OnAmoledThemeToggled(enabled))
+                    onAction(SettingsAction.OnAmoledThemeSelected(enabled))
                 },
                 isDarkTheme = state.isDarkTheme,
                 onDarkThemeChange = { isDarkTheme ->
-                    onAction(SettingsAction.OnDarkThemeChange(isDarkTheme))
+                    onAction(SettingsAction.OnDarkThemeSelected(isDarkTheme))
                 },
                 isUsingSystemFont = state.selectedFontTheme == FontTheme.SYSTEM,
                 onUseSystemFontToggled = { enabled ->
@@ -152,32 +116,22 @@ fun SettingsScreen(
             }
 
             about(
-                versionName = state.versionName,
+                versionName = state.version,
                 onAction = onAction
             )
-
-            if (state.isUserLoggedIn) {
-                item {
-                    Spacer(Modifier.height(16.dp))
-                }
-
-                logout(
-                    onAction = onAction
-                )
-            }
         }
     }
 }
 
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-private fun TopAppBar(onAction: (SettingsAction) -> Unit) {
+private fun SettingsTopAppBar(onAction: (SettingsAction) -> Unit) {
     TopAppBar(
         navigationIcon = {
             IconButton(
                 shapes = IconButtonDefaults.shapes(),
                 onClick = {
-                    onAction(SettingsAction.OnNavigateBackClick)
+                    onAction(SettingsAction.OnNavigateBack)
                 }
             ) {
                 Icon(

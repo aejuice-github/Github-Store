@@ -1,7 +1,10 @@
 package zed.rainxch.home.domain.model
 
-enum class HomeCategory {
-    TRENDING,
-    HOT_RELEASE,
-    MOST_POPULAR;
+data class HomeCategory(
+    val name: String,
+    val displayName: String = name
+) {
+    companion object {
+        val ALL = HomeCategory(name = "", displayName = "All")
+    }
 }

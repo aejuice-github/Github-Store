@@ -7,9 +7,7 @@ import zed.rainxch.details.domain.repository.DetailsRepository
 val detailsModule = module {
     single<DetailsRepository> {
         DetailsRepositoryImpl(
-            logger = get(),
-            httpClient = get(),
-            localizationManager = get()
+            componentRepository = get()
         )
     }
 }

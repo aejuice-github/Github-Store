@@ -8,14 +8,6 @@ plugins {
 
 kotlin {
     sourceSets {
-        androidMain.dependencies {
-            implementation(compose.preview)
-            implementation(libs.androidx.activity.compose)
-
-            implementation(libs.core.splashscreen)
-
-            implementation(libs.koin.android)
-        }
         commonMain.dependencies {
             implementation(projects.core.data)
             implementation(projects.core.domain)
@@ -25,17 +17,9 @@ kotlin {
             implementation(projects.feature.apps.data)
             implementation(projects.feature.apps.presentation)
 
-            implementation(projects.feature.auth.domain)
-            implementation(projects.feature.auth.data)
-            implementation(projects.feature.auth.presentation)
-
             implementation(projects.feature.details.domain)
             implementation(projects.feature.details.data)
             implementation(projects.feature.details.presentation)
-
-            implementation(projects.feature.devProfile.domain)
-            implementation(projects.feature.devProfile.data)
-            implementation(projects.feature.devProfile.presentation)
 
             implementation(projects.feature.favourites.domain)
             implementation(projects.feature.favourites.data)
@@ -52,10 +36,6 @@ kotlin {
             implementation(projects.feature.settings.domain)
             implementation(projects.feature.settings.data)
             implementation(projects.feature.settings.presentation)
-
-            implementation(projects.feature.starred.domain)
-            implementation(projects.feature.starred.data)
-            implementation(projects.feature.starred.presentation)
 
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.bundles.koin.common)
@@ -80,7 +60,6 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
                 implementation(libs.koin.compose)
                 implementation(libs.koin.compose.viewmodel)
-                implementation(libs.koin.compose.viewmodel)
 
                 implementation(compose.desktop.linux_x64)
                 implementation(compose.desktop.linux_arm64)
@@ -93,14 +72,13 @@ kotlin {
     }
 }
 
-
 compose.desktop {
     application {
         mainClass = "zed.rainxch.githubstore.DesktopAppKt"
         nativeDistributions {
-            packageName = "GitHub-Store"
+            packageName = "AEJuice-Component-Manager"
             packageVersion = libs.versions.projectVersionName.get().toString()
-            vendor = "rainxchzed"
+            vendor = "AEJuice"
             includeAllModules = true
 
             val currentOs = org.gradle.internal.os.OperatingSystem.current()
@@ -114,13 +92,13 @@ compose.desktop {
             )
             windows {
                 iconFile.set(project.file("logo/app_icon.ico"))
-                menuGroup = "Github Store"
+                menuGroup = "AEJuice"
                 shortcut = true
                 perUserInstall = true
             }
             macOS {
                 iconFile.set(project.file("logo/app_icon.icns"))
-                bundleID = "zed.rainxch.githubstore"
+                bundleID = "com.aejuice.componentmanager"
             }
             linux {
                 iconFile.set(project.file("logo/app_icon.png"))

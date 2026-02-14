@@ -1,76 +1,72 @@
 package zed.rainxch.details.presentation
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ExperimentalLayoutApi
+import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.shape.CutCornerShape
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Download
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
-import androidx.compose.material.icons.filled.OpenInBrowser
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.filled.StarBorder
-import androidx.compose.material3.CircularWavyProgressIndicator
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material.icons.filled.Update
+import androidx.compose.material3.AssistChip
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExperimentalMaterial3ExpressiveApi
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.IconButtonDefaults
+import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.shadow
-import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import zed.rainxch.githubstore.core.presentation.res.*
-import io.github.fletchmckee.liquid.LiquidState
-import io.github.fletchmckee.liquid.liquefiable
-import io.github.fletchmckee.liquid.liquid
-import io.github.fletchmckee.liquid.rememberLiquidState
+import coil3.compose.AsyncImage
 import kotlinx.coroutines.launch
-import org.jetbrains.compose.resources.getString
-import org.jetbrains.compose.resources.stringResource
-import org.jetbrains.compose.ui.tooling.preview.Preview
 import org.koin.compose.viewmodel.koinViewModel
-import zed.rainxch.core.presentation.theme.GithubStoreTheme
+import zed.rainxch.core.domain.model.Component
 import zed.rainxch.core.presentation.utils.ObserveAsEvents
-import zed.rainxch.details.presentation.components.sections.about
-import zed.rainxch.details.presentation.components.sections.author
-import zed.rainxch.details.presentation.components.sections.header
-import zed.rainxch.details.presentation.components.sections.logs
-import zed.rainxch.details.presentation.components.sections.stats
-import zed.rainxch.details.presentation.components.sections.whatsNew
-import zed.rainxch.details.presentation.components.states.ErrorState
-import zed.rainxch.details.presentation.utils.LocalTopbarLiquidState
-import zed.rainxch.details.presentation.utils.isLiquidFrostAvailable
 
 @Composable
 fun DetailsRoot(
     onNavigateBack: () -> Unit,
-    onNavigateToDeveloperProfile: (username: String) -> Unit,
-    onOpenRepositoryInApp: (repoId: Long) -> Unit,
     viewModel: DetailsViewModel = koinViewModel()
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
@@ -79,18 +75,20 @@ fun DetailsRoot(
 
     ObserveAsEvents(viewModel.events) { event ->
         when (event) {
-            is DetailsEvent.OnOpenRepositoryInApp -> {
-                onOpenRepositoryInApp(event.repositoryId)
-            }
-
-            is DetailsEvent.InstallTrackingFailed -> {
-
-            }
-
-            is DetailsEvent.OnMessage -> {
+            is DetailsEvent.ShowError -> {
                 coroutineScope.launch {
                     snackbarHostState.showSnackbar(event.message)
                 }
+            }
+
+            is DetailsEvent.ShowSuccess -> {
+                coroutineScope.launch {
+                    snackbarHostState.showSnackbar(event.message)
+                }
+            }
+
+            is DetailsEvent.NavigateBack -> {
+                onNavigateBack()
             }
         }
     }
@@ -100,265 +98,491 @@ fun DetailsRoot(
         snackbarHostState = snackbarHostState,
         onAction = { action ->
             when (action) {
-                DetailsAction.OnNavigateBackClick -> {
-                    onNavigateBack()
-                }
-
-                is DetailsAction.OpenDeveloperProfile -> {
-                    onNavigateToDeveloperProfile(action.username)
-                }
-
-                is DetailsAction.OnMessage -> {
-                    coroutineScope.launch {
-                        snackbarHostState.showSnackbar(getString(action.messageText))
-                    }
-                }
-
-                else -> {
-                    viewModel.onAction(action)
-                }
+                DetailsAction.OnNavigateBack -> onNavigateBack()
+                else -> viewModel.onAction(action)
             }
         }
     )
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailsScreen(
     state: DetailsState,
     onAction: (DetailsAction) -> Unit,
     snackbarHostState: SnackbarHostState,
 ) {
-    val liquidTopbarState = rememberLiquidState()
-
-    CompositionLocalProvider(
-        value = LocalTopbarLiquidState provides liquidTopbarState
-    ) {
-        Scaffold(
-            topBar = {
-                DetailsTopbar(
-                    state = state,
-                    onAction = onAction,
-                    liquidTopbarState = liquidTopbarState
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(
+                        text = state.component?.name ?: "",
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
+                },
+                navigationIcon = {
+                    IconButton(onClick = { onAction(DetailsAction.OnNavigateBack) }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Navigate back"
+                        )
+                    }
+                },
+                actions = {
+                    if (state.component != null) {
+                        IconButton(onClick = { onAction(DetailsAction.OnToggleFavourite) }) {
+                            Icon(
+                                imageVector = if (state.isFavourite) {
+                                    Icons.Default.Favorite
+                                } else {
+                                    Icons.Default.FavoriteBorder
+                                },
+                                contentDescription = if (state.isFavourite) {
+                                    "Remove from favourites"
+                                } else {
+                                    "Add to favourites"
+                                }
+                            )
+                        }
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.surface
                 )
-            },
-            snackbarHost = {
-                SnackbarHost(snackbarHostState)
-            },
-            containerColor = MaterialTheme.colorScheme.background,
-            modifier = Modifier.liquefiable(liquidTopbarState)
-        ) { innerPadding ->
+            )
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) },
+        containerColor = MaterialTheme.colorScheme.background
+    ) { innerPadding ->
 
-            if (state.isLoading) {
-                Box(
-                    modifier = Modifier.fillMaxSize(),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularWavyProgressIndicator()
-                }
-
-                return@Scaffold
-            }
-
-            if (state.errorMessage != null) {
-                ErrorState(state.errorMessage, onAction)
-
-                return@Scaffold
-            }
-
+        if (state.isLoading) {
             Box(
                 modifier = Modifier.fillMaxSize(),
                 contentAlignment = Alignment.Center
             ) {
-                LazyColumn(
-                    modifier = Modifier
-                        .fillMaxHeight()
-                        .widthIn(max = 680.dp)
-                        .fillMaxWidth()
-                        .liquefiable(liquidTopbarState)
-                        .padding(innerPadding),
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(24.dp),
-                ) {
-                    header(
-                        state = state,
-                        onAction = onAction,
-                    )
+                CircularProgressIndicator()
+            }
+            return@Scaffold
+        }
 
-                    state.stats?.let { stats ->
-                        stats(repoStats = stats)
-                    }
+        if (state.errorMessage != null) {
+            ErrorContent(
+                errorMessage = state.errorMessage,
+                onRetry = { onAction(DetailsAction.Retry) }
+            )
+            return@Scaffold
+        }
 
-                    state.readmeMarkdown?.let {
-                        about(
-                            readmeMarkdown = state.readmeMarkdown,
-                            readmeLanguage = state.readmeLanguage
-                        )
-                    }
+        val component = state.component ?: return@Scaffold
 
-                    state.latestRelease?.let { latestRelease ->
-                        whatsNew(latestRelease)
-                    }
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.TopCenter
+        ) {
+            LazyColumn(
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .widthIn(max = 680.dp)
+                    .fillMaxWidth()
+                    .padding(innerPadding),
+                contentPadding = PaddingValues(16.dp),
+                verticalArrangement = Arrangement.spacedBy(16.dp)
+            ) {
+                item { ComponentHeader(component = component, state = state) }
+                item { ActionButtons(state = state, onAction = onAction) }
 
-                    state.userProfile?.let { userProfile ->
-                        author(
-                            author = userProfile,
-                            onAction = onAction
-                        )
-                    }
+                if (component.screenshots.isNotEmpty()) {
+                    item { ScreenshotsSection(screenshots = component.screenshots) }
+                }
 
-                    if (state.installLogs.isNotEmpty()) {
-                        logs(state)
-                    }
+                item { DescriptionSection(description = component.description) }
+                item { InfoSection(component = component, state = state) }
+
+                if (component.tags.isNotEmpty()) {
+                    item { TagsSection(tags = component.tags) }
+                }
+
+                if (component.changelog.isNotBlank()) {
+                    item { ChangelogSection(changelog = component.changelog) }
                 }
             }
         }
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
 @Composable
-private fun DetailsTopbar(
-    state: DetailsState,
-    onAction: (DetailsAction) -> Unit,
-    liquidTopbarState: LiquidState
+private fun ComponentHeader(
+    component: Component,
+    state: DetailsState
 ) {
-    TopAppBar(
-        title = { },
-        navigationIcon = {
-            IconButton(
-                shapes = IconButtonDefaults.shapes(),
-                onClick = {
-                    onAction(DetailsAction.OnNavigateBackClick)
-                }
-            ) {
-                Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = stringResource(Res.string.navigate_back),
-                    modifier = Modifier.size(24.dp)
-                )
-            }
-        },
-        actions = {
+    Row(
+        verticalAlignment = Alignment.Top,
+        horizontalArrangement = Arrangement.spacedBy(16.dp)
+    ) {
+        if (component.icon.isNotBlank()) {
+            AsyncImage(
+                model = component.icon,
+                contentDescription = "${component.name} icon",
+                modifier = Modifier
+                    .size(80.dp)
+                    .clip(RoundedCornerShape(16.dp)),
+                contentScale = ContentScale.Crop
+            )
+        }
+
+        Column(modifier = Modifier.weight(1f)) {
+            Text(
+                text = component.name,
+                style = MaterialTheme.typography.headlineSmall,
+                fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+            Text(
+                text = component.author,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.primary
+            )
+
+            Spacer(Modifier.height(4.dp))
+
             Row(
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                horizontalArrangement = Arrangement.spacedBy(8.dp),
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                if (state.repository != null) {
-                    IconButton(
-                        onClick = {
-                            onAction(
-                                DetailsAction.OnMessage(
-                                    messageText = if (state.isStarred) {
-                                        Res.string.unstar_from_github
-                                    } else {
-                                        Res.string.star_from_github
-                                    }
-                                )
-                            )
-                        },
-                        shapes = IconButtonDefaults.shapes(),
-                        colors = IconButtonDefaults.iconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-                    ) {
-                        Icon(
-                            imageVector = if (state.isStarred) {
-                                Icons.Default.Star
-                            } else Icons.Default.StarBorder,
-                            contentDescription = stringResource(
-                                resource = if (state.isStarred) {
-                                    Res.string.repository_starred
-                                } else {
-                                    Res.string.repository_not_starred
-                                }
-                            ),
-                        )
-                    }
-                }
-
-                if (state.repository != null) {
-                    IconButton(
-                        onClick = {
-                            onAction(DetailsAction.OnToggleFavorite)
-                        },
-                        shapes = IconButtonDefaults.shapes(),
-                        colors = IconButtonDefaults.iconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-                    ) {
-                        Icon(
-                            imageVector = if (state.isFavourite) {
-                                Icons.Default.Favorite
-                            } else Icons.Default.FavoriteBorder,
-                            contentDescription = stringResource(
-                                resource = if (state.isFavourite) {
-                                    Res.string.remove_from_favourites
-                                } else {
-                                    Res.string.add_to_favourites
-                                }
-                            ),
-                        )
-                    }
-                }
-
-                state.repository?.htmlUrl?.let {
-                    IconButton(
-                        shapes = IconButtonDefaults.shapes(),
-                        onClick = {
-                            onAction(DetailsAction.OpenRepoInBrowser)
-                        },
-                        colors = IconButtonDefaults.iconButtonColors(
-                            contentColor = MaterialTheme.colorScheme.onSurface
-                        )
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.OpenInBrowser,
-                            contentDescription = stringResource(Res.string.open_repository),
-                            modifier = Modifier.size(24.dp)
-                        )
-                    }
-                }
-            }
-        },
-        colors = TopAppBarDefaults.topAppBarColors(
-            containerColor = Color.Transparent,
-        ),
-        modifier = Modifier
-            .shadow(
-                elevation = 6.dp,
-                ambientColor = MaterialTheme.colorScheme.surfaceTint,
-                spotColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.3f)
-            )
-            .background(
-                Brush.linearGradient(
-                    0f to MaterialTheme.colorScheme.surface.copy(alpha = 0.9f),
-                    0.5f to MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.7f),
-                    1f to MaterialTheme.colorScheme.surface.copy(alpha = 0.85f)
+                Text(
+                    text = component.type.name.lowercase().replaceFirstChar { it.uppercase() },
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-            )
-            .liquid(liquidTopbarState) {
-                this.shape = CutCornerShape(0.dp)
-                if (isLiquidFrostAvailable()) {
-                    this.frost = 5.dp
+
+                Text(
+                    text = "v${component.version}",
+                    style = MaterialTheme.typography.labelMedium,
+                    color = MaterialTheme.colorScheme.secondary
+                )
+
+                if (state.isInstalled) {
+                    Text(
+                        text = if (state.isUpdateAvailable) "Update available" else "Installed",
+                        style = MaterialTheme.typography.labelMedium,
+                        color = if (state.isUpdateAvailable) {
+                            MaterialTheme.colorScheme.tertiary
+                        } else {
+                            MaterialTheme.colorScheme.primary
+                        }
+                    )
                 }
-                this.curve = .25f
-                this.refraction = .05f
-                this.dispersion = .1f
             }
-    )
+        }
+    }
 }
 
-@Preview
 @Composable
-private fun Preview() {
-    GithubStoreTheme {
-        DetailsScreen(
-            state = DetailsState(
-                isLoading = false
-            ),
-            onAction = {},
-            snackbarHostState = SnackbarHostState()
+private fun ActionButtons(
+    state: DetailsState,
+    onAction: (DetailsAction) -> Unit
+) {
+    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+        if (state.installProgress != null) {
+            LinearProgressIndicator(
+                progress = { state.installProgress },
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+        if (state.isInstalling || state.isUninstalling) {
+            LinearProgressIndicator(
+                modifier = Modifier.fillMaxWidth(),
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
+
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            if (state.isUpdateAvailable) {
+                Button(
+                    onClick = { onAction(DetailsAction.OnUpdate) },
+                    enabled = !state.isInstalling && !state.isUninstalling,
+                    modifier = Modifier.weight(1f),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.tertiary,
+                        contentColor = MaterialTheme.colorScheme.onTertiary
+                    )
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Update,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.size(4.dp))
+                    Text("Update")
+                }
+            } else if (!state.isInstalled) {
+                Button(
+                    onClick = { onAction(DetailsAction.OnInstall) },
+                    enabled = !state.isInstalling,
+                    modifier = Modifier.weight(1f)
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Download,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.size(4.dp))
+                    Text("Install")
+                }
+            }
+
+            if (state.isInstalled && state.component?.runnable == true) {
+                Button(
+                    onClick = { onAction(DetailsAction.OnRun) },
+                    enabled = !state.isInstalling && !state.isUninstalling,
+                    modifier = if (!state.isUpdateAvailable) Modifier.weight(1f) else Modifier
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.PlayArrow,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.size(4.dp))
+                    Text("Run")
+                }
+            }
+
+            if (state.isInstalled) {
+                OutlinedButton(
+                    onClick = { onAction(DetailsAction.OnUninstall) },
+                    enabled = !state.isInstalling && !state.isUninstalling
+                ) {
+                    Icon(
+                        imageVector = Icons.Default.Delete,
+                        contentDescription = null,
+                        modifier = Modifier.size(18.dp)
+                    )
+                    Spacer(Modifier.size(4.dp))
+                    Text("Uninstall")
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun ScreenshotsSection(screenshots: List<String>) {
+    Column {
+        Text(
+            text = "Screenshots",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
         )
+
+        Spacer(Modifier.height(8.dp))
+
+        LazyRow(
+            horizontalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            items(screenshots) { url ->
+                AsyncImage(
+                    model = url,
+                    contentDescription = "Screenshot",
+                    modifier = Modifier
+                        .height(200.dp)
+                        .clip(RoundedCornerShape(8.dp)),
+                    contentScale = ContentScale.Fit
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun DescriptionSection(description: String) {
+    Column {
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(12.dp))
+
+        Text(
+            text = "About",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = description,
+            style = MaterialTheme.typography.bodyLarge,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+    }
+}
+
+@Composable
+private fun InfoSection(
+    component: Component,
+    state: DetailsState
+) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+        )
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            InfoRow(label = "Author", value = component.author)
+            InfoRow(label = "Category", value = component.category)
+            InfoRow(label = "Version", value = component.version)
+            InfoRow(label = "Type", value = component.type.name.lowercase().replaceFirstChar { it.uppercase() })
+
+            if (state.installedVersion != null) {
+                InfoRow(label = "Installed version", value = state.installedVersion)
+            }
+
+            if (component.platforms.isNotEmpty()) {
+                InfoRow(
+                    label = "Platforms",
+                    value = component.platforms.keys.joinToString(", ") { it.replaceFirstChar { ch -> ch.uppercase() } }
+                )
+            }
+
+            if (component.dependencies.isNotEmpty()) {
+                InfoRow(
+                    label = "Dependencies",
+                    value = component.dependencies.joinToString(", ") { dep ->
+                        if (dep.version.isNotBlank()) "${dep.id} (${dep.version})" else dep.id
+                    }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun InfoRow(label: String, value: String) {
+    Row(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = label,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.onSurfaceVariant
+        )
+        Text(
+            text = value,
+            style = MaterialTheme.typography.bodyMedium,
+            fontWeight = FontWeight.Medium,
+            color = MaterialTheme.colorScheme.onSurface
+        )
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun TagsSection(tags: List<String>) {
+    Column {
+        Text(
+            text = "Tags",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        FlowRow(
+            horizontalArrangement = Arrangement.spacedBy(8.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            tags.forEach { tag ->
+                AssistChip(
+                    onClick = { },
+                    label = {
+                        Text(
+                            text = tag,
+                            style = MaterialTheme.typography.labelMedium
+                        )
+                    }
+                )
+            }
+        }
+    }
+}
+
+@Composable
+private fun ChangelogSection(changelog: String) {
+    Column {
+        HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
+
+        Spacer(Modifier.height(12.dp))
+
+        Text(
+            text = "What's new",
+            style = MaterialTheme.typography.titleMedium,
+            fontWeight = FontWeight.Bold,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceContainerLow
+            )
+        ) {
+            Text(
+                text = changelog,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                modifier = Modifier.padding(16.dp)
+            )
+        }
+    }
+}
+
+@Composable
+private fun ErrorContent(
+    errorMessage: String,
+    onRetry: () -> Unit
+) {
+    Column(
+        modifier = Modifier.fillMaxSize(),
+        verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        Text(
+            text = "Failed to load details",
+            style = MaterialTheme.typography.titleMedium,
+            color = MaterialTheme.colorScheme.onBackground
+        )
+
+        Spacer(Modifier.height(8.dp))
+
+        Text(
+            text = errorMessage,
+            style = MaterialTheme.typography.bodyMedium,
+            color = MaterialTheme.colorScheme.error
+        )
+
+        Spacer(Modifier.height(16.dp))
+
+        Button(onClick = onRetry) {
+            Text("Retry")
+        }
     }
 }

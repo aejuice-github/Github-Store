@@ -1,14 +1,11 @@
 package zed.rainxch.favourites.presentation.model
 
 data class FavouriteRepository(
-    val repoId: Long,
-    val repoName: String,
-    val repoOwner: String,
-    val repoOwnerAvatarUrl: String,
-    val repoDescription: String?,
-    val primaryLanguage: String?,
-    val repoUrl: String,
-    val addedAtFormatter: String,
-    val latestRelease: String?,
-    val latestReleaseUrl: String?,
+    val componentId: String,
+    val name: String,
+    val description: String?,
+    val author: String,
+    val category: String,
+    val icon: String,
+    val addedAt: Long
 )

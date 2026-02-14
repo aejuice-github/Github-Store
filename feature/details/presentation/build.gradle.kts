@@ -9,6 +9,7 @@ kotlin {
                 implementation(libs.kotlin.stdlib)
 
                 implementation(projects.core.domain)
+                implementation(projects.core.data)
                 implementation(projects.core.presentation)
                 implementation(projects.feature.details.domain)
 
@@ -21,12 +22,6 @@ kotlin {
 
                 implementation(compose.components.uiToolingPreview)
                 implementation(libs.bundles.landscapist)
-            }
-        }
-
-        androidMain {
-            dependencies {
-
             }
         }
 

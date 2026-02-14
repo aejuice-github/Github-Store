@@ -11,8 +11,6 @@ import org.koin.compose.viewmodel.koinViewModel
 import zed.rainxch.core.presentation.theme.GithubStoreTheme
 import zed.rainxch.core.presentation.utils.ApplyAndroidSystemBars
 import zed.rainxch.githubstore.app.navigation.AppNavigation
-import zed.rainxch.githubstore.app.navigation.GithubStoreGraph
-import zed.rainxch.githubstore.app.components.RateLimitDialog
 
 @OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
@@ -30,21 +28,6 @@ fun App() {
         isDarkTheme = state.isDarkTheme ?: isSystemInDarkTheme()
     ) {
         ApplyAndroidSystemBars(state.isDarkTheme)
-
-        if (state.showRateLimitDialog && state.rateLimitInfo != null) {
-            RateLimitDialog(
-                rateLimitInfo = state.rateLimitInfo,
-                isAuthenticated = state.isLoggedIn,
-                onDismiss = {
-                    viewModel.onAction(MainAction.DismissRateLimitDialog)
-                },
-                onSignIn = {
-                    viewModel.onAction(MainAction.DismissRateLimitDialog)
-
-                    navBackStack.navigate(GithubStoreGraph.AuthenticationScreen)
-                }
-            )
-        }
 
         AppNavigation(
             navController = navBackStack

@@ -15,38 +15,28 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import org.jetbrains.compose.resources.getString
 import zed.rainxch.core.domain.logging.GitHubStoreLogger
-import zed.rainxch.core.domain.model.RateLimitException
 import zed.rainxch.core.domain.repository.FavouritesRepository
 import zed.rainxch.core.domain.repository.InstalledAppsRepository
-import zed.rainxch.core.domain.repository.StarredRepository
-import zed.rainxch.core.domain.use_cases.SyncInstalledAppsUseCase
 import zed.rainxch.core.presentation.model.DiscoveryRepository
 import zed.rainxch.domain.repository.SearchRepository
 
 class SearchViewModel(
     private val searchRepository: SearchRepository,
     private val installedAppsRepository: InstalledAppsRepository,
-    private val syncInstalledAppsUseCase: SyncInstalledAppsUseCase,
     private val favouritesRepository: FavouritesRepository,
-    private val starredRepository: StarredRepository,
     private val logger: GitHubStoreLogger,
 ) : ViewModel() {
 
     private var hasLoadedInitialData = false
     private var currentSearchJob: Job? = null
-    private var currentPage = 1
     private var searchDebounceJob: Job? = null
 
     private val _state = MutableStateFlow(SearchState())
     val state = _state
         .onStart {
             if (!hasLoadedInitialData) {
-                syncSystemState()
-
                 observeInstalledApps()
                 observeFavouriteApps()
-                observeStarredRepos()
-
                 hasLoadedInitialData = true
             }
         }
@@ -56,28 +46,15 @@ class SearchViewModel(
             initialValue = SearchState()
         )
 
-    private fun syncSystemState() {
-        viewModelScope.launch {
-            try {
-                val result = syncInstalledAppsUseCase()
-                if (result.isFailure) {
-                    logger.warn("Initial sync had issues: ${result.exceptionOrNull()?.message}")
-                }
-            } catch (e: Exception) {
-                logger.error("Initial sync failed: ${e.message}")
-            }
-        }
-    }
-
     private fun observeInstalledApps() {
         viewModelScope.launch {
             installedAppsRepository.getAllInstalledApps().collect { installedApps ->
-                val installedMap = installedApps.associateBy { it.repoId }
+                val installedMap = installedApps.associateBy { it.componentId }
                 _state.update { current ->
                     current.copy(
-                        repositories = current.repositories.map { searchRepo ->
-                            val app = installedMap[searchRepo.repository.id]
-                            searchRepo.copy(
+                        results = current.results.map { item ->
+                            val app = installedMap[item.component.id]
+                            item.copy(
                                 isInstalled = app != null,
                                 isUpdateAvailable = app?.isUpdateAvailable ?: false
                             )
@@ -91,14 +68,12 @@ class SearchViewModel(
     private fun observeFavouriteApps() {
         viewModelScope.launch {
             favouritesRepository.getAllFavorites().collect { favoriteRepos ->
-                val installedMap = favoriteRepos.associateBy { it.repoId }
+                val favouriteMap = favoriteRepos.associateBy { it.componentId }
                 _state.update { current ->
                     current.copy(
-                        repositories = current.repositories.map { searchRepo ->
-                            val app = installedMap[searchRepo.repository.id]
-                            searchRepo.copy(
-                                isFavourite = app != null
-                            )
+                        results = current.results.map { item ->
+                            val favourite = favouriteMap[item.component.id]
+                            item.copy(isFavourite = favourite != null)
                         }
                     )
                 }
@@ -106,47 +81,25 @@ class SearchViewModel(
         }
     }
 
-    private fun observeStarredRepos() {
-        viewModelScope.launch {
-            starredRepository.getAllStarred().collect { starredRepos ->
-                val installedMap = starredRepos.associateBy { it.repoId }
-                _state.update { current ->
-                    current.copy(
-                        repositories = current.repositories.map { searchRepo ->
-                            val app = installedMap[searchRepo.repository.id]
-                            searchRepo.copy(isStarred = app != null)
-                        }
-                    )
-                }
-            }
-        }
-    }
-
-    private fun performSearch(isInitial: Boolean = false) {
-        if (_state.value.query.isBlank()) {
+    private fun performSearch() {
+        val query = _state.value.query
+        if (query.isBlank()) {
             _state.update {
                 it.copy(
                     isLoading = false,
-                    isLoadingMore = false,
-                    repositories = emptyList(),
+                    results = emptyList(),
                     errorMessage = null
                 )
             }
             return
         }
 
-        if (isInitial) {
-            currentSearchJob?.cancel()
-            currentPage = 1
-        }
-
+        currentSearchJob?.cancel()
         currentSearchJob = viewModelScope.launch {
             _state.update {
                 it.copy(
-                    isLoading = isInitial,
-                    isLoadingMore = !isInitial,
-                    errorMessage = null,
-                    repositories = if (isInitial) emptyList() else it.repositories
+                    isLoading = true,
+                    errorMessage = null
                 )
             }
 
@@ -154,96 +107,42 @@ class SearchViewModel(
                 val installedMap = installedAppsRepository
                     .getAllInstalledApps()
                     .first()
-                    .associateBy { it.repoId }
-                val favoritesMap = favouritesRepository
+                    .associateBy { it.componentId }
+                val favouriteMap = favouritesRepository
                     .getAllFavorites()
                     .first()
-                    .associateBy { it.repoId }
-                val starredReposMap = starredRepository
-                    .getAllStarred()
-                    .first()
-                    .associateBy { it.repoId }
+                    .associateBy { it.componentId }
 
-                searchRepository
-                    .searchRepositories(
-                        query = _state.value.query,
-                        searchPlatform = _state.value.selectedSearchPlatform,
-                        language = _state.value.selectedLanguage,
-                        page = currentPage
-                    )
-                    .collect { paginatedRepos ->
-                        currentPage = paginatedRepos.nextPageIndex
+                searchRepository.searchComponents(query).collect { components ->
+                    val results = components.map { component ->
+                        val app = installedMap[component.id]
+                        val favourite = favouriteMap[component.id]
 
-                        val newReposWithStatus = paginatedRepos.repos.map { repo ->
-                            val app = installedMap[repo.id]
-                            val favourite = favoritesMap[repo.id]
-                            val starred = starredReposMap[repo.id]
-
-                            DiscoveryRepository(
-                                isInstalled = app != null,
-                                isFavourite = favourite != null,
-                                isStarred = starred != null,
-                                isUpdateAvailable = app?.isUpdateAvailable ?: false,
-                                repository = repo
-                            )
-                        }
-
-                        _state.update { currentState ->
-                            val mergedMap = LinkedHashMap<Long, DiscoveryRepository>()
-
-                            currentState.repositories.forEach { r ->
-                                mergedMap[r.repository.id] = r
-                            }
-
-                            newReposWithStatus.forEach { r ->
-                                val existing = mergedMap[r.repository.id]
-                                if (existing == null) {
-                                    mergedMap[r.repository.id] = r
-                                } else {
-                                    mergedMap[r.repository.id] = existing.copy(
-                                        isInstalled = r.isInstalled,
-                                        isUpdateAvailable = r.isUpdateAvailable,
-                                        isFavourite = r.isFavourite,
-                                        isStarred = r.isStarred,
-                                        repository = r.repository
-                                    )
-                                }
-                            }
-
-                            val allRepos = mergedMap.values.toList()
-
-                            currentState.copy(
-                                repositories = allRepos,
-                                hasMorePages = paginatedRepos.hasMore,
-                                totalCount = allRepos.size,
-                                errorMessage = if (allRepos.isEmpty() && !paginatedRepos.hasMore) {
-                                    getString(Res.string.no_repositories_found)
-                                } else null
-                            )
-                        }
+                        DiscoveryRepository(
+                            isInstalled = app != null,
+                            isUpdateAvailable = app?.isUpdateAvailable ?: false,
+                            isFavourite = favourite != null,
+                            component = component
+                        )
                     }
 
-                _state.update {
-                    it.copy(isLoading = false, isLoadingMore = false)
+                    _state.update {
+                        it.copy(
+                            results = results,
+                            isLoading = false,
+                            errorMessage = if (results.isEmpty()) {
+                                getString(Res.string.no_repositories_found)
+                            } else null
+                        )
+                    }
                 }
-            } catch (e: RateLimitException) {
-                logger.debug("Rate limit exceeded: ${e.message}")
-                _state.update {
-                    it.copy(
-                        isLoading = false,
-                        isLoadingMore = false,
-                        errorMessage = e.message
-                    )
-                }
-
             } catch (e: CancellationException) {
-                logger.debug("Search cancelled (expected): ${e.message}")
+                throw e
             } catch (e: Exception) {
                 logger.error("Search failed: ${e.message}")
                 _state.update {
                     it.copy(
                         isLoading = false,
-                        isLoadingMore = false,
                         errorMessage = e.message ?: getString(Res.string.search_failed)
                     )
                 }
@@ -253,29 +152,6 @@ class SearchViewModel(
 
     fun onAction(action: SearchAction) {
         when (action) {
-            is SearchAction.OnPlatformTypeSelected -> {
-                if (_state.value.selectedSearchPlatform != action.searchPlatform) {
-                    _state.update {
-                        it.copy(selectedSearchPlatform = action.searchPlatform)
-                    }
-                    currentPage = 1
-                    searchDebounceJob?.cancel()
-                    performSearch(isInitial = true)
-                }
-            }
-
-            is SearchAction.OnLanguageSelected -> {
-                if (_state.value.selectedLanguage != action.language) {
-                    _state.update {
-                        it.copy(selectedLanguage = action.language)
-                    }
-                    currentPage = 1
-                    searchDebounceJob?.cancel()
-                    performSearch(isInitial = true)
-                }
-            }
-
-
             is SearchAction.OnSearchChange -> {
                 _state.update { it.copy(query = action.query) }
 
@@ -284,18 +160,16 @@ class SearchViewModel(
                 if (action.query.isBlank()) {
                     _state.update {
                         it.copy(
-                            repositories = emptyList(),
+                            results = emptyList(),
                             isLoading = false,
-                            isLoadingMore = false,
                             errorMessage = null
                         )
                     }
                 } else {
                     searchDebounceJob = viewModelScope.launch {
                         try {
-                            delay(500)
-                            currentPage = 1
-                            performSearch(isInitial = true)
+                            delay(300)
+                            performSearch()
                         } catch (_: CancellationException) {
                             logger.debug("Debounce cancelled (expected)")
                         }
@@ -303,50 +177,21 @@ class SearchViewModel(
                 }
             }
 
-            SearchAction.OnToggleLanguageSheetVisibility -> {
-                _state.update {
-                    it.copy(isLanguageSheetVisible = !it.isLanguageSheetVisible)
-                }
-            }
-
             SearchAction.OnSearchImeClick -> {
                 searchDebounceJob?.cancel()
-                currentPage = 1
-                performSearch(isInitial = true)
-            }
-
-            is SearchAction.OnSortBySelected -> {
-                if (_state.value.selectedSortBy != action.sortBy) {
-                    _state.update {
-                        it.copy(selectedSortBy = action.sortBy)
-                    }
-                    currentPage = 1
-                    searchDebounceJob?.cancel()
-                    performSearch(isInitial = true)
-                }
-            }
-
-            SearchAction.LoadMore -> {
-                if (!_state.value.isLoadingMore && _state.value.hasMorePages) {
-                    performSearch(isInitial = false)
-                }
+                performSearch()
             }
 
             SearchAction.Retry -> {
-                currentPage = 1
                 searchDebounceJob?.cancel()
-                performSearch(isInitial = true)
+                performSearch()
             }
 
-            is SearchAction.OnRepositoryClick -> {
+            is SearchAction.OnComponentClick -> {
                 /* Handled in composable */
             }
 
             SearchAction.OnNavigateBackClick -> {
-                /* Handled in composable */
-            }
-
-            is SearchAction.OnRepositoryDeveloperClick -> {
                 /* Handled in composable */
             }
         }

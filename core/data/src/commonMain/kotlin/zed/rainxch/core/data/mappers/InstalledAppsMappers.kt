@@ -1,74 +1,59 @@
 package zed.rainxch.core.data.mappers
 
 import zed.rainxch.core.data.local.db.entities.InstalledAppEntity
+import zed.rainxch.core.domain.model.ComponentType
 import zed.rainxch.core.domain.model.InstalledApp
 
 fun InstalledApp.toEntity(): InstalledAppEntity {
     return InstalledAppEntity(
-        packageName = packageName,
-        repoId = repoId,
-        repoName = repoName,
-        repoOwner = repoOwner,
-        repoOwnerAvatarUrl = repoOwnerAvatarUrl,
-        repoDescription = repoDescription,
-        primaryLanguage = primaryLanguage,
-        repoUrl = repoUrl,
+        componentId = componentId,
+        name = name,
+        type = type.name.lowercase(),
+        description = description,
+        author = author,
+        category = category,
+        icon = icon,
         installedVersion = installedVersion,
-        installedAssetName = installedAssetName,
-        installedAssetUrl = installedAssetUrl,
         latestVersion = latestVersion,
-        latestAssetName = latestAssetName,
-        latestAssetUrl = latestAssetUrl,
-        latestAssetSize = latestAssetSize,
-        appName = appName,
-        installSource = installSource,
+        isUpdateAvailable = isUpdateAvailable,
+        installPath = installPath,
+        files = files.joinToString("|"),
+        sha256 = sha256,
         installedAt = installedAt,
         lastCheckedAt = lastCheckedAt,
         lastUpdatedAt = lastUpdatedAt,
-        isUpdateAvailable = isUpdateAvailable,
-        updateCheckEnabled = updateCheckEnabled,
+        runnable = runnable,
+        runCommand = runCommand,
         releaseNotes = releaseNotes,
-        systemArchitecture = systemArchitecture,
-        fileExtension = fileExtension,
-        isPendingInstall = isPendingInstall,
-        installedVersionName = installedVersionName,
-        installedVersionCode = installedVersionCode,
-        latestVersionName = latestVersionName,
-        latestVersionCode = latestVersionCode
+        isPendingInstall = isPendingInstall
     )
 }
 
 fun InstalledAppEntity.toDomain(): InstalledApp {
     return InstalledApp(
-        packageName = packageName,
-        repoId = repoId,
-        repoName = repoName,
-        repoOwner = repoOwner,
-        repoOwnerAvatarUrl = repoOwnerAvatarUrl,
-        repoDescription = repoDescription,
-        primaryLanguage = primaryLanguage,
-        repoUrl = repoUrl,
+        componentId = componentId,
+        name = name,
+        type = try {
+            ComponentType.valueOf(type.uppercase())
+        } catch (_: Exception) {
+            ComponentType.PLUGIN
+        },
+        description = description,
+        author = author,
+        category = category,
+        icon = icon,
         installedVersion = installedVersion,
-        installedAssetName = installedAssetName,
-        installedAssetUrl = installedAssetUrl,
         latestVersion = latestVersion,
-        latestAssetName = latestAssetName,
-        latestAssetUrl = latestAssetUrl,
-        latestAssetSize = latestAssetSize,
-        appName = appName,
-        installSource = installSource,
+        isUpdateAvailable = isUpdateAvailable,
+        installPath = installPath,
+        files = if (files.isBlank()) emptyList() else files.split("|"),
+        sha256 = sha256,
         installedAt = installedAt,
         lastCheckedAt = lastCheckedAt,
         lastUpdatedAt = lastUpdatedAt,
-        isUpdateAvailable = isUpdateAvailable,
-        updateCheckEnabled = updateCheckEnabled,
+        runnable = runnable,
+        runCommand = runCommand,
         releaseNotes = releaseNotes,
-        systemArchitecture = systemArchitecture,
-        fileExtension = fileExtension,
-        isPendingInstall = isPendingInstall,
-        installedVersionName = installedVersionName,
-        installedVersionCode = installedVersionCode,
-        latestVersionName = latestVersionName,
-        latestVersionCode = latestVersionCode
+        isPendingInstall = isPendingInstall
     )
 }

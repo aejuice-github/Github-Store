@@ -20,15 +20,12 @@ import io.github.fletchmckee.liquid.rememberLiquidState
 import org.koin.compose.viewmodel.koinViewModel
 import org.koin.core.parameter.parametersOf
 import zed.rainxch.apps.presentation.AppsRoot
-import zed.rainxch.auth.presentation.AuthenticationRoot
 import zed.rainxch.core.presentation.locals.LocalBottomNavigationLiquid
 import zed.rainxch.details.presentation.DetailsRoot
-import zed.rainxch.devprofile.presentation.DeveloperProfileRoot
 import zed.rainxch.favourites.presentation.FavouritesRoot
 import zed.rainxch.home.presentation.HomeRoot
 import zed.rainxch.search.presentation.SearchRoot
 import zed.rainxch.settings.presentation.SettingsRoot
-import zed.rainxch.starred.presentation.StarredReposRoot
 
 @Composable
 fun AppNavigation(
@@ -58,17 +55,10 @@ fun AppNavigation(
                         onNavigateToApps = {
                             navController.navigate(GithubStoreGraph.AppsScreen)
                         },
-                        onNavigateToDetails = { repo ->
+                        onNavigateToDetails = { component ->
                             navController.navigate(
                                 GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repo.id
-                                )
-                            )
-                        },
-                        onNavigateToDeveloperProfile = { username ->
-                            navController.navigate(
-                                GithubStoreGraph.DeveloperProfileScreen(
-                                    username = username
+                                    componentId = component.id
                                 )
                             )
                         },
@@ -80,17 +70,10 @@ fun AppNavigation(
                         onNavigateBack = {
                             navController.navigateUp()
                         },
-                        onNavigateToDetails = { repo ->
+                        onNavigateToDetails = { component ->
                             navController.navigate(
                                 GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repo.id
-                                )
-                            )
-                        },
-                        onNavigateToDeveloperProfile = { username ->
-                            navController.navigate(
-                                GithubStoreGraph.DeveloperProfileScreen(
-                                    username = username
+                                    componentId = component.id
                                 )
                             )
                         },
@@ -103,53 +86,8 @@ fun AppNavigation(
                         onNavigateBack = {
                             navController.navigateUp()
                         },
-                        onOpenRepositoryInApp = { repoId ->
-                            navController.navigate(
-                                GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repoId
-                                )
-                            )
-                        },
-                        onNavigateToDeveloperProfile = { username ->
-                            navController.navigate(
-                                GithubStoreGraph.DeveloperProfileScreen(
-                                    username = username
-                                )
-                            )
-                        },
                         viewModel = koinViewModel {
-                            parametersOf(args.repositoryId)
-                        }
-                    )
-                }
-
-                composable<GithubStoreGraph.DeveloperProfileScreen> { backStackEntry ->
-                    val args = backStackEntry.toRoute<GithubStoreGraph.DeveloperProfileScreen>()
-                    DeveloperProfileRoot(
-                        onNavigateBack = {
-                            navController.navigateUp()
-                        },
-                        onNavigateToDetails = { repoId ->
-                            navController.navigate(
-                                GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repoId
-                                )
-                            )
-                        },
-                        viewModel = koinViewModel {
-                            parametersOf(args.username)
-                        }
-                    )
-                }
-
-                composable<GithubStoreGraph.AuthenticationScreen> {
-                    AuthenticationRoot(
-                        onNavigateToHome = {
-                            navController.navigate(GithubStoreGraph.HomeScreen) {
-                                popUpTo(0) {
-                                    inclusive = true
-                                }
-                            }
+                            parametersOf(args.componentId)
                         }
                     )
                 }
@@ -159,41 +97,9 @@ fun AppNavigation(
                         onNavigateBack = {
                             navController.navigateUp()
                         },
-                        onNavigateToDetails = {
-                            navController.navigate(GithubStoreGraph.DetailsScreen(it))
-                        },
-                        onNavigateToDeveloperProfile = { username ->
+                        onNavigateToDetails = { componentId ->
                             navController.navigate(
-                                GithubStoreGraph.DeveloperProfileScreen(
-                                    username = username
-                                )
-                            )
-                        },
-                    )
-                }
-
-                composable<GithubStoreGraph.StarredReposScreen> {
-                    StarredReposRoot(
-                        onNavigateBack = {
-                            navController.navigateUp()
-                        },
-                        onNavigateToDetails = { repoId ->
-                            navController.navigate(
-                                GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repoId
-                                )
-                            )
-                        },
-                        onNavigateToAuthentication = {
-                            navController.navigate(
-                                GithubStoreGraph.AuthenticationScreen
-                            )
-                        },
-                        onNavigateToDeveloperProfile = { username ->
-                            navController.navigate(
-                                GithubStoreGraph.DeveloperProfileScreen(
-                                    username = username
-                                )
+                                GithubStoreGraph.DetailsScreen(componentId)
                             )
                         },
                     )
@@ -212,11 +118,9 @@ fun AppNavigation(
                         onNavigateBack = {
                             navController.navigateUp()
                         },
-                        onNavigateToRepo = { repoId ->
+                        onNavigateToComponent = { componentId ->
                             navController.navigate(
-                                GithubStoreGraph.DetailsScreen(
-                                    repositoryId = repoId
-                                )
+                                GithubStoreGraph.DetailsScreen(componentId)
                             )
                         }
                     )

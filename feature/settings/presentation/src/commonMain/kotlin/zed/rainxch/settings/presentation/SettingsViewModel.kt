@@ -27,9 +27,7 @@ class SettingsViewModel(
         .onStart {
             if (!hasLoadedInitialData) {
                 loadCurrentTheme()
-                collectIsUserLoggedIn()
                 loadVersionName()
-
                 hasLoadedInitialData = true
             }
         }
@@ -45,17 +43,8 @@ class SettingsViewModel(
     private fun loadVersionName() {
         viewModelScope.launch {
             _state.update { it.copy(
-                versionName = settingsRepository.getVersionName()
+                version = settingsRepository.getVersionName()
             ) }
-        }
-    }
-
-    private fun collectIsUserLoggedIn() {
-        viewModelScope.launch {
-            settingsRepository.isUserLoggedIn
-                .collect { isLoggedIn ->
-                    _state.update { it.copy(isUserLoggedIn = isLoggedIn) }
-                }
         }
     }
 
@@ -63,7 +52,7 @@ class SettingsViewModel(
         viewModelScope.launch {
             themesRepository.getThemeColor().collect { theme ->
                 _state.update {
-                    it.copy(selectedThemeColor = theme)
+                    it.copy(selectedColorTheme = theme)
                 }
             }
         }
@@ -103,50 +92,18 @@ class SettingsViewModel(
 
             is SettingsAction.OnThemeColorSelected -> {
                 viewModelScope.launch {
-                    themesRepository.setThemeColor(action.themeColor)
+                    themesRepository.setThemeColor(action.theme)
                 }
             }
 
-            is SettingsAction.OnAmoledThemeToggled -> {
+            is SettingsAction.OnAmoledThemeSelected -> {
                 viewModelScope.launch {
-                    themesRepository.setAmoledTheme(action.enabled)
+                    themesRepository.setAmoledTheme(action.isAmoled)
                 }
             }
 
-            SettingsAction.OnLogoutClick -> {
-                _state.update {
-                    it.copy(
-                        isLogoutDialogVisible = true
-                    )
-                }
-            }
-
-            SettingsAction.OnLogoutConfirmClick -> {
-                viewModelScope.launch {
-                    runCatching {
-                        settingsRepository.logout()
-                    }.onSuccess {
-                        _state.update { it.copy(isLogoutDialogVisible = false) }
-                        _events.send(SettingsEvent.OnLogoutSuccessful)
-                    }.onFailure { error ->
-                        _state.update { it.copy(isLogoutDialogVisible = false) }
-                        error.message?.let {
-                            _events.send(SettingsEvent.OnLogoutError(it))
-                        }
-                    }
-                }
-            }
-
-            SettingsAction.OnLogoutDismiss -> {
-                _state.update {
-                    it.copy(
-                        isLogoutDialogVisible = false
-                    )
-                }
-            }
-
-            SettingsAction.OnNavigateBackClick -> {
-                /* Handed in composable */
+            SettingsAction.OnNavigateBack -> {
+                /* Handled in composable */
             }
 
             is SettingsAction.OnFontThemeSelected -> {
@@ -155,12 +112,11 @@ class SettingsViewModel(
                 }
             }
 
-            is SettingsAction.OnDarkThemeChange -> {
+            is SettingsAction.OnDarkThemeSelected -> {
                 viewModelScope.launch {
-                    themesRepository.setDarkTheme(action.isDarkTheme)
+                    themesRepository.setDarkTheme(action.isDark)
                 }
             }
         }
     }
-
 }

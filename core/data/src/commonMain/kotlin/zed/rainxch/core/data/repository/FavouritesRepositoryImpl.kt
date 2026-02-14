@@ -3,54 +3,38 @@ package zed.rainxch.core.data.repository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import zed.rainxch.core.data.local.db.dao.FavoriteRepoDao
-import zed.rainxch.core.data.local.db.dao.InstalledAppDao
 import zed.rainxch.core.data.mappers.toDomain
 import zed.rainxch.core.data.mappers.toEntity
 import zed.rainxch.core.domain.model.FavoriteRepo
 import zed.rainxch.core.domain.repository.FavouritesRepository
 
 class FavouritesRepositoryImpl(
-    private val favoriteRepoDao: FavoriteRepoDao,
-    private val installedAppsDao: InstalledAppDao,
+    private val favoriteRepoDao: FavoriteRepoDao
 ) : FavouritesRepository {
 
     override fun getAllFavorites(): Flow<List<FavoriteRepo>> {
         return favoriteRepoDao
             .getAllFavorites()
-            .map { favoriteRepos ->
-                favoriteRepos.map { favoriteRepo -> favoriteRepo.toDomain() }
-            }
+            .map { it.map { entity -> entity.toDomain() } }
     }
 
-    override fun isFavorite(repoId: Long): Flow<Boolean> = favoriteRepoDao.isFavorite(repoId)
-
-    override suspend fun isFavoriteSync(repoId: Long): Boolean = favoriteRepoDao.isFavoriteSync(repoId)
-
-    suspend fun addFavorite(repo: FavoriteRepo) {
-        val installedApp = installedAppsDao.getAppByRepoId(repo.repoId)
-        favoriteRepoDao.insertFavorite(
-            repo.toEntity()
-                .copy(
-                    isInstalled = installedApp != null,
-                    installedPackageName = installedApp?.packageName
-                )
-        )
+    override fun isFavorite(componentId: String): Flow<Boolean> {
+        return favoriteRepoDao.isFavorite(componentId)
     }
 
-    override suspend fun toggleFavorite(repo: FavoriteRepo) {
-        if (favoriteRepoDao.isFavoriteSync(repo.repoId)) {
-            favoriteRepoDao.deleteFavoriteById(repo.repoId)
+    override suspend fun isFavoriteSync(componentId: String): Boolean {
+        return favoriteRepoDao.isFavoriteSync(componentId)
+    }
+
+    override suspend fun toggleFavorite(favorite: FavoriteRepo) {
+        if (favoriteRepoDao.isFavoriteSync(favorite.componentId)) {
+            favoriteRepoDao.deleteByComponentId(favorite.componentId)
         } else {
-            addFavorite(repo)
+            favoriteRepoDao.insert(favorite.toEntity())
         }
     }
 
-    override suspend fun updateFavoriteInstallStatus(
-        repoId: Long,
-        installed: Boolean,
-        packageName: String?
-    ) {
-        favoriteRepoDao.updateInstallStatus(repoId, installed, packageName)
+    override suspend fun updateInstallStatus(componentId: String, installed: Boolean) {
+        favoriteRepoDao.updateInstallStatus(componentId, installed)
     }
-
 }
