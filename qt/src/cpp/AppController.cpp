@@ -44,6 +44,18 @@ void AppController::initialize() {
                 emit toastRequested("Installation failed: " + error, "error");
             });
 
+    connect(m_dragDrop, &DragDropManager::installResult,
+            this, [this](const QString &message, const QString &type, const QStringList &installedTypes) {
+                if (type == "success") {
+                    QVariantMap params;
+                    params["message"] = message;
+                    params["installedTypes"] = installedTypes;
+                    emit navigationRequested("installSuccess", params);
+                } else {
+                    emit toastRequested(message, type);
+                }
+            });
+
     m_loading = true;
     emit loadingChanged();
     m_manifest->loadManifest();

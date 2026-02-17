@@ -1,14 +1,19 @@
 import QtQuick 2.15
 import QtQuick.Controls 2.15
+import QtQuick.Window 2.15
 import "singletons"
 import "screens"
 import "components"
 
-Rectangle {
+ApplicationWindow {
     id: root
-    color: CMTheme.backgroundColor
+    visible: true
     width: 1100
     height: 700
+    minimumWidth: 800
+    minimumHeight: 500
+    title: "Component Manager"
+    color: CMTheme.backgroundColor
 
     // Bind theme from C++ settings
     Connections {
@@ -250,6 +255,11 @@ Rectangle {
         ManualInstallScreen {}
     }
 
+    Component {
+        id: installSuccessScreenComp
+        InstallSuccessScreen {}
+    }
+
     // Navigation handler from C++
     Connections {
         target: appController
@@ -263,6 +273,7 @@ Rectangle {
                 case "favorites": comp = favoritesScreenComp; break
                 case "apps": comp = installedAppsScreenComp; break
                 case "install": comp = manualInstallScreenComp; break
+                case "installSuccess": comp = installSuccessScreenComp; break
             }
             if (comp) stackView.push(comp, params || {})
         }
@@ -275,37 +286,12 @@ Rectangle {
         }
     }
 
-    // Global drag-drop handler
-    DropArea {
-        anchors.fill: parent
-        keys: ["text/uri-list"]
-
-        onEntered: {
-            appController.dragDrop.setDragActive(true)
-            drag.accepted = true
-        }
-        onExited: {
-            appController.dragDrop.setDragActive(false)
-        }
-        onDropped: {
-            appController.dragDrop.setDragActive(false)
-            var files = []
-            for (var i = 0; i < drop.urls.length; i++) {
-                var path = drop.urls[i].toString()
-                if (path.startsWith("file:///"))
-                    path = path.substring(8)
-                files.push(path)
-            }
-            appController.dragDrop.handleDroppedFiles(files)
-        }
-    }
-
-    // Drop overlay (separate from DropArea to not block popups)
+    // Drop overlay (native OLE drop target handles the actual drag-drop)
     Rectangle {
         anchors.fill: parent
         color: "#80000000"
         visible: appController.dragDrop.isDragActive
-        z: 100
+        z: 200
 
         Rectangle {
             anchors.centerIn: parent

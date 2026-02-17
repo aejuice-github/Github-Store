@@ -1,12 +1,14 @@
 #include <QGuiApplication>
-#include <QQuickView>
+#include <QQmlApplicationEngine>
 #include <QQmlContext>
-#include <QQmlEngine>
+#include <QQuickWindow>
 #include <QQuickStyle>
 #include <QFile>
 #include <QTextStream>
 #include <QStandardPaths>
 #include "cpp/AppController.h"
+#include "cpp/NativeDropHandler.h"
+#include "cpp/WindowsDnDFix.h"
 
 static QFile *logFile = nullptr;
 
@@ -18,6 +20,11 @@ void messageHandler(QtMsgType type, const QMessageLogContext &context, const QSt
 }
 
 int main(int argc, char *argv[]) {
+    // On Windows, UIPI blocks drag-and-drop to elevated apps.
+    // Relaunch as normal user if running as admin.
+    if (WindowsDnDFix::relaunchIfElevated(argv[0]))
+        return 0;
+
     QQuickStyle::setStyle("Basic");
 
     QGuiApplication app(argc, argv);
@@ -30,26 +37,34 @@ int main(int argc, char *argv[]) {
     logFile = &file;
     qInstallMessageHandler(messageHandler);
 
+    qDebug() << "=== APP STARTING ===";
+
     AppController controller;
 
-    QQuickView view;
-    view.rootContext()->setContextProperty("appController", &controller);
-    view.engine()->addImportPath("qrc:/qml");
-    view.setResizeMode(QQuickView::SizeRootObjectToView);
-    view.setSource(QUrl("qrc:/qml/main.qml"));
+    QQmlApplicationEngine engine;
+    engine.rootContext()->setContextProperty("appController", &controller);
+    engine.addImportPath("qrc:/qml");
+    NativeDropHandler dropHandler(controller.dragDrop());
 
-    if (view.status() == QQuickView::Error) {
-        for (const auto &error : view.errors()) {
-            QTextStream stream(logFile);
-            stream << "LOAD ERROR: " << error.toString() << "\n";
-            stream.flush();
-        }
+    engine.load(QUrl("qrc:/qml/main.qml"));
+
+    qDebug() << "Root objects count:" << engine.rootObjects().size();
+
+    if (engine.rootObjects().isEmpty()) {
+        qDebug() << "LOAD ERROR: Failed to load main.qml";
+        return -1;
     }
 
-    view.setTitle("Component Manager");
-    view.resize(1100, 700);
-    view.setMinimumSize(QSize(800, 500));
-    view.show();
+    // Find the window and register for native drops
+    QObject *rootObj = engine.rootObjects().first();
+    qDebug() << "Root class:" << rootObj->metaObject()->className();
+
+    auto windows = app.allWindows();
+    qDebug() << "Window count:" << windows.size();
+    for (QWindow *w : windows) {
+        qDebug() << "Registering window:" << w->title();
+        dropHandler.registerWindow(w);
+    }
 
     return app.exec();
 }

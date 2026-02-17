@@ -8,6 +8,7 @@
         <file>qml/screens/FavoritesScreen.qml</file>
         <file>qml/screens/InstalledAppsScreen.qml</file>
         <file>qml/screens/ManualInstallScreen.qml</file>
+        <file>qml/screens/InstallSuccessScreen.qml</file>
         <file>qml/components/ComponentCard.qml</file>
         <file>qml/components/SidebarCategory.qml</file>
         <file>qml/components/ActionButton.qml</file>
