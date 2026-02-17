@@ -29,15 +29,48 @@ Rectangle {
         anchors.margins: CMTheme.spacingLarge
         spacing: CMTheme.spacingSmall
 
-        // Row 1: Author + Type
-        Text {
+        // Row 1: Icon + Author
+        Row {
             width: parent.width
-            text: card.author + (card.type ? " \u2022 " + card.type.charAt(0).toUpperCase() + card.type.slice(1) : "")
-            font.pixelSize: CMTheme.fontSizeSmall
-            font.family: CMTheme.fontFamily
-            color: CMTheme.textMutedColor
-            elide: Text.ElideRight
-            maximumLineCount: 1
+            spacing: CMTheme.spacingDefault
+
+            Rectangle {
+                width: 32
+                height: 32
+                radius: 16
+                color: Qt.rgba(CMTheme.accentColor.r, CMTheme.accentColor.g, CMTheme.accentColor.b, 0.15)
+
+                MaterialIcon {
+                    anchors.centerIn: parent
+                    iconSize: 18
+                    iconColor: CMTheme.accentColor
+                    iconName: {
+                        switch (card.category) {
+                            case "AI": return "psychology"
+                            case "Animation": return "movie"
+                            case "Audio": return "audiotrack"
+                            case "Color": return "palette"
+                            case "Effects": return "auto_fix_high"
+                            case "Export": return "download"
+                            case "Glitch": return "bolt"
+                            case "Software": return "computer"
+                            case "Stylize": return "brush"
+                            case "Utilities": return "build"
+                            default: return "extension"
+                        }
+                    }
+                }
+            }
+
+            Text {
+                text: card.author
+                font.pixelSize: CMTheme.fontSizeSmall
+                font.family: CMTheme.fontFamily
+                color: CMTheme.textMutedColor
+                elide: Text.ElideRight
+                maximumLineCount: 1
+                anchors.verticalCenter: parent.verticalCenter
+            }
         }
 
         // Row 2: Title + Free pill
@@ -109,12 +142,10 @@ Rectangle {
             anchors.centerIn: parent
             spacing: CMTheme.spacingSmall
 
-            Text {
-                text: "\u2193"
-                font.pixelSize: CMTheme.fontSizeMedium
-                font.bold: true
-                font.family: CMTheme.fontFamily
-                color: CMTheme.backgroundColor
+            MaterialIcon {
+                iconName: "download"
+                iconSize: 18
+                iconColor: CMTheme.backgroundColor
                 visible: !card.installed
                 anchors.verticalCenter: parent.verticalCenter
             }
