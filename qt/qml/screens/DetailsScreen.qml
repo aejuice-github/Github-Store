@@ -118,18 +118,29 @@ Rectangle {
                         }
                     }
 
-                    // Install button
                     Row {
-                        spacing: CMTheme.spacingMedium
+                        spacing: CMTheme.spacingDefault
 
                         ActionButton {
-                            text: {
-                                if (details.isInstalled) return "Installed"
-                                if (appController.installer.isBusy) return "Installing..."
-                                return "Install"
-                            }
-                            enabled: !details.isInstalled && !appController.installer.isBusy
+                            visible: !details.isInstalled
+                            text: appController.installer.isBusy ? "Installing..." : "Install"
+                            enabled: !appController.installer.isBusy
                             onClicked: appController.installComponent(detailsScreen.componentId)
+                        }
+
+                        ActionButton {
+                            visible: details.isInstalled && details.isUpdateAvailable
+                            text: appController.installer.isBusy ? "Updating..." : "Update"
+                            enabled: !appController.installer.isBusy
+                            onClicked: appController.installComponent(detailsScreen.componentId)
+                        }
+
+                        ActionButton {
+                            visible: details.isInstalled
+                            text: "Uninstall"
+                            buttonColor: CMTheme.surfaceContainerHighColor
+                            textColor: CMTheme.textColor
+                            onClicked: root.confirmUninstall(detailsScreen.componentId, details.name || "")
                         }
                     }
                 }

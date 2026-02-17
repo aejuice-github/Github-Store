@@ -5,6 +5,7 @@ import "../components"
 
 Rectangle {
     id: favoritesScreen
+    objectName: "favoritesScreen"
     color: CMTheme.backgroundColor
 
     property var favorites: []

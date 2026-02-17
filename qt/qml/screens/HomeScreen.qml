@@ -233,6 +233,7 @@ Rectangle {
                             price: model.price
                             installed: model.isInstalled
                             updateAvailable: model.isUpdateAvailable
+                            searchQuery: root.searchQuery
                             onClicked: {
                                 appController.navigateTo("details", { componentId: model.componentId })
                             }
@@ -240,13 +241,50 @@ Rectangle {
                     }
 
                     // Empty state
-                    Text {
+                    Column {
                         anchors.centerIn: parent
                         visible: gridView.count === 0 && !appController.loading
-                        text: "No components found"
-                        font.pixelSize: CMTheme.fontSizeLarge
-                        font.family: CMTheme.fontFamily
-                        color: CMTheme.textMutedColor
+                        spacing: CMTheme.spacingMedium
+
+                        Text {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            text: "No apps found"
+                            font.pixelSize: CMTheme.fontSizeLarge
+                            font.family: CMTheme.fontFamily
+                            color: CMTheme.textMutedColor
+                        }
+
+                        Rectangle {
+                            anchors.horizontalCenter: parent.horizontalCenter
+                            width: showAllLabel.width + CMTheme.spacingXLarge * 2
+                            height: 36
+                            radius: CMTheme.radiusDefault
+                            color: showAllArea.containsMouse ? Qt.lighter(CMTheme.accentColor, 1.2) : CMTheme.accentColor
+
+                            Text {
+                                id: showAllLabel
+                                anchors.centerIn: parent
+                                text: "Show All"
+                                font.pixelSize: CMTheme.fontSizeDefault
+                                font.bold: true
+                                font.family: CMTheme.fontFamily
+                                color: CMTheme.backgroundColor
+                            }
+
+                            MouseArea {
+                                id: showAllArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    root.clearSearch()
+                                    appController.filterByCategory("All")
+                                    appController.filterByApp("All")
+                                    appController.filterByPrice("All")
+                                    appController.filterByAuthor("All")
+                                }
+                            }
+                        }
                     }
                 }
             }

@@ -48,7 +48,8 @@ Text {
             "grid_view": "\ue9b0",
             "update": "\ue923",
             "system_update": "\ue62a",
-            "delete": "\ue872"
+            "delete": "\ue872",
+            "close": "\ue5cd"
         }
         return codepoints[iconName] || "\ue5c3"
     }

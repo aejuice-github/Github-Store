@@ -46,7 +46,7 @@ QtObject {
     readonly property int radiusLarge: 16
 
     // Card
-    readonly property int cardHeight: 220
+    readonly property int cardHeight: 300
 
     // Sidebar
     readonly property int sidebarWidth: 200

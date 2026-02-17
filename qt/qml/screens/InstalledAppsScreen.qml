@@ -5,6 +5,7 @@ import "../components"
 
 Rectangle {
     id: installedScreen
+    objectName: "installedAppsScreen"
     color: CMTheme.backgroundColor
 
     property var installedApps: []

@@ -19,21 +19,94 @@ Rectangle {
     property int price: 0
     property bool installed: false
     property bool updateAvailable: false
+    property string searchQuery: ""
 
     signal clicked()
     signal installRequested()
 
-    Column {
+    function highlightMatch(text, query, baseColor) {
+        if (!query) return text
+        var escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+        var regex = new RegExp("(" + escaped + ")", "ig")
+        return text.replace(regex, "<span style='color:#FF9800'>$1</span>")
+    }
+
+    // Gradient thumbnail placeholder
+    Rectangle {
+        id: thumbnail
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.top: parent.top
+        height: card.height * 0.55
+        radius: CMTheme.radiusLarge
+
+        // Clip bottom corners to square while keeping top rounded
+        Rectangle {
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+            height: parent.radius
+            gradient: Gradient {
+                orientation: Gradient.Horizontal
+                GradientStop { position: 0.0; color: thumbnail.grad[0] }
+                GradientStop { position: 0.5; color: thumbnail.grad[1] }
+                GradientStop { position: 1.0; color: thumbnail.grad[2] }
+            }
+        }
+
+        property int nameHash: {
+            var h = 0
+            for (var i = 0; i < card.name.length; i++)
+                h = ((h << 5) - h + card.name.charCodeAt(i)) | 0
+            return Math.abs(h)
+        }
+
+        property var gradients: [
+            ["#0F2027", "#203A43", "#2C5364"],
+            ["#1A1A2E", "#16213E", "#0F3460"],
+            ["#0D1B2A", "#1B2838", "#2A4858"],
+            ["#1C1C3C", "#2D2D5E", "#3E3E7E"],
+            ["#0B0C10", "#1F2833", "#45A29E"],
+            ["#1A0533", "#2D1B69", "#5B2C8E"],
+            ["#0C1618", "#162A2E", "#264653"],
+            ["#1B0A2A", "#2E1A47", "#4A2C6E"],
+            ["#0A1628", "#152238", "#2A3F5F"],
+            ["#1C0F13", "#3A1F2B", "#5C3D4E"]
+        ]
+
+        property var grad: gradients[nameHash % gradients.length]
+
+        gradient: Gradient {
+            orientation: Gradient.Horizontal
+            GradientStop { position: 0.0; color: thumbnail.grad[0] }
+            GradientStop { position: 0.5; color: thumbnail.grad[1] }
+            GradientStop { position: 1.0; color: thumbnail.grad[2] }
+        }
+
+        // Component initial letter overlay
+        Text {
+            anchors.centerIn: parent
+            text: card.name.charAt(0).toUpperCase()
+            font.pixelSize: 48
+            font.bold: true
+            font.family: CMTheme.fontFamily
+            color: "#40FFFFFF"
+        }
+    }
+
+    Column {
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: thumbnail.bottom
         anchors.margins: CMTheme.spacingLarge
+        anchors.topMargin: CMTheme.spacingDefault
         spacing: CMTheme.spacingSmall
 
         // Row 1: Title
         Text {
             width: parent.width
-            text: card.name
+            text: card.highlightMatch(card.name, card.searchQuery, CMTheme.textColor)
+            textFormat: card.searchQuery ? Text.RichText : Text.PlainText
             font.pixelSize: CMTheme.fontSizeLarge
             font.bold: true
             font.family: CMTheme.fontFamily
@@ -45,7 +118,8 @@ Rectangle {
         // Row 3: Description
         Text {
             width: parent.width
-            text: card.description
+            text: card.highlightMatch(card.description, card.searchQuery, CMTheme.textMutedColor)
+            textFormat: card.searchQuery ? Text.RichText : Text.PlainText
             font.pixelSize: CMTheme.fontSizeDefault
             font.family: CMTheme.fontFamily
             color: CMTheme.textMutedColor
@@ -67,7 +141,7 @@ Rectangle {
         height: 36
         radius: CMTheme.radiusDefault
         color: {
-            if (card.updateAvailable && installBtnArea.containsMouse) return "#F9A825"
+            if (card.updateAvailable && installBtnArea.containsMouse) return CMTheme.accentColor
             if (card.updateAvailable) return CMTheme.surfaceContainerHighColor
             if (card.installed && installBtnArea.containsMouse) return "#93000A"
             if (card.installed) return CMTheme.surfaceContainerHighColor
@@ -88,7 +162,7 @@ Rectangle {
                 }
                 iconSize: 18
                 iconColor: {
-                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : "#F9A825"
+                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
                     if (card.installed) return installBtnArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
                     return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
                 }
@@ -107,7 +181,7 @@ Rectangle {
                 font.bold: true
                 font.family: CMTheme.fontFamily
                 color: {
-                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : "#F9A825"
+                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
                     if (card.installed) return installBtnArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
                     return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
                 }

@@ -15,6 +15,13 @@ ApplicationWindow {
     title: "AEJuice App Store"
     color: CMTheme.backgroundColor
 
+    property string searchQuery: navSearchInput.text
+
+    function clearSearch() {
+        navSearchInput.text = ""
+        navSearchInput.focus = false
+    }
+
     // Bind theme from C++ settings
     Connections {
         target: appController.settings
@@ -63,13 +70,15 @@ ApplicationWindow {
             }
         }
 
-        // Search field (centered)
+        // Search field (left-aligned)
         Rectangle {
             width: Math.min(500, parent.width - 250)
             height: 32
             radius: CMTheme.radiusDefault
             color: CMTheme.surfaceContainerHighColor
-            anchors.centerIn: parent
+            anchors.left: parent.left
+            anchors.leftMargin: stackView.depth > 1 ? 64 : CMTheme.spacingLarge
+            anchors.verticalCenter: parent.verticalCenter
 
             Row {
                 anchors.fill: parent
@@ -86,12 +95,13 @@ ApplicationWindow {
 
                 TextInput {
                     id: navSearchInput
-                    width: parent.width - 26
+                    width: parent.width - 26 - (clearBtn.visible ? clearBtn.width + CMTheme.spacingSmall : 0)
                     anchors.verticalCenter: parent.verticalCenter
                     font.pixelSize: CMTheme.fontSizeDefault
                     font.family: CMTheme.fontFamily
                     color: CMTheme.textColor
                     clip: true
+                    focus: false
                     selectByMouse: true
 
                     Text {
@@ -104,6 +114,24 @@ ApplicationWindow {
                     }
 
                     onTextChanged: appController.search(text)
+                }
+
+                MaterialIcon {
+                    id: clearBtn
+                    visible: navSearchInput.text.length > 0
+                    iconName: "close"
+                    iconSize: 16
+                    iconColor: clearArea.containsMouse ? CMTheme.textColor : CMTheme.textMutedColor
+                    anchors.verticalCenter: parent.verticalCenter
+
+                    MouseArea {
+                        id: clearArea
+                        anchors.fill: parent
+                        anchors.margins: -4
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: { navSearchInput.text = ""; navSearchInput.focus = false }
+                    }
                 }
             }
         }
@@ -121,7 +149,7 @@ ApplicationWindow {
                 width: updateAllRow.width + CMTheme.spacingLarge
                 height: 28
                 radius: CMTheme.radiusDefault
-                color: updateAllArea.containsMouse ? "#C68400" : "#F9A825"
+                color: updateAllArea.containsMouse ? Qt.darker(CMTheme.accentColor, 1.3) : CMTheme.accentColor
                 anchors.verticalCenter: parent.verticalCenter
 
                 Row {
@@ -157,14 +185,15 @@ ApplicationWindow {
 
             // Favorites
             Rectangle {
+                property bool active: stackView.currentItem && stackView.currentItem.objectName === "favoritesScreen"
                 width: 32; height: 32
                 radius: CMTheme.radiusSmall
-                color: favArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+                color: active ? CMTheme.surfaceContainerHighColor : favArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
                 MaterialIcon {
                     anchors.centerIn: parent
                     iconName: "favorite"
                     iconSize: 20
-                    iconColor: CMTheme.textColor
+                    iconColor: parent.active ? CMTheme.accentColor : CMTheme.textColor
                 }
                 ToolTip.visible: favArea.containsMouse
                 ToolTip.text: "Favorites"
@@ -174,20 +203,26 @@ ApplicationWindow {
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: { stackView.pop(null); stackView.push(favoritesScreenComp) }
+                    onClicked: {
+                        if (stackView.currentItem && stackView.currentItem.objectName === "favoritesScreen")
+                            stackView.pop(null)
+                        else
+                            { stackView.pop(null); stackView.push(favoritesScreenComp) }
+                    }
                 }
             }
 
             // Installed Apps
             Rectangle {
+                property bool active: stackView.currentItem && stackView.currentItem.objectName === "installedAppsScreen"
                 width: 32; height: 32
                 radius: CMTheme.radiusSmall
-                color: appsArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+                color: active ? CMTheme.surfaceContainerHighColor : appsArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
                 MaterialIcon {
                     anchors.centerIn: parent
                     iconName: "inventory_2"
                     iconSize: 20
-                    iconColor: CMTheme.textColor
+                    iconColor: parent.active ? CMTheme.accentColor : CMTheme.textColor
                 }
                 ToolTip.visible: appsArea.containsMouse
                 ToolTip.text: "Installed Apps"
@@ -197,20 +232,26 @@ ApplicationWindow {
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: { stackView.pop(null); stackView.push(installedAppsScreenComp) }
+                    onClicked: {
+                        if (stackView.currentItem && stackView.currentItem.objectName === "installedAppsScreen")
+                            stackView.pop(null)
+                        else
+                            { stackView.pop(null); stackView.push(installedAppsScreenComp) }
+                    }
                 }
             }
 
             // Manual Install
             Rectangle {
+                property bool active: stackView.currentItem && stackView.currentItem.objectName === "manualInstallScreen"
                 width: 32; height: 32
                 radius: CMTheme.radiusSmall
-                color: installArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+                color: active ? CMTheme.surfaceContainerHighColor : installArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
                 MaterialIcon {
                     anchors.centerIn: parent
                     iconName: "install_desktop"
                     iconSize: 20
-                    iconColor: CMTheme.textColor
+                    iconColor: parent.active ? CMTheme.accentColor : CMTheme.textColor
                 }
                 ToolTip.visible: installArea.containsMouse
                 ToolTip.text: "Manual Install"
@@ -220,7 +261,12 @@ ApplicationWindow {
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: { stackView.pop(null); stackView.push(manualInstallScreenComp) }
+                    onClicked: {
+                        if (stackView.currentItem && stackView.currentItem.objectName === "manualInstallScreen")
+                            stackView.pop(null)
+                        else
+                            { stackView.pop(null); stackView.push(manualInstallScreenComp) }
+                    }
                 }
             }
         }
