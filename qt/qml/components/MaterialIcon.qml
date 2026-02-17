@@ -45,7 +45,10 @@ Text {
             "inventory_2": "\ue1a1",
             "install_desktop": "\ueb71",
             "add_circle": "\ue3ba",
-            "grid_view": "\ue9b0"
+            "grid_view": "\ue9b0",
+            "update": "\ue923",
+            "system_update": "\ue62a",
+            "delete": "\ue872"
         }
         return codepoints[iconName] || "\ue5c3"
     }

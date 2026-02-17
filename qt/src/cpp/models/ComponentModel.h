@@ -3,6 +3,7 @@
 
 #include <QAbstractListModel>
 #include <QList>
+#include <QMap>
 #include "data/Component.h"
 
 class ComponentModel : public QAbstractListModel
@@ -22,6 +23,7 @@ public:
         IconRole,
         PriceRole,
         IsInstalledRole,
+        IsUpdateAvailableRole,
         CompatibleAppsRole,
         TagsRole,
         RunnableRole
@@ -42,6 +44,7 @@ public:
     void setSelectedAuthor(const QString &author);
     void setPriceFilter(const QString &filter);
     void setInstalledIds(const QSet<QString> &ids);
+    void setInstalledVersions(const QMap<QString, QString> &versions);
     QStringList getAuthors() const;
 
     QVariantMap getComponentById(const QString &id) const;
@@ -51,10 +54,12 @@ signals:
 
 private:
     void applyFilters();
+    bool isUpdateAvailable(const Component &component) const;
 
     QList<Component> m_allComponents;
     QList<Component> m_filteredComponents;
     QSet<QString> m_installedIds;
+    QMap<QString, QString> m_installedVersions;
     QString m_searchQuery;
     QString m_categoryFilter;
     QString m_appFilter;

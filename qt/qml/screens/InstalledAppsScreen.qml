@@ -53,7 +53,7 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Item { width: parent.width - 300; height: 1 }
+            Item { width: parent.width - 350; height: 1 }
 
             Rectangle {
                 width: 200
@@ -133,6 +133,7 @@ Rectangle {
                     version: modelData.version
                     price: modelData.price
                     installed: modelData.isInstalled
+                    updateAvailable: modelData.isUpdateAvailable || false
                     onClicked: {
                         appController.navigateTo("details", { componentId: modelData.id })
                     }

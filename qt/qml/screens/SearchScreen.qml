@@ -60,6 +60,7 @@ Rectangle {
                     version: model.version
                     price: model.price
                     installed: model.isInstalled
+                    updateAvailable: model.isUpdateAvailable
                     onClicked: {
                         appController.navigateTo("details", { componentId: model.componentId })
                     }

@@ -3,6 +3,7 @@
 
 #include <QObject>
 #include <QSet>
+#include <QMap>
 
 class JsonStorage : public QObject
 {
@@ -15,9 +16,11 @@ public:
     void save();
 
     bool isInstalled(const QString &componentId) const;
-    void addInstalled(const QString &componentId);
+    void addInstalled(const QString &componentId, const QString &version);
     void removeInstalled(const QString &componentId);
-    QSet<QString> installedIds() const { return m_installedIds; }
+    QSet<QString> installedIds() const;
+    QMap<QString, QString> installedVersions() const { return m_installedVersions; }
+    QString installedVersion(const QString &componentId) const;
 
     bool isFavorite(const QString &componentId) const;
     void toggleFavorite(const QString &componentId);
@@ -27,7 +30,7 @@ private:
     QString storagePath() const;
     QString favoritesPath() const;
 
-    QSet<QString> m_installedIds;
+    QMap<QString, QString> m_installedVersions;
     QSet<QString> m_favoriteIds;
 };
 

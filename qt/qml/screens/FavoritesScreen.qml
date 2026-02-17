@@ -133,6 +133,7 @@ Rectangle {
                     version: modelData.version
                     price: modelData.price
                     installed: modelData.isInstalled
+                    updateAvailable: modelData.isUpdateAvailable || false
                     onClicked: {
                         appController.navigateTo("details", { componentId: modelData.id })
                     }

@@ -22,6 +22,9 @@ class AppController : public QObject {
     Q_PROPERTY(bool loading READ loading NOTIFY loadingChanged)
     Q_PROPERTY(QString selectedApp READ selectedApp NOTIFY selectedAppChanged)
     Q_PROPERTY(QStringList authors READ authors NOTIFY authorsChanged)
+    Q_PROPERTY(bool appUpdateAvailable READ appUpdateAvailable NOTIFY appUpdateAvailableChanged)
+    Q_PROPERTY(QString appUpdateVersion READ appUpdateVersion NOTIFY appUpdateAvailableChanged)
+    Q_PROPERTY(int updatesAvailableCount READ updatesAvailableCount NOTIFY updatesAvailableCountChanged)
 
 public:
     explicit AppController(QObject *parent = nullptr);
@@ -34,6 +37,9 @@ public:
     bool loading() const;
     QString selectedApp() const;
     QStringList authors() const;
+    bool appUpdateAvailable() const;
+    QString appUpdateVersion() const;
+    int updatesAvailableCount() const;
 
     Q_INVOKABLE void initialize();
 
@@ -55,6 +61,15 @@ public:
     // Install
     Q_INVOKABLE void installComponent(const QString &componentId);
 
+    // Self-update
+    Q_INVOKABLE void updateApp();
+
+    // Update all components
+    Q_INVOKABLE void updateAllComponents();
+
+    // Uninstall
+    Q_INVOKABLE void uninstallComponent(const QString &componentId);
+
     // Favorites
     Q_INVOKABLE bool isFavorite(const QString &componentId) const;
     Q_INVOKABLE void toggleFavorite(const QString &componentId);
@@ -68,12 +83,15 @@ signals:
     void loadingChanged();
     void selectedAppChanged();
     void authorsChanged();
+    void appUpdateAvailableChanged();
+    void updatesAvailableCountChanged();
     void navigationRequested(const QString &screen, const QVariantMap &params);
     void navigationBackRequested();
     void toastRequested(const QString &message, const QString &type);
 
 private:
     void onManifestLoaded(const QList<Component> &components, const QStringList &categories);
+    void onAppUpdateAvailable(const QString &version, const QString &url);
 
     ComponentModel *m_componentModel;
     CategoryModel *m_categoryModel;
@@ -87,6 +105,9 @@ private:
     QList<Component> m_allComponents;
     bool m_loading = false;
     QString m_selectedApp = "All";
+    bool m_appUpdateAvailable = false;
+    QString m_appUpdateVersion;
+    QString m_appUpdateUrl;
 };
 
 #endif // APPCONTROLLER_H

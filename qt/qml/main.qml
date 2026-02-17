@@ -12,7 +12,7 @@ ApplicationWindow {
     height: 700
     minimumWidth: 800
     minimumHeight: 500
-    title: "Component Manager"
+    title: "AEJuice App Store"
     color: CMTheme.backgroundColor
 
     // Bind theme from C++ settings
@@ -33,90 +33,125 @@ ApplicationWindow {
         color: CMTheme.surfaceColor
         z: 10
 
-        Row {
-            anchors.fill: parent
+        // Back button (left)
+        Rectangle {
+            width: 32
+            height: 32
+            anchors.left: parent.left
             anchors.leftMargin: CMTheme.spacingLarge
-            spacing: CMTheme.spacingDefault
+            anchors.verticalCenter: parent.verticalCenter
+            radius: CMTheme.radiusSmall
+            color: backArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+            visible: stackView.depth > 1
 
-            // Back button
-            Rectangle {
-                width: 32
-                height: 32
-                anchors.verticalCenter: parent.verticalCenter
-                radius: CMTheme.radiusSmall
-                color: backArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
-                visible: stackView.depth > 1
-
-                MaterialIcon {
-                    anchors.centerIn: parent
-                    iconName: "arrow_back"
-                    iconSize: 20
-                    iconColor: CMTheme.textColor
-                }
-
-                MouseArea {
-                    id: backArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: {
-                        if (stackView.depth > 1)
-                            stackView.pop()
-                    }
-                }
+            MaterialIcon {
+                anchors.centerIn: parent
+                iconName: "arrow_back"
+                iconSize: 20
+                iconColor: CMTheme.textColor
             }
 
+            MouseArea {
+                id: backArea
+                anchors.fill: parent
+                hoverEnabled: true
+                cursorShape: Qt.PointingHandCursor
+                onClicked: {
+                    if (stackView.depth > 1)
+                        stackView.pop()
+                }
+            }
         }
 
-        // Search field + Action buttons (right side)
+        // Search field (centered)
+        Rectangle {
+            width: Math.min(500, parent.width - 250)
+            height: 32
+            radius: CMTheme.radiusDefault
+            color: CMTheme.surfaceContainerHighColor
+            anchors.centerIn: parent
+
+            Row {
+                anchors.fill: parent
+                anchors.leftMargin: CMTheme.spacingDefault
+                anchors.rightMargin: CMTheme.spacingDefault
+                spacing: CMTheme.spacingSmall
+
+                MaterialIcon {
+                    iconName: "search"
+                    iconSize: 18
+                    iconColor: CMTheme.textMutedColor
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+
+                TextInput {
+                    id: navSearchInput
+                    width: parent.width - 26
+                    anchors.verticalCenter: parent.verticalCenter
+                    font.pixelSize: CMTheme.fontSizeDefault
+                    font.family: CMTheme.fontFamily
+                    color: CMTheme.textColor
+                    clip: true
+                    selectByMouse: true
+
+                    Text {
+                        anchors.verticalCenter: parent.verticalCenter
+                        text: "Search..."
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        color: CMTheme.textMutedColor
+                        visible: !navSearchInput.text && !navSearchInput.activeFocus
+                    }
+
+                    onTextChanged: appController.search(text)
+                }
+            }
+        }
+
+        // Action buttons (right)
         Row {
             anchors.right: parent.right
             anchors.rightMargin: CMTheme.spacingLarge
             anchors.verticalCenter: parent.verticalCenter
             spacing: CMTheme.spacingSmall
 
-            // Inline search field
+            // Update All
             Rectangle {
-                width: 200
-                height: 32
+                visible: appController.updatesAvailableCount > 0
+                width: updateAllRow.width + CMTheme.spacingLarge
+                height: 28
                 radius: CMTheme.radiusDefault
-                color: CMTheme.surfaceContainerHighColor
+                color: updateAllArea.containsMouse ? "#C68400" : "#F9A825"
                 anchors.verticalCenter: parent.verticalCenter
 
                 Row {
-                    anchors.fill: parent
-                    anchors.leftMargin: CMTheme.spacingDefault
-                    anchors.rightMargin: CMTheme.spacingDefault
+                    id: updateAllRow
+                    anchors.centerIn: parent
                     spacing: CMTheme.spacingSmall
 
                     MaterialIcon {
-                        iconName: "search"
-                        iconSize: 18
-                        iconColor: CMTheme.textMutedColor
+                        iconName: "update"
+                        iconSize: 16
+                        iconColor: "#000000"
                         anchors.verticalCenter: parent.verticalCenter
                     }
 
-                    TextInput {
-                        id: navSearchInput
-                        width: parent.width - 26
-                        anchors.verticalCenter: parent.verticalCenter
-                        font.pixelSize: CMTheme.fontSizeDefault
+                    Text {
+                        text: "Update All (" + appController.updatesAvailableCount + ")"
+                        font.pixelSize: CMTheme.fontSizeSmall
+                        font.bold: true
                         font.family: CMTheme.fontFamily
-                        color: CMTheme.textColor
-                        clip: true
-                        selectByMouse: true
-
-                        Text {
-                            anchors.verticalCenter: parent.verticalCenter
-                            text: "Search..."
-                            font.pixelSize: CMTheme.fontSizeDefault
-                            font.family: CMTheme.fontFamily
-                            color: CMTheme.textMutedColor
-                            visible: !navSearchInput.text && !navSearchInput.activeFocus
-                        }
-
-                        onTextChanged: appController.search(text)
+                        color: "#000000"
+                        anchors.verticalCenter: parent.verticalCenter
                     }
+                }
+
+                MouseArea {
+                    id: updateAllArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: appController.updateAllComponents()
                 }
             }
 
@@ -200,10 +235,70 @@ ApplicationWindow {
         }
     }
 
+    // App update banner
+    Rectangle {
+        id: updateBanner
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: navBar.bottom
+        height: appController.appUpdateAvailable ? 36 : 0
+        visible: appController.appUpdateAvailable
+        color: "#E65100"
+        z: 9
+
+        Row {
+            anchors.centerIn: parent
+            spacing: CMTheme.spacingDefault
+
+            MaterialIcon {
+                iconName: "system_update"
+                iconSize: 18
+                iconColor: "#FFFFFF"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Text {
+                text: "Version " + appController.appUpdateVersion + " is available"
+                font.pixelSize: CMTheme.fontSizeDefault
+                font.family: CMTheme.fontFamily
+                color: "#FFFFFF"
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Rectangle {
+                width: updateBtnText.width + CMTheme.spacingLarge
+                height: 24
+                radius: CMTheme.radiusSmall
+                color: updateBtnArea.containsMouse ? "#FFFFFF" : "transparent"
+                border.color: "#FFFFFF"
+                border.width: 1
+                anchors.verticalCenter: parent.verticalCenter
+
+                Text {
+                    id: updateBtnText
+                    anchors.centerIn: parent
+                    text: "Update"
+                    font.pixelSize: CMTheme.fontSizeSmall
+                    font.bold: true
+                    font.family: CMTheme.fontFamily
+                    color: updateBtnArea.containsMouse ? "#E65100" : "#FFFFFF"
+                }
+
+                MouseArea {
+                    id: updateBtnArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: appController.updateApp()
+                }
+            }
+        }
+    }
+
     // Main content
     StackView {
         id: stackView
-        anchors.top: navBar.bottom
+        anchors.top: updateBanner.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
@@ -367,6 +462,121 @@ ApplicationWindow {
             PauseAnimation { duration: 3000 }
             NumberAnimation { target: toast; property: "opacity"; to: 0; duration: 300 }
         }
+    }
+
+    // Uninstall confirmation dialog
+    function confirmUninstall(componentId, componentName) {
+        uninstallDialog.componentId = componentId
+        uninstallDialog.componentName = componentName
+        uninstallDialog.open()
+    }
+
+    Popup {
+        id: uninstallDialog
+        anchors.centerIn: parent
+        width: 360
+        height: 160
+        modal: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        z: 300
+
+        property string componentId: ""
+        property string componentName: ""
+
+        background: Rectangle {
+            radius: CMTheme.radiusLarge
+            color: CMTheme.surfaceColor
+            border.color: CMTheme.borderColor
+            border.width: 1
+        }
+
+        Column {
+            anchors.fill: parent
+            anchors.margins: CMTheme.spacingLarge
+            spacing: CMTheme.spacingMedium
+
+            Text {
+                text: "Uninstall " + uninstallDialog.componentName + "?"
+                font.pixelSize: CMTheme.fontSizeLarge
+                font.bold: true
+                font.family: CMTheme.fontFamily
+                color: CMTheme.textColor
+                width: parent.width
+                wrapMode: Text.WordWrap
+            }
+
+            Text {
+                text: "This will remove it from your installed list."
+                font.pixelSize: CMTheme.fontSizeDefault
+                font.family: CMTheme.fontFamily
+                color: CMTheme.textMutedColor
+            }
+
+            Row {
+                anchors.right: parent.right
+                spacing: CMTheme.spacingDefault
+
+                Rectangle {
+                    width: cancelText.width + CMTheme.spacingLarge * 2
+                    height: 32
+                    radius: CMTheme.radiusDefault
+                    color: cancelArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+
+                    Text {
+                        id: cancelText
+                        anchors.centerIn: parent
+                        text: "Cancel"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        color: CMTheme.textColor
+                    }
+
+                    MouseArea {
+                        id: cancelArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: uninstallDialog.close()
+                    }
+                }
+
+                Rectangle {
+                    width: confirmText.width + CMTheme.spacingLarge * 2
+                    height: 32
+                    radius: CMTheme.radiusDefault
+                    color: confirmArea.containsMouse ? "#B71C1C" : "#93000A"
+
+                    Text {
+                        id: confirmText
+                        anchors.centerIn: parent
+                        text: "Uninstall"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.bold: true
+                        font.family: CMTheme.fontFamily
+                        color: "#FFFFFF"
+                    }
+
+                    MouseArea {
+                        id: confirmArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            appController.uninstallComponent(uninstallDialog.componentId)
+                            uninstallDialog.close()
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // Dim overlay when dialog is open
+    Rectangle {
+        anchors.fill: parent
+        color: "#80000000"
+        visible: uninstallDialog.opened
+        z: 299
     }
 
     // Initial theme sync

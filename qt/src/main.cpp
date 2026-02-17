@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
     QQuickStyle::setStyle("Basic");
 
     QGuiApplication app(argc, argv);
-    app.setApplicationName("Component Manager");
+    app.setApplicationName("AEJuice App Store");
     app.setOrganizationName("AEJuice");
     app.setApplicationVersion("1.0.0");
 

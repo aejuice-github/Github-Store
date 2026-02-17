@@ -1,4 +1,5 @@
 #include "ComponentModel.h"
+#include "managers/ManifestManager.h"
 
 ComponentModel::ComponentModel(QObject *parent)
     : QAbstractListModel(parent)
@@ -29,6 +30,7 @@ QVariant ComponentModel::data(const QModelIndex &index, int role) const
     case IconRole: return component.icon;
     case PriceRole: return component.price;
     case IsInstalledRole: return m_installedIds.contains(component.id);
+    case IsUpdateAvailableRole: return isUpdateAvailable(component);
     case CompatibleAppsRole: return component.compatibleApps;
     case TagsRole: return component.tags;
     case RunnableRole: return component.runnable;
@@ -50,6 +52,7 @@ QHash<int, QByteArray> ComponentModel::roleNames() const
         {IconRole, "icon"},
         {PriceRole, "price"},
         {IsInstalledRole, "isInstalled"},
+        {IsUpdateAvailableRole, "isUpdateAvailable"},
         {CompatibleAppsRole, "compatibleApps"},
         {TagsRole, "tags"},
         {RunnableRole, "runnable"}
@@ -107,7 +110,26 @@ QStringList ComponentModel::getAuthors() const
 void ComponentModel::setInstalledIds(const QSet<QString> &ids)
 {
     m_installedIds = ids;
-    emit dataChanged(index(0), index(rowCount() - 1), {IsInstalledRole});
+    emit dataChanged(index(0), index(rowCount() - 1), {IsInstalledRole, IsUpdateAvailableRole});
+}
+
+void ComponentModel::setInstalledVersions(const QMap<QString, QString> &versions)
+{
+    m_installedVersions = versions;
+    m_installedIds.clear();
+    for (auto it = versions.begin(); it != versions.end(); ++it)
+        m_installedIds.insert(it.key());
+    emit dataChanged(index(0), index(rowCount() - 1), {IsInstalledRole, IsUpdateAvailableRole});
+}
+
+bool ComponentModel::isUpdateAvailable(const Component &component) const
+{
+    if (!m_installedIds.contains(component.id))
+        return false;
+    QString installedVersion = m_installedVersions.value(component.id);
+    if (installedVersion.isEmpty())
+        return false;
+    return ManifestManager::compareVersions(installedVersion, component.version) < 0;
 }
 
 QVariantMap ComponentModel::getComponentById(const QString &id) const

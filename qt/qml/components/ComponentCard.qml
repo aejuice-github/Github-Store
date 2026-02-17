@@ -18,6 +18,7 @@ Rectangle {
     property string version: ""
     property int price: 0
     property bool installed: false
+    property bool updateAvailable: false
 
     signal clicked()
     signal installRequested()
@@ -56,7 +57,7 @@ Rectangle {
 
     }
 
-    // Row 5: Full-width Install button (anchored to bottom)
+    // Row 5: Full-width Install/Update button (anchored to bottom)
     Rectangle {
         id: installButton
         anchors.left: parent.left
@@ -66,6 +67,9 @@ Rectangle {
         height: 36
         radius: CMTheme.radiusDefault
         color: {
+            if (card.updateAvailable && installBtnArea.containsMouse) return "#F9A825"
+            if (card.updateAvailable) return CMTheme.surfaceContainerHighColor
+            if (card.installed && installBtnArea.containsMouse) return "#93000A"
             if (card.installed) return CMTheme.surfaceContainerHighColor
             if (installBtnArea.containsMouse) return CMTheme.accentColor
             return CMTheme.surfaceContainerHighColor
@@ -76,19 +80,37 @@ Rectangle {
             spacing: CMTheme.spacingSmall
 
             MaterialIcon {
-                iconName: "download"
+                iconName: {
+                    if (card.updateAvailable) return "update"
+                    if (card.installed && installBtnArea.containsMouse) return "delete"
+                    if (card.installed) return "check_circle"
+                    return "download"
+                }
                 iconSize: 18
-                iconColor: installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
-                visible: !card.installed
+                iconColor: {
+                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : "#F9A825"
+                    if (card.installed) return installBtnArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                    return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                }
+                visible: true
                 anchors.verticalCenter: parent.verticalCenter
             }
 
             Text {
-                text: card.installed ? "\u2713  Installed" : "Install"
+                text: {
+                    if (card.updateAvailable) return "Update"
+                    if (card.installed && installBtnArea.containsMouse) return "Uninstall"
+                    if (card.installed) return "Installed"
+                    return "Install"
+                }
                 font.pixelSize: CMTheme.fontSizeDefault
                 font.bold: true
                 font.family: CMTheme.fontFamily
-                color: card.installed ? CMTheme.textMutedColor : (installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor)
+                color: {
+                    if (card.updateAvailable) return installBtnArea.containsMouse ? CMTheme.backgroundColor : "#F9A825"
+                    if (card.installed) return installBtnArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                    return installBtnArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                }
                 anchors.verticalCenter: parent.verticalCenter
             }
         }
@@ -97,10 +119,12 @@ Rectangle {
             id: installBtnArea
             anchors.fill: parent
             hoverEnabled: true
-            cursorShape: card.installed ? Qt.ArrowCursor : Qt.PointingHandCursor
+            cursorShape: Qt.PointingHandCursor
             onClicked: {
-                if (!card.installed)
+                if (card.updateAvailable || !card.installed)
                     appController.installComponent(card.componentId)
+                else
+                    root.confirmUninstall(card.componentId, card.name)
             }
         }
     }
