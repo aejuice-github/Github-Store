@@ -9,10 +9,44 @@ Rectangle {
 
     property string componentId: ""
     property var details: ({})
+    property bool isFavorite: false
 
     Component.onCompleted: {
-        if (componentId)
+        if (componentId) {
             details = appController.getComponentDetails(componentId)
+            isFavorite = appController.isFavorite(componentId)
+        }
+    }
+
+    // Favorite button (top right)
+    Rectangle {
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.rightMargin: CMTheme.spacingLarge + 25
+        anchors.topMargin: CMTheme.spacingLarge
+        width: 40
+        height: 40
+        radius: 20
+        z: 10
+        color: favBtnArea.containsMouse ? CMTheme.surfaceContainerHighColor : CMTheme.surfaceContainerColor
+
+        MaterialIcon {
+            anchors.centerIn: parent
+            iconName: "favorite"
+            iconSize: 22
+            iconColor: detailsScreen.isFavorite ? "#FF4081" : CMTheme.textMutedColor
+        }
+
+        MouseArea {
+            id: favBtnArea
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: {
+                appController.toggleFavorite(detailsScreen.componentId)
+                detailsScreen.isFavorite = !detailsScreen.isFavorite
+            }
+        }
     }
 
     Flickable {
@@ -20,6 +54,7 @@ Rectangle {
         anchors.margins: CMTheme.spacingXLarge
         contentHeight: contentColumn.height
         clip: true
+        boundsBehavior: Flickable.StopAtBounds
 
         ScrollBar.vertical: ScrollBar {
             policy: ScrollBar.AsNeeded
@@ -145,9 +180,46 @@ Rectangle {
                 }
 
                 InfoRow { label: "Type"; value: details.type || "" }
-                InfoRow { label: "Category"; value: details.category || "" }
+
+                Row {
+                    spacing: CMTheme.spacingDefault
+                    Text {
+                        text: "Category:"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        font.bold: true
+                        color: CMTheme.textMutedColor
+                        width: 100
+                    }
+                    TagChip {
+                        text: details.category || ""
+                        onClicked: {
+                            appController.filterByCategory(details.category)
+                            appController.navigateTo("home")
+                        }
+                    }
+                }
+
                 InfoRow { label: "Version"; value: details.version || "" }
-                InfoRow { label: "Author"; value: details.author || "" }
+
+                Row {
+                    spacing: CMTheme.spacingDefault
+                    Text {
+                        text: "Author:"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        font.bold: true
+                        color: CMTheme.textMutedColor
+                        width: 100
+                    }
+                    TagChip {
+                        text: details.author || ""
+                        onClicked: {
+                            appController.filterByAuthor(details.author)
+                            appController.navigateTo("home")
+                        }
+                    }
+                }
             }
 
             // Compatible apps
@@ -170,7 +242,13 @@ Rectangle {
 
                     Repeater {
                         model: details.compatibleApps || []
-                        TagChip { text: modelData }
+                        TagChip {
+                            text: modelData
+                            onClicked: {
+                                appController.filterByApp(modelData)
+                                appController.navigateTo("home")
+                            }
+                        }
                     }
                 }
             }
@@ -195,7 +273,13 @@ Rectangle {
 
                     Repeater {
                         model: details.tags || []
-                        TagChip { text: modelData }
+                        TagChip {
+                            text: modelData
+                            onClicked: {
+                                appController.search(modelData)
+                                appController.navigateTo("home")
+                            }
+                        }
                     }
                 }
             }

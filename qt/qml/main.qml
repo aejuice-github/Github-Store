@@ -61,45 +61,61 @@ Rectangle {
                 }
             }
 
-            // Title
-            Text {
-                anchors.verticalCenter: parent.verticalCenter
-                text: "Component Manager"
-                font.pixelSize: CMTheme.fontSizeLarge
-                font.bold: true
-                font.family: CMTheme.fontFamily
-                color: CMTheme.textColor
-            }
         }
 
-        // Action buttons (right side)
+        // Search field + Action buttons (right side)
         Row {
             anchors.right: parent.right
             anchors.rightMargin: CMTheme.spacingLarge
             anchors.verticalCenter: parent.verticalCenter
             spacing: CMTheme.spacingSmall
 
-            // Search
+            // Inline search field
             Rectangle {
-                width: 32; height: 32
-                radius: CMTheme.radiusSmall
-                color: searchArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
-                MaterialIcon {
-                    anchors.centerIn: parent
-                    iconName: "search"
-                    iconSize: 20
-                    iconColor: CMTheme.textColor
-                }
-                MouseArea {
-                    id: searchArea
+                width: 200
+                height: 32
+                radius: CMTheme.radiusDefault
+                color: CMTheme.surfaceContainerHighColor
+                anchors.verticalCenter: parent.verticalCenter
+
+                Row {
                     anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: stackView.push(searchScreenComp)
+                    anchors.leftMargin: CMTheme.spacingDefault
+                    anchors.rightMargin: CMTheme.spacingDefault
+                    spacing: CMTheme.spacingSmall
+
+                    MaterialIcon {
+                        iconName: "search"
+                        iconSize: 18
+                        iconColor: CMTheme.textMutedColor
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    TextInput {
+                        id: navSearchInput
+                        width: parent.width - 26
+                        anchors.verticalCenter: parent.verticalCenter
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        color: CMTheme.textColor
+                        clip: true
+                        selectByMouse: true
+
+                        Text {
+                            anchors.verticalCenter: parent.verticalCenter
+                            text: "Search..."
+                            font.pixelSize: CMTheme.fontSizeDefault
+                            font.family: CMTheme.fontFamily
+                            color: CMTheme.textMutedColor
+                            visible: !navSearchInput.text && !navSearchInput.activeFocus
+                        }
+
+                        onTextChanged: appController.search(text)
+                    }
                 }
             }
 
-            // Favourites
+            // Favorites
             Rectangle {
                 width: 32; height: 32
                 radius: CMTheme.radiusSmall
@@ -110,12 +126,15 @@ Rectangle {
                     iconSize: 20
                     iconColor: CMTheme.textColor
                 }
+                ToolTip.visible: favArea.containsMouse
+                ToolTip.text: "Favorites"
+                ToolTip.delay: 500
                 MouseArea {
                     id: favArea
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: stackView.push(favouritesScreenComp)
+                    onClicked: { stackView.pop(null); stackView.push(favoritesScreenComp) }
                 }
             }
 
@@ -130,12 +149,15 @@ Rectangle {
                     iconSize: 20
                     iconColor: CMTheme.textColor
                 }
+                ToolTip.visible: appsArea.containsMouse
+                ToolTip.text: "Installed Apps"
+                ToolTip.delay: 500
                 MouseArea {
                     id: appsArea
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: stackView.push(installedAppsScreenComp)
+                    onClicked: { stackView.pop(null); stackView.push(installedAppsScreenComp) }
                 }
             }
 
@@ -150,12 +172,15 @@ Rectangle {
                     iconSize: 20
                     iconColor: CMTheme.textColor
                 }
+                ToolTip.visible: installArea.containsMouse
+                ToolTip.text: "Manual Install"
+                ToolTip.delay: 500
                 MouseArea {
                     id: installArea
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: stackView.push(manualInstallScreenComp)
+                    onClicked: { stackView.pop(null); stackView.push(manualInstallScreenComp) }
                 }
             }
         }
@@ -211,8 +236,8 @@ Rectangle {
     }
 
     Component {
-        id: favouritesScreenComp
-        FavouritesScreen {}
+        id: favoritesScreenComp
+        FavoritesScreen {}
     }
 
     Component {
@@ -235,7 +260,7 @@ Rectangle {
                 case "search": comp = searchScreenComp; break
                 case "details": comp = detailsScreenComp; break
                 case "settings": comp = settingsScreenComp; break
-                case "favourites": comp = favouritesScreenComp; break
+                case "favorites": comp = favoritesScreenComp; break
                 case "apps": comp = installedAppsScreenComp; break
                 case "install": comp = manualInstallScreenComp; break
             }

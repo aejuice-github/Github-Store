@@ -38,9 +38,23 @@ Rectangle {
                     }
 
                     AppDropdown {
+                        id: appDropdown
                         width: parent.width
                         model: appController.getAvailableApps()
                         onActivated: appController.filterByApp(currentText)
+
+                        Connections {
+                            target: appController
+                            function onSelectedAppChanged() {
+                                var apps = appController.getAvailableApps()
+                                for (var i = 0; i < apps.length; i++) {
+                                    if (apps[i] === appController.selectedApp) {
+                                        appDropdown.currentIndex = i
+                                        return
+                                    }
+                                }
+                            }
+                        }
                     }
 
                     // Price filter
@@ -126,6 +140,40 @@ Rectangle {
                             name: model.name
                             selected: model.isSelected
                             onClicked: appController.filterByCategory(model.name)
+                        }
+                    }
+
+                    // Author filter
+                    Rectangle {
+                        width: parent.width
+                        height: 1
+                        color: CMTheme.borderColor
+                    }
+
+                    Text {
+                        text: "Author"
+                        font.pixelSize: CMTheme.fontSizeSmall
+                        font.family: CMTheme.fontFamily
+                        color: CMTheme.textMutedColor
+                    }
+
+                    ListView {
+                        id: authorList
+                        width: parent.width
+                        height: contentHeight
+                        model: appController.authors
+                        interactive: false
+                        spacing: 2
+
+                        property string selectedAuthor: "All"
+
+                        delegate: SidebarCategory {
+                            name: modelData
+                            selected: authorList.selectedAuthor === modelData
+                            onClicked: {
+                                authorList.selectedAuthor = modelData
+                                appController.filterByAuthor(modelData)
+                            }
                         }
                     }
                 }
