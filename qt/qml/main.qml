@@ -16,6 +16,7 @@ ApplicationWindow {
     color: CMTheme.backgroundColor
 
     property string searchQuery: navSearchInput.text
+    property bool listView: true
 
     function clearSearch() {
         navSearchInput.text = ""
@@ -76,9 +77,7 @@ ApplicationWindow {
             height: 32
             radius: CMTheme.radiusDefault
             color: CMTheme.surfaceContainerHighColor
-            anchors.left: parent.left
-            anchors.leftMargin: stackView.depth > 1 ? 64 : CMTheme.spacingLarge
-            anchors.verticalCenter: parent.verticalCenter
+            anchors.centerIn: parent
 
             Row {
                 anchors.fill: parent
@@ -143,43 +142,26 @@ ApplicationWindow {
             anchors.verticalCenter: parent.verticalCenter
             spacing: CMTheme.spacingSmall
 
-            // Update All
+            // View toggle
             Rectangle {
-                visible: appController.updatesAvailableCount > 0
-                width: updateAllRow.width + CMTheme.spacingLarge
-                height: 28
-                radius: CMTheme.radiusDefault
-                color: updateAllArea.containsMouse ? Qt.darker(CMTheme.accentColor, 1.3) : CMTheme.accentColor
-                anchors.verticalCenter: parent.verticalCenter
-
-                Row {
-                    id: updateAllRow
+                width: 32; height: 32
+                radius: CMTheme.radiusSmall
+                color: viewToggleArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+                MaterialIcon {
                     anchors.centerIn: parent
-                    spacing: CMTheme.spacingSmall
-
-                    MaterialIcon {
-                        iconName: "update"
-                        iconSize: 16
-                        iconColor: "#000000"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
-                    Text {
-                        text: "Update All (" + appController.updatesAvailableCount + ")"
-                        font.pixelSize: CMTheme.fontSizeSmall
-                        font.bold: true
-                        font.family: CMTheme.fontFamily
-                        color: "#000000"
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
+                    iconName: root.listView ? "grid_view" : "view_list"
+                    iconSize: 20
+                    iconColor: CMTheme.textColor
                 }
-
+                ToolTip.visible: viewToggleArea.containsMouse
+                ToolTip.text: root.listView ? "Grid View" : "List View"
+                ToolTip.delay: 500
                 MouseArea {
-                    id: updateAllArea
+                    id: viewToggleArea
                     anchors.fill: parent
                     hoverEnabled: true
                     cursorShape: Qt.PointingHandCursor
-                    onClicked: appController.updateAllComponents()
+                    onClicked: root.listView = !root.listView
                 }
             }
 
@@ -471,7 +453,7 @@ ApplicationWindow {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: CMTheme.spacingXLarge
-        width: toastText.width + CMTheme.spacingXLarge * 2
+        width: Math.min(root.width - CMTheme.spacingXLarge * 2, toastText.contentWidth + CMTheme.spacingXLarge * 2)
         height: 40
         radius: CMTheme.radiusDefault
         color: toastColor
@@ -481,13 +463,18 @@ ApplicationWindow {
         property string toastType: "info"
         property color toastColor: CMTheme.surfaceContainerHighColor
 
-        Text {
+        TextEdit {
             id: toastText
             anchors.centerIn: parent
             text: ""
             font.pixelSize: CMTheme.fontSizeDefault
             font.family: CMTheme.fontFamily
             color: CMTheme.textColor
+            readOnly: true
+            selectByMouse: true
+            selectedTextColor: CMTheme.backgroundColor
+            selectionColor: CMTheme.accentColor
+            cursorVisible: false
         }
 
         function show(message, type) {
@@ -505,7 +492,7 @@ ApplicationWindow {
         SequentialAnimation {
             id: toastAnimation
             NumberAnimation { target: toast; property: "opacity"; to: 1; duration: 200 }
-            PauseAnimation { duration: 3000 }
+            PauseAnimation { duration: 7000 }
             NumberAnimation { target: toast; property: "opacity"; to: 0; duration: 300 }
         }
     }
@@ -625,9 +612,24 @@ ApplicationWindow {
         z: 299
     }
 
-    // Initial theme sync
+    // Initial theme sync and window sizing
+    Timer {
+        id: positionTimer
+        interval: 50
+        onTriggered: {
+            var availW = Screen.desktopAvailableWidth
+            var availH = Screen.desktopAvailableHeight
+            var frameMargin = 60  // Reserve space for title bar and window frame
+            if (root.width > availW) root.width = availW
+            if (root.height > availH - frameMargin) root.height = availH - frameMargin
+            root.x = Math.max(0, (availW - root.width) / 2)
+            root.y = Math.max(0, (availH - root.height - frameMargin) / 2 + frameMargin)
+        }
+    }
+
     Component.onCompleted: {
         CMTheme.setTheme(appController.settings.themeColor)
+        positionTimer.start()
         appController.initialize()
     }
 }
