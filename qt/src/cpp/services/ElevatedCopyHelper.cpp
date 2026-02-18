@@ -26,6 +26,26 @@ ElevatedCopyHelper::~ElevatedCopyHelper()
 bool ElevatedCopyHelper::copyFiles(const QString &source, const QStringList &destinations)
 {
 #ifdef Q_OS_WIN
+    // Try direct copy first — no UAC needed if we already have permission
+    bool directSuccess = true;
+    for (const QString &dest : destinations) {
+        QDir().mkpath(QFileInfo(dest).absolutePath());
+        if (QFile::exists(dest))
+            QFile::remove(dest);
+        if (!QFile::copy(source, dest)) {
+            directSuccess = false;
+            break;
+        }
+    }
+    if (directSuccess)
+        return true;
+
+    // Clean up partial direct copies before elevating
+    for (const QString &dest : destinations) {
+        if (QFile::exists(dest))
+            QFile::remove(dest);
+    }
+
     if (m_running && !isHelperAlive()) {
         qDebug() << "Elevated helper died, will relaunch";
         CloseHandle(m_pipe);

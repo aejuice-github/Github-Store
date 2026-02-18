@@ -1,0 +1,22 @@
+<RCC>
+    <qresource prefix="/">
+        <file>qml/main.qml</file>
+        <file>qml/screens/HomeScreen.qml</file>
+        <file>qml/screens/SearchScreen.qml</file>
+        <file>qml/screens/DetailsScreen.qml</file>
+        <file>qml/screens/SettingsScreen.qml</file>
+        <file>qml/components/ComponentCard.qml</file>
+        <file>qml/components/SidebarCategory.qml</file>
+        <file>qml/components/ActionButton.qml</file>
+        <file>qml/components/SearchField.qml</file>
+        <file>qml/components/AppDropdown.qml</file>
+        <file>qml/components/PriceBadge.qml</file>
+        <file>qml/components/IconImage.qml</file>
+        <file>qml/components/InfoRow.qml</file>
+        <file>qml/components/TagChip.qml</file>
+        <file>qml/components/ThemeColorSelector.qml</file>
+        <file>qml/singletons/CMTheme.qml</file>
+        <file>qml/singletons/qmldir</file>
+        <file>resources/bundled-manifest.json</file>
+    </qresource>
+</RCC>
