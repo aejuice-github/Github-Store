@@ -5,6 +5,10 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
+#include <QFileInfo>
+#include <QDir>
+#include <QDateTime>
+#include <QStandardPaths>
 #include <QCoreApplication>
 #include <QDebug>
 
@@ -23,6 +27,10 @@ void ManifestManager::setJsonStorage(JsonStorage *storage)
 
 void ManifestManager::loadManifest()
 {
+    // Use cached manifest if fetched within the last 24 hours
+    if (loadCachedManifest())
+        return;
+
     QUrl url(m_manifestUrl);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute,
@@ -35,10 +43,10 @@ void ManifestManager::onNetworkReply(QNetworkReply *reply)
     reply->deleteLater();
 
     if (reply->error() != QNetworkReply::NoError) {
-        qWarning() << "Network error, falling back to bundled manifest:" << reply->errorString();
-        qWarning() << "URL:" << reply->url().toString();
-        qWarning() << "HTTP status:" << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-        loadBundledManifest();
+        qWarning() << "Network error:" << reply->errorString();
+        // Try cache regardless of age, then bundled
+        if (!loadCachedManifest())
+            loadBundledManifest();
         return;
     }
 
@@ -47,11 +55,13 @@ void ManifestManager::onNetworkReply(QNetworkReply *reply)
 
     QJsonDocument doc = QJsonDocument::fromJson(data);
     if (doc.isNull() || doc.object()["components"].toArray().isEmpty()) {
-        qWarning() << "Network manifest has no components, falling back to bundled";
-        loadBundledManifest();
+        qWarning() << "Network manifest has no components, falling back";
+        if (!loadCachedManifest())
+            loadBundledManifest();
         return;
     }
 
+    saveCachedManifest(data);
     parseManifest(data);
 }
 
@@ -72,6 +82,13 @@ void ManifestManager::parseManifest(const QByteArray &data)
 
     for (const auto &componentJson : root["components"].toArray()) {
         Component component = Component::fromJson(componentJson.toObject());
+#ifdef Q_OS_WIN
+        QString platform = "windows";
+#else
+        QString platform = "macos";
+#endif
+        if (!component.platforms.isEmpty() && !component.platforms.contains(platform))
+            continue;
         if (m_storage && !m_storage->isInRollout(component.id, component.rolloutPercentage))
             continue;
         components.append(component);
@@ -98,6 +115,47 @@ void ManifestManager::loadBundledManifest()
     }
 
     parseManifest(file.readAll());
+}
+
+bool ManifestManager::loadCachedManifest()
+{
+    QString path = cachePath();
+    QFileInfo info(path);
+    if (!info.exists())
+        return false;
+
+    qint64 ageHours = info.lastModified().secsTo(QDateTime::currentDateTime()) / 3600;
+    if (ageHours >= CACHE_HOURS)
+        return false;
+
+    QFile file(path);
+    if (!file.open(QIODevice::ReadOnly))
+        return false;
+
+    QByteArray data = file.readAll();
+    QJsonDocument doc = QJsonDocument::fromJson(data);
+    if (doc.isNull() || doc.object()["components"].toArray().isEmpty())
+        return false;
+
+    qDebug() << "Using cached manifest, age:" << ageHours << "hours";
+    parseManifest(data);
+    return true;
+}
+
+void ManifestManager::saveCachedManifest(const QByteArray &data)
+{
+    QString path = cachePath();
+    QDir().mkpath(QFileInfo(path).absolutePath());
+
+    QFile file(path);
+    if (file.open(QIODevice::WriteOnly))
+        file.write(data);
+}
+
+QString ManifestManager::cachePath() const
+{
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+           + "/manifest-cache.json";
 }
 
 int ManifestManager::compareVersions(const QString &a, const QString &b)

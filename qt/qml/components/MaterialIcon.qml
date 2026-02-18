@@ -49,7 +49,9 @@ Text {
             "update": "\ue923",
             "system_update": "\ue62a",
             "delete": "\ue872",
-            "close": "\ue5cd"
+            "close": "\ue5cd",
+            "view_list": "\ue8ef",
+            "more_vert": "\ue5d4"
         }
         return codepoints[iconName] || "\ue5c3"
     }

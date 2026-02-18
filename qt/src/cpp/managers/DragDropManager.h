@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QStringList>
 
+class ElevatedCopyHelper;
+
 class DragDropManager : public QObject
 {
     Q_OBJECT
@@ -29,7 +31,10 @@ signals:
 private:
     void installFiles(const QStringList &files);
     QStringList findInstallPaths(const QString &extension);
+    QStringList processesForExtension(const QString &extension);
+    QStringList findRunningProcesses(const QStringList &processNames);
 
+    ElevatedCopyHelper *m_elevatedHelper = nullptr;
     bool m_isDragActive = false;
     QStringList m_droppedFiles;
 };

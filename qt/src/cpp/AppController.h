@@ -57,6 +57,7 @@ public:
 
     // Component details
     Q_INVOKABLE QVariantMap getComponentDetails(const QString &componentId);
+    Q_INVOKABLE void openComponentPage(const QString &componentId);
 
     // Install
     Q_INVOKABLE void installComponent(const QString &componentId);

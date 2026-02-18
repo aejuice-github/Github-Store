@@ -135,7 +135,7 @@ Rectangle {
                     anchors.verticalCenter: parent.verticalCenter
                     iconName: "add_circle"
                     iconSize: 20
-                    iconColor: installMoreArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                    iconColor: installMoreArea.containsMouse ? "#FFFFFF" : CMTheme.textColor
                 }
 
                 Text {
@@ -144,7 +144,7 @@ Rectangle {
                     font.pixelSize: CMTheme.fontSizeMedium
                     font.family: CMTheme.fontFamily
                     font.bold: true
-                    color: installMoreArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                    color: installMoreArea.containsMouse ? "#FFFFFF" : CMTheme.textColor
                 }
             }
 

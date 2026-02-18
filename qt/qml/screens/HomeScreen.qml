@@ -98,7 +98,7 @@ Rectangle {
                                     font.pixelSize: CMTheme.fontSizeDefault
                                     font.family: CMTheme.fontFamily
                                     font.bold: parent.parent.selected === modelData
-                                    color: parent.parent.selected === modelData ? CMTheme.backgroundColor : CMTheme.textColor
+                                    color: parent.parent.selected === modelData ? "#FFFFFF" : CMTheme.textColor
                                 }
 
                                 MouseArea {
@@ -203,7 +203,7 @@ Rectangle {
                 // Component grid
                 GridView {
                     id: gridView
-                    visible: !root.listView
+                    visible: false  // Hidden until card images are ready
                     anchors.fill: parent
                     cellWidth: width / 2
                     cellHeight: CMTheme.cardHeight + CMTheme.spacingMedium
@@ -245,7 +245,7 @@ Rectangle {
                             updateAvailable: model.isUpdateAvailable
                             searchQuery: root.searchQuery
                             onClicked: {
-                                appController.navigateTo("details", { componentId: model.componentId })
+                                appController.openComponentPage(model.componentId)
                             }
                         }
                     }
@@ -254,7 +254,7 @@ Rectangle {
                 // Component list
                 ListView {
                     id: listViewComp
-                    visible: root.listView
+                    visible: true
                     anchors.fill: parent
                     model: appController.componentModel
                     clip: true
@@ -286,7 +286,7 @@ Rectangle {
                             anchors.fill: parent
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
-                            onClicked: appController.navigateTo("details", { componentId: model.componentId })
+                            onClicked: appController.openComponentPage(model.componentId)
                         }
 
                         Row {
@@ -453,7 +453,7 @@ Rectangle {
                                         font.pixelSize: CMTheme.fontSizeDefault
                                         font.bold: true
                                         font.family: CMTheme.fontFamily
-                                        color: listUpdateArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                                        color: listUpdateArea.containsMouse ? "#FFFFFF" : CMTheme.textColor
                                     }
 
                                     MouseArea {
@@ -479,7 +479,7 @@ Rectangle {
                                         font.pixelSize: CMTheme.fontSizeDefault
                                         font.bold: true
                                         font.family: CMTheme.fontFamily
-                                        color: listInstallArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textColor
+                                        color: listInstallArea.containsMouse ? "#FFFFFF" : CMTheme.textColor
                                     }
 
                                     MouseArea {

@@ -1,4 +1,5 @@
 #include "DragDropManager.h"
+#include "services/ElevatedCopyHelper.h"
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
@@ -6,15 +7,11 @@
 #include <QStandardPaths>
 #include <QProcess>
 
-#ifdef Q_OS_WIN
-#include <windows.h>
-#include <shellapi.h>
-#endif
-
 static const QStringList SUPPORTED_EXTENSIONS = {"jsx", "jsxbin", "aex", "ofx", "zxp"};
 
 DragDropManager::DragDropManager(QObject *parent)
     : QObject(parent)
+    , m_elevatedHelper(new ElevatedCopyHelper(this))
 {
 }
 
@@ -42,10 +39,10 @@ void DragDropManager::clearDroppedFiles()
 
 void DragDropManager::installFiles(const QStringList &files)
 {
-    // Build list of copy operations: source -> destinations
-    QStringList copyCommands;
     QSet<QString> installedTypesSet;
     int fileCount = 0;
+    QStringList allSources;
+    QStringList allDestinations;
 
     for (const QString &filePath : files) {
         QFileInfo fileInfo(filePath);
@@ -66,16 +63,29 @@ void DragDropManager::installFiles(const QStringList &files)
             continue;
         }
 
+        // Check if file exists at any destination and blocking processes are running
+        QStringList blockingProcesses = processesForExtension(extension);
+        if (!blockingProcesses.isEmpty()) {
+            for (const QString &installDir : installPaths) {
+                QString destination = installDir + fileInfo.fileName();
+                if (QFile::exists(destination)) {
+                    QStringList running = findRunningProcesses(blockingProcesses);
+                    if (!running.isEmpty()) {
+                        emit installResult(
+                            "Close " + running.join(", ") + " and try again",
+                            "error", {});
+                        return;
+                    }
+                    break;  // Only need to check once per file
+                }
+            }
+        }
+
         installedTypesSet.insert(extension);
 
         for (const QString &installDir : installPaths) {
-            QString destination = installDir + fileInfo.fileName();
-            QString src = QDir::toNativeSeparators(filePath);
-            QString dst = QDir::toNativeSeparators(destination);
-            QString dir = QDir::toNativeSeparators(installDir);
-
-            copyCommands.append(QString("if not exist \"%1\" mkdir \"%1\"").arg(dir));
-            copyCommands.append(QString("copy /Y \"%1\" \"%2\"").arg(src, dst));
+            allSources.append(filePath);
+            allDestinations.append(installDir + fileInfo.fileName());
         }
 
         fileCount++;
@@ -83,73 +93,28 @@ void DragDropManager::installFiles(const QStringList &files)
 
     QStringList installedTypes(installedTypesSet.begin(), installedTypesSet.end());
 
-    if (copyCommands.isEmpty()) {
+    if (allDestinations.isEmpty()) {
         emit installResult("No supported files to install", "error", {});
         return;
     }
 
-#ifdef Q_OS_WIN
-    // Write a batch file with all copy commands
-    QString tempDir = QStandardPaths::writableLocation(QStandardPaths::TempLocation);
-    QString batPath = tempDir + "/cm_install.bat";
-
-    QFile batFile(batPath);
-    if (batFile.open(QIODevice::WriteOnly | QIODevice::Text)) {
-        QTextStream stream(&batFile);
-        stream << "@echo off\r\n";
-        for (const QString &cmd : copyCommands) {
-            stream << cmd << "\r\n";
-        }
-        batFile.close();
+    // Use elevated copy helper (same single-UAC approach as component installs)
+    bool success = true;
+    for (int i = 0; i < allSources.size(); i++) {
+        if (!m_elevatedHelper->copyFiles(allSources[i], {allDestinations[i]}))
+            success = false;
     }
 
-    // Run the batch file elevated via ShellExecuteW runas
-    QString nativeBatPath = QDir::toNativeSeparators(batPath);
-    HINSTANCE result = ShellExecuteW(
-        nullptr,
-        L"runas",
-        L"cmd.exe",
-        reinterpret_cast<const wchar_t *>(QString("/c \"%1\"").arg(nativeBatPath).utf16()),
-        nullptr,
-        SW_HIDE
-    );
-
-    intptr_t resultCode = reinterpret_cast<intptr_t>(result);
-    if (resultCode > 32) {
+    if (success) {
         QString message = QString("Installed %1 file%2")
             .arg(fileCount)
             .arg(fileCount > 1 ? "s" : "");
         qDebug() << "DragDrop:" << message;
         emit installResult(message, "success", installedTypes);
     } else {
-        qDebug() << "DragDrop: elevated install failed, code:" << resultCode;
-        emit installResult("Installation cancelled or failed", "error", {});
-    }
-#else
-    // On macOS/Linux try direct copy first
-    int successCount = 0;
-    for (const QString &filePath : files) {
-        QFileInfo fileInfo(filePath);
-        QString extension = fileInfo.suffix().toLower();
-        if (!SUPPORTED_EXTENSIONS.contains(extension)) continue;
-
-        QStringList installPaths = findInstallPaths(extension);
-        for (const QString &installDir : installPaths) {
-            QDir().mkpath(installDir);
-            QString destination = installDir + fileInfo.fileName();
-            if (QFile::exists(destination))
-                QFile::remove(destination);
-            if (QFile::copy(filePath, destination))
-                successCount++;
-        }
-    }
-
-    if (successCount > 0) {
-        emit installResult(QString("Installed %1 file%2").arg(successCount).arg(successCount > 1 ? "s" : ""), "success", installedTypes);
-    } else {
+        qDebug() << "DragDrop: install failed";
         emit installResult("Installation failed", "error", {});
     }
-#endif
 }
 
 QStringList DragDropManager::findInstallPaths(const QString &extension)
@@ -191,4 +156,31 @@ QStringList DragDropManager::findInstallPaths(const QString &extension)
     }
 
     return {};
+}
+
+QStringList DragDropManager::processesForExtension(const QString &extension)
+{
+    if (extension == "aex")
+        return {"AfterFX.exe", "Adobe Premiere Pro.exe", "Adobe Media Encoder.exe"};
+    if (extension == "ofx")
+        return {"resolve.exe"};
+    return {};
+}
+
+QStringList DragDropManager::findRunningProcesses(const QStringList &processNames)
+{
+    QStringList running;
+    for (const QString &name : processNames) {
+        QProcess process;
+#ifdef Q_OS_WIN
+        process.start("tasklist", {"/FI", "IMAGENAME eq " + name, "/NH"});
+#else
+        process.start("pgrep", {"-x", name});
+#endif
+        process.waitForFinished(3000);
+        QString output = process.readAllStandardOutput();
+        if (output.contains(name, Qt::CaseInsensitive))
+            running.append(name);
+    }
+    return running;
 }

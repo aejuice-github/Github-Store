@@ -17,7 +17,7 @@ Rectangle {
         text: chip.text
         font.pixelSize: CMTheme.fontSizeSmall
         font.family: CMTheme.fontFamily
-        color: chipArea.containsMouse ? CMTheme.backgroundColor : CMTheme.textMutedColor
+        color: chipArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
     }
 
     MouseArea {

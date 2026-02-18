@@ -58,7 +58,7 @@ QtObject {
 
     // Theme color preview (for selector)
     readonly property var themePreviewColors: ({
-        "ocean": "#98CCF9",
+        "ocean": "#35AEFF",
         "purple": "#CFBCFF",
         "forest": "#9CD1BD",
         "slate": "#B4C7D9",
@@ -68,7 +68,7 @@ QtObject {
     // 5 dark color schemes ported from Kotlin Color.kt
     readonly property var schemes: ({
         "ocean": {
-            accent: "#98CCF9",
+            accent: "#35AEFF",
             accentDark: "#034B71",
             background: "#101417",
             surface: "#1C2024",
@@ -77,7 +77,7 @@ QtObject {
             text: "#E0E3E8",
             textMuted: "#8C9198",
             border: "#42474D",
-            primary: "#98CCF9",
+            primary: "#35AEFF",
             onPrimary: "#003350",
             primaryContainer: "#034B71",
             secondary: "#B8C8D9",

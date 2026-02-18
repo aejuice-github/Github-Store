@@ -39,6 +39,10 @@ void InstallManager::install(const QString &componentId, const QVariantMap &comp
 
     QString installPath = componentData.value("installPath").toString();
 
+    QStringList waitForFinish;
+    for (const auto &proc : componentData.value("waitForFinish").toList())
+        waitForFinish.append(proc.toString());
+
     m_isBusy = true;
     emit isBusyChanged();
     emit installStarted(componentId);
@@ -55,10 +59,10 @@ void InstallManager::install(const QString &componentId, const QVariantMap &comp
     });
 
     connect(m_download, &DownloadManager::downloadCompleted,
-            this, [this, componentId, version, installPath, fileName](const QString &id, const QString &filePath) {
+            this, [this, componentId, version, installPath, fileName, waitForFinish](const QString &id, const QString &filePath) {
         if (id != componentId)
             return;
-        finishInstall(componentId, filePath, version, installPath, fileName);
+        finishInstall(componentId, filePath, version, installPath, fileName, waitForFinish);
     });
 
     connect(m_download, &DownloadManager::downloadError,
@@ -75,7 +79,7 @@ void InstallManager::install(const QString &componentId, const QVariantMap &comp
 
 void InstallManager::finishInstall(const QString &componentId, const QString &filePath,
                                     const QString &version, const QString &installPath,
-                                    const QString &fileName)
+                                    const QString &fileName, const QStringList &waitForFinish)
 {
     emit installProgress(componentId, 1.0, "Installing...");
 
@@ -100,6 +104,18 @@ void InstallManager::finishInstall(const QString &componentId, const QString &fi
             emit isBusyChanged();
             emit installFailed(componentId, "No install locations found");
             return;
+        }
+
+        // Check if file already exists and blocking processes are running
+        if (!waitForFinish.isEmpty() && fileExistsAtDestination(fileName, targetDirs)) {
+            QStringList running = findRunningProcesses(waitForFinish);
+            if (!running.isEmpty()) {
+                m_isBusy = false;
+                emit isBusyChanged();
+                emit installFailed(componentId,
+                    "Close " + running.join(", ") + " and try again");
+                return;
+            }
         }
 
         QStringList destinations;
@@ -158,3 +174,29 @@ QStringList InstallManager::resolveInstallPaths(const QString &installPath) cons
     return results;
 }
 
+QStringList InstallManager::findRunningProcesses(const QStringList &processNames) const
+{
+    QStringList running;
+    for (const QString &name : processNames) {
+        QProcess process;
+#ifdef Q_OS_WIN
+        process.start("tasklist", {"/FI", "IMAGENAME eq " + name, "/NH"});
+#else
+        process.start("pgrep", {"-x", name});
+#endif
+        process.waitForFinished(3000);
+        QString output = process.readAllStandardOutput();
+        if (output.contains(name, Qt::CaseInsensitive))
+            running.append(name);
+    }
+    return running;
+}
+
+bool InstallManager::fileExistsAtDestination(const QString &fileName, const QStringList &targetDirs) const
+{
+    for (const QString &dir : targetDirs) {
+        if (QFile::exists(dir + "/" + fileName))
+            return true;
+    }
+    return false;
+}

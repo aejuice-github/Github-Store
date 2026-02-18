@@ -14,6 +14,7 @@ struct PlatformAsset {
     QString installPath;
     bool requiresAdmin = false;
     QString fileName;
+    QStringList waitForFinish;  // Processes that must be closed before overwriting
 
     static PlatformAsset fromJson(const QJsonObject &json) {
         PlatformAsset asset;
@@ -23,17 +24,23 @@ struct PlatformAsset {
         asset.installPath = json["installPath"].toString();
         asset.requiresAdmin = json["requiresAdmin"].toBool();
         asset.fileName = json["fileName"].toString();
+        for (const auto &proc : json["wait_for_finish"].toArray())
+            asset.waitForFinish.append(proc.toString());
         return asset;
     }
 
     QVariantMap toVariantMap() const {
+        QVariantList procList;
+        for (const auto &proc : waitForFinish)
+            procList.append(proc);
         return {
             {"url", url},
             {"sha256", sha256},
             {"size", size},
             {"installPath", installPath},
             {"requiresAdmin", requiresAdmin},
-            {"fileName", fileName}
+            {"fileName", fileName},
+            {"waitForFinish", procList}
         };
     }
 };
@@ -85,6 +92,7 @@ struct Component {
     int price = 0;
     int rolloutPercentage = 100;
     bool required = false;
+    QString pageUrl;
 
     static Component fromJson(const QJsonObject &json) {
         Component component;
@@ -104,6 +112,7 @@ struct Component {
         component.rolloutPercentage = json.contains("rollout_percentage")
             ? json["rollout_percentage"].toInt() : 100;
         component.required = json["required"].toBool();
+        component.pageUrl = json["page_url"].toString();
 
         for (const auto &tag : json["tags"].toArray())
             component.tags.append(tag.toString());
@@ -151,7 +160,8 @@ struct Component {
             {"runCommand", runCommand},
             {"changelog", changelog},
             {"compatibleApps", appsList},
-            {"price", price}
+            {"price", price},
+            {"pageUrl", pageUrl}
         };
     }
 };

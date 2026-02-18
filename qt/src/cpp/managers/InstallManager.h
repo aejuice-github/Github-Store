@@ -33,8 +33,10 @@ signals:
 private:
     void finishInstall(const QString &componentId, const QString &filePath,
                        const QString &version, const QString &installPath,
-                       const QString &fileName);
+                       const QString &fileName, const QStringList &waitForFinish);
     QStringList resolveInstallPaths(const QString &installPath) const;
+    QStringList findRunningProcesses(const QStringList &processNames) const;
+    bool fileExistsAtDestination(const QString &fileName, const QStringList &targetDirs) const;
 
     DownloadManager *m_download = nullptr;
     JsonStorage *m_storage = nullptr;

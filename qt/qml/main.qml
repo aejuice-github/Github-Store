@@ -16,7 +16,6 @@ ApplicationWindow {
     color: CMTheme.backgroundColor
 
     property string searchQuery: navSearchInput.text
-    property bool listView: true
 
     function clearSearch() {
         navSearchInput.text = ""
@@ -141,29 +140,6 @@ ApplicationWindow {
             anchors.rightMargin: CMTheme.spacingLarge
             anchors.verticalCenter: parent.verticalCenter
             spacing: CMTheme.spacingSmall
-
-            // View toggle
-            Rectangle {
-                width: 32; height: 32
-                radius: CMTheme.radiusSmall
-                color: viewToggleArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
-                MaterialIcon {
-                    anchors.centerIn: parent
-                    iconName: root.listView ? "grid_view" : "view_list"
-                    iconSize: 20
-                    iconColor: CMTheme.textColor
-                }
-                ToolTip.visible: viewToggleArea.containsMouse
-                ToolTip.text: root.listView ? "Grid View" : "List View"
-                ToolTip.delay: 500
-                MouseArea {
-                    id: viewToggleArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: root.listView = !root.listView
-                }
-            }
 
             // Favorites
             Rectangle {

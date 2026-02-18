@@ -5,6 +5,8 @@
 #include <QFile>
 #include <QDir>
 #include <QDebug>
+#include <QDesktopServices>
+#include <QUrl>
 
 AppController::AppController(QObject *parent)
     : QObject(parent)
@@ -230,6 +232,16 @@ QVariantMap AppController::getComponentDetails(const QString &componentId) {
         }
     }
     return QVariantMap();
+}
+
+void AppController::openComponentPage(const QString &componentId) {
+    for (const auto &component : m_allComponents) {
+        if (component.id == componentId) {
+            if (!component.pageUrl.isEmpty())
+                QDesktopServices::openUrl(QUrl(component.pageUrl));
+            return;
+        }
+    }
 }
 
 // Install

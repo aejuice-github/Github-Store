@@ -54,7 +54,47 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Item { width: parent.width - 350; height: 1 }
+            // Uninstall All
+            Rectangle {
+                visible: installedScreen.installedApps.length > 0
+                width: uninstallAllRow.width + CMTheme.spacingLarge
+                height: 28
+                radius: CMTheme.radiusDefault
+                color: uninstallAllArea.containsMouse ? "#93000A" : CMTheme.surfaceContainerHighColor
+                anchors.verticalCenter: parent.verticalCenter
+
+                Row {
+                    id: uninstallAllRow
+                    anchors.centerIn: parent
+                    spacing: CMTheme.spacingSmall
+
+                    MaterialIcon {
+                        iconName: "delete"
+                        iconSize: 16
+                        iconColor: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+
+                    Text {
+                        text: "Uninstall All"
+                        font.pixelSize: CMTheme.fontSizeSmall
+                        font.bold: true
+                        font.family: CMTheme.fontFamily
+                        color: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                        anchors.verticalCenter: parent.verticalCenter
+                    }
+                }
+
+                MouseArea {
+                    id: uninstallAllArea
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: uninstallAllDialog.open()
+                }
+            }
+
+            Item { width: parent.width - 500; height: 1 }
 
             Rectangle {
                 width: 200
@@ -103,40 +143,212 @@ Rectangle {
             }
         }
 
-        GridView {
-            id: installedGrid
+        ListView {
+            id: installedList
             width: parent.width
-            height: parent.height - 50
-            cellWidth: width / 2
-            cellHeight: CMTheme.cardHeight + CMTheme.spacingMedium
+            height: parent.height - 50 - keepUpToDateRow.height - CMTheme.spacingMedium
             model: installedScreen.filteredApps
             clip: true
+            spacing: CMTheme.spacingSmall
             boundsBehavior: Flickable.StopAtBounds
+            flickDeceleration: 3000
+            maximumFlickVelocity: 4000
+
+            MouseArea {
+                anchors.fill: parent
+                acceptedButtons: Qt.NoButton
+                onWheel: {
+                    installedList.contentY = Math.max(0, Math.min(installedList.contentHeight - installedList.height, installedList.contentY - wheel.angleDelta.y * 1.275))
+                }
+            }
 
             ScrollBar.vertical: ScrollBar {
                 policy: ScrollBar.AsNeeded
             }
 
-            delegate: Item {
-                width: installedGrid.cellWidth
-                height: installedGrid.cellHeight
+            delegate: Rectangle {
+                width: installedList.width
+                height: 72
+                radius: CMTheme.radiusDefault
+                color: installedItemArea.containsMouse ? CMTheme.surfaceContainerHighColor : CMTheme.surfaceContainerColor
 
-                ComponentCard {
+                MouseArea {
+                    id: installedItemArea
                     anchors.fill: parent
-                    anchors.margins: CMTheme.spacingSmall
-                    componentId: modelData.id
-                    name: modelData.name
-                    description: modelData.description
-                    author: modelData.author
-                    category: modelData.category
-                    icon: modelData.icon || ""
-                    type: modelData.type
-                    version: modelData.version
-                    price: modelData.price
-                    installed: modelData.isInstalled
-                    updateAvailable: modelData.isUpdateAvailable || false
-                    onClicked: {
-                        appController.navigateTo("details", { componentId: modelData.id })
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: appController.openComponentPage(modelData.id)
+                }
+
+                Row {
+                    anchors.fill: parent
+                    anchors.margins: CMTheme.spacingMedium
+                    spacing: CMTheme.spacingMedium
+
+                    Rectangle {
+                        id: installedIcon
+                        width: 48
+                        height: 48
+                        radius: CMTheme.radiusDefault
+                        anchors.verticalCenter: parent.verticalCenter
+
+                        property var grad: {
+                            var h = 0
+                            for (var i = 0; i < modelData.name.length; i++)
+                                h = ((h << 5) - h + modelData.name.charCodeAt(i)) | 0
+                            h = Math.abs(h)
+                            var hue = h % 360
+                            var hueShift = 20 + (h >> 8) % 30
+                            function hslToHex(hh, s, l) {
+                                hh /= 360; s /= 100; l /= 100
+                                var r, g, b
+                                if (s === 0) { r = g = b = l }
+                                else {
+                                    function hue2rgb(p, q, t) {
+                                        if (t < 0) t += 1; if (t > 1) t -= 1
+                                        if (t < 1/6) return p + (q - p) * 6 * t
+                                        if (t < 1/2) return q
+                                        if (t < 2/3) return p + (q - p) * (2/3 - t) * 6
+                                        return p
+                                    }
+                                    var q = l < 0.5 ? l * (1 + s) : l + s - l * s
+                                    var p = 2 * l - q
+                                    r = hue2rgb(p, q, hh + 1/3)
+                                    g = hue2rgb(p, q, hh)
+                                    b = hue2rgb(p, q, hh - 1/3)
+                                }
+                                var toHex = function(v) { var hex = Math.round(v * 255).toString(16); return hex.length === 1 ? "0" + hex : hex }
+                                return "#" + toHex(r) + toHex(g) + toHex(b)
+                            }
+                            return [hslToHex(hue, 60, 15), hslToHex((hue + hueShift * 2) % 360, 50, 30)]
+                        }
+
+                        gradient: Gradient {
+                            orientation: Gradient.Horizontal
+                            GradientStop { position: 0.0; color: installedIcon.grad[0] }
+                            GradientStop { position: 1.0; color: installedIcon.grad[1] }
+                        }
+
+                        Text {
+                            anchors.centerIn: parent
+                            text: modelData.name.charAt(0).toUpperCase()
+                            font.pixelSize: 20
+                            font.bold: true
+                            font.family: CMTheme.fontFamily
+                            color: "#60FFFFFF"
+                        }
+                    }
+
+                    Column {
+                        width: parent.width - 48 - installedActionRow.width - CMTheme.spacingMedium * 3
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: 2
+
+                        Text {
+                            width: parent.width
+                            text: modelData.name
+                            font.pixelSize: CMTheme.fontSizeMedium
+                            font.bold: true
+                            font.family: CMTheme.fontFamily
+                            color: CMTheme.textColor
+                            elide: Text.ElideRight
+                        }
+
+                        Text {
+                            width: parent.width
+                            text: modelData.description
+                            font.pixelSize: CMTheme.fontSizeDefault
+                            font.family: CMTheme.fontFamily
+                            color: CMTheme.textMutedColor
+                            elide: Text.ElideRight
+                            maximumLineCount: 1
+                        }
+
+                        Row {
+                            spacing: CMTheme.spacingDefault
+
+                            Text {
+                                text: modelData.author
+                                font.pixelSize: CMTheme.fontSizeSmall
+                                font.family: CMTheme.fontFamily
+                                color: CMTheme.textMutedColor
+                            }
+
+                            Text {
+                                text: "\u00B7"
+                                font.pixelSize: CMTheme.fontSizeSmall
+                                color: CMTheme.textMutedColor
+                            }
+
+                            Text {
+                                text: "v" + modelData.version
+                                font.pixelSize: CMTheme.fontSizeSmall
+                                font.family: CMTheme.fontFamily
+                                color: CMTheme.textMutedColor
+                            }
+                        }
+                    }
+
+                    Row {
+                        id: installedActionRow
+                        z: 1
+                        anchors.verticalCenter: parent.verticalCenter
+                        spacing: CMTheme.spacingSmall
+
+                        Rectangle {
+                            visible: modelData.isUpdateAvailable || false
+                            width: Math.max(100, installedUpdateLabel.width + CMTheme.spacingXLarge * 2)
+                            height: 36
+                            radius: CMTheme.radiusDefault
+                            color: installedUpdateArea.containsMouse ? CMTheme.accentColor : CMTheme.surfaceContainerHighColor
+
+                            Text {
+                                id: installedUpdateLabel
+                                anchors.centerIn: parent
+                                text: "Update"
+                                font.pixelSize: CMTheme.fontSizeDefault
+                                font.bold: true
+                                font.family: CMTheme.fontFamily
+                                color: installedUpdateArea.containsMouse ? "#FFFFFF" : CMTheme.textColor
+                            }
+
+                            MouseArea {
+                                id: installedUpdateArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: appController.installComponent(modelData.id)
+                            }
+                        }
+
+                        Rectangle {
+                            width: Math.max(100, installedUninstallLabel.width + CMTheme.spacingXLarge * 2)
+                            height: 36
+                            radius: CMTheme.radiusDefault
+                            color: installedUninstallArea.containsMouse ? "#93000A" : CMTheme.surfaceContainerHighColor
+
+                            Text {
+                                id: installedUninstallLabel
+                                anchors.centerIn: parent
+                                text: "Uninstall"
+                                font.pixelSize: CMTheme.fontSizeDefault
+                                font.bold: true
+                                font.family: CMTheme.fontFamily
+                                color: installedUninstallArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                            }
+
+                            MouseArea {
+                                id: installedUninstallArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    appController.uninstallComponent(modelData.id)
+                                    installedApps = appController.getInstalledComponents()
+                                    filteredApps = installedApps
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -144,11 +356,156 @@ Rectangle {
             // Empty state
             Text {
                 anchors.centerIn: parent
-                visible: installedGrid.count === 0
+                visible: installedList.count === 0
                 text: installedScreen.searchQuery ? "No matches" : "No installed apps yet"
                 font.pixelSize: CMTheme.fontSizeLarge
                 font.family: CMTheme.fontFamily
                 color: CMTheme.textMutedColor
+            }
+        }
+
+        // Keep up to date checkbox
+        CheckBox {
+            id: keepUpToDateRow
+            checked: appController.settings.keepUpToDate
+            onCheckedChanged: appController.settings.keepUpToDate = checked
+            text: "Keep up to date"
+            font.pixelSize: CMTheme.fontSizeDefault
+            font.family: CMTheme.fontFamily
+
+            indicator: Rectangle {
+                width: 16
+                height: 16
+                x: keepUpToDateRow.leftPadding
+                y: parent.height / 2 - height / 2
+                radius: 3
+                color: keepUpToDateRow.checked ? CMTheme.accentColor : "transparent"
+                border.color: keepUpToDateRow.checked ? CMTheme.accentColor : CMTheme.textMutedColor
+                border.width: 1
+
+                MaterialIcon {
+                    anchors.centerIn: parent
+                    visible: keepUpToDateRow.checked
+                    iconName: "check"
+                    iconSize: 12
+                    iconColor: "#FFFFFF"
+                }
+            }
+
+            contentItem: Text {
+                text: keepUpToDateRow.text
+                font: keepUpToDateRow.font
+                color: CMTheme.textColor
+                verticalAlignment: Text.AlignVCenter
+                leftPadding: keepUpToDateRow.indicator.width + keepUpToDateRow.spacing
+            }
+        }
+    }
+
+    // Uninstall All confirmation
+    Rectangle {
+        anchors.fill: parent
+        color: "#80000000"
+        visible: uninstallAllDialog.opened
+        z: 299
+    }
+
+    Popup {
+        id: uninstallAllDialog
+        anchors.centerIn: parent
+        width: 360
+        height: 160
+        modal: true
+        closePolicy: Popup.CloseOnEscape | Popup.CloseOnPressOutside
+        z: 300
+
+        background: Rectangle {
+            radius: CMTheme.radiusLarge
+            color: CMTheme.surfaceColor
+            border.color: CMTheme.borderColor
+            border.width: 1
+        }
+
+        Column {
+            anchors.fill: parent
+            anchors.margins: CMTheme.spacingLarge
+            spacing: CMTheme.spacingMedium
+
+            Text {
+                text: "Uninstall all " + installedScreen.installedApps.length + " apps?"
+                font.pixelSize: CMTheme.fontSizeLarge
+                font.bold: true
+                font.family: CMTheme.fontFamily
+                color: CMTheme.textColor
+                width: parent.width
+                wrapMode: Text.WordWrap
+            }
+
+            Text {
+                text: "This will remove all installed components."
+                font.pixelSize: CMTheme.fontSizeDefault
+                font.family: CMTheme.fontFamily
+                color: CMTheme.textMutedColor
+            }
+
+            Row {
+                anchors.right: parent.right
+                spacing: CMTheme.spacingDefault
+
+                Rectangle {
+                    width: cancelAllText.width + CMTheme.spacingLarge * 2
+                    height: 32
+                    radius: CMTheme.radiusDefault
+                    color: cancelAllArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+
+                    Text {
+                        id: cancelAllText
+                        anchors.centerIn: parent
+                        text: "Cancel"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.family: CMTheme.fontFamily
+                        color: CMTheme.textColor
+                    }
+
+                    MouseArea {
+                        id: cancelAllArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: uninstallAllDialog.close()
+                    }
+                }
+
+                Rectangle {
+                    width: confirmAllText.width + CMTheme.spacingLarge * 2
+                    height: 32
+                    radius: CMTheme.radiusDefault
+                    color: confirmAllArea.containsMouse ? "#B71C1C" : "#93000A"
+
+                    Text {
+                        id: confirmAllText
+                        anchors.centerIn: parent
+                        text: "Uninstall All"
+                        font.pixelSize: CMTheme.fontSizeDefault
+                        font.bold: true
+                        font.family: CMTheme.fontFamily
+                        color: "#FFFFFF"
+                    }
+
+                    MouseArea {
+                        id: confirmAllArea
+                        anchors.fill: parent
+                        hoverEnabled: true
+                        cursorShape: Qt.PointingHandCursor
+                        onClicked: {
+                            for (var i = 0; i < installedScreen.installedApps.length; i++)
+                                appController.uninstallComponent(installedScreen.installedApps[i].id)
+                            uninstallAllDialog.close()
+                            installedApps = appController.getInstalledComponents()
+                            filteredApps = installedApps
+                        }
+                    }
+                }
             }
         }
     }
