@@ -53,6 +53,7 @@ void AppController::initialize() {
     m_storage->load();
     m_installer->setDownloadManager(m_downloads);
     m_installer->setJsonStorage(m_storage);
+    m_manifest->setJsonStorage(m_storage);
 
     connect(m_manifest, &ManifestManager::manifestLoaded,
             this, &AppController::onManifestLoaded);
@@ -62,9 +63,17 @@ void AppController::initialize() {
 
     connect(m_installer, &InstallManager::installCompleted,
             this, [this](const QString &componentId) {
-                Q_UNUSED(componentId)
                 m_componentModel->setInstalledVersions(m_storage->installedVersions());
-                emit toastRequested("Installation complete", "success");
+                QVariantMap details = getComponentDetails(componentId);
+                QString type = details.value("type").toString();
+                QString message;
+                if (type == "script")
+                    message = "Installed! Open After Effects > Window > " + details.value("name").toString();
+                else if (type == "plugin")
+                    message = "Installed! Open After Effects > Effect > " + details.value("name").toString();
+                else
+                    message = "Installation complete";
+                emit toastRequested(message, "success");
             });
 
     connect(m_installer, &InstallManager::installFailed,

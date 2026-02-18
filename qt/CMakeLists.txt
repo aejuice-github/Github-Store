@@ -41,6 +41,8 @@ set(SOURCES
     src/cpp/services/ProcessChecker.cpp
     src/cpp/services/AppLauncher.h
     src/cpp/services/AppLauncher.cpp
+    src/cpp/services/ElevatedCopyHelper.h
+    src/cpp/services/ElevatedCopyHelper.cpp
     src/cpp/NativeDropHandler.h
     src/cpp/NativeDropHandler.cpp
     src/cpp/WindowsDnDFix.h

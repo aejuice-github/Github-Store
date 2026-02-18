@@ -6,6 +6,7 @@
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QDebug>
+#include <QRandomGenerator>
 
 JsonStorage::JsonStorage(QObject *parent)
     : QObject(parent)
@@ -118,4 +119,70 @@ QString JsonStorage::favoritesPath() const
 {
     return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
            + "/favorites.json";
+}
+
+QString JsonStorage::rolloutPath() const
+{
+    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
+           + "/rollout.json";
+}
+
+void JsonStorage::loadRollout()
+{
+    if (m_rolloutLoaded)
+        return;
+    m_rolloutLoaded = true;
+
+    QFile file(rolloutPath());
+    if (!file.open(QIODevice::ReadOnly))
+        return;
+
+    QJsonObject obj = QJsonDocument::fromJson(file.readAll()).object();
+    for (auto it = obj.begin(); it != obj.end(); ++it) {
+        QJsonObject entry = it.value().toObject();
+        m_rolloutEntries.insert(it.key(), {
+            entry["roll"].toInt(),
+            entry["percentage"].toInt()
+        });
+    }
+}
+
+void JsonStorage::saveRollout()
+{
+    QDir().mkpath(QFileInfo(rolloutPath()).absolutePath());
+
+    QJsonObject obj;
+    for (auto it = m_rolloutEntries.begin(); it != m_rolloutEntries.end(); ++it) {
+        QJsonObject entry;
+        entry["roll"] = it.value().roll;
+        entry["percentage"] = it.value().percentage;
+        obj[it.key()] = entry;
+    }
+
+    QFile file(rolloutPath());
+    if (file.open(QIODevice::WriteOnly))
+        file.write(QJsonDocument(obj).toJson());
+}
+
+bool JsonStorage::isInRollout(const QString &componentId, int rolloutPercentage)
+{
+    if (rolloutPercentage >= 100)
+        return true;
+    if (rolloutPercentage <= 0)
+        return false;
+
+    loadRollout();
+
+    bool needsRoll = !m_rolloutEntries.contains(componentId)
+                     || m_rolloutEntries[componentId].percentage != rolloutPercentage;
+
+    if (needsRoll) {
+        int roll = QRandomGenerator::global()->bounded(1, 101); // 1-100
+        m_rolloutEntries[componentId] = { roll, rolloutPercentage };
+        saveRollout();
+        qDebug() << "Rollout for" << componentId << ": rolled" << roll
+                 << "against" << rolloutPercentage << "%";
+    }
+
+    return m_rolloutEntries[componentId].roll <= rolloutPercentage;
 }

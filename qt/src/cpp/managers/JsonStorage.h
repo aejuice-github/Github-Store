@@ -26,12 +26,23 @@ public:
     void toggleFavorite(const QString &componentId);
     QSet<QString> favoriteIds() const { return m_favoriteIds; }
 
+    // Rollout: returns true if user is in the rollout for this component
+    bool isInRollout(const QString &componentId, int rolloutPercentage);
+
 private:
     QString storagePath() const;
     QString favoritesPath() const;
+    QString rolloutPath() const;
+    void loadRollout();
+    void saveRollout();
 
     QMap<QString, QString> m_installedVersions;
     QSet<QString> m_favoriteIds;
+
+    // Maps componentId -> {roll: 1-100, percentage: last seen rollout_percentage}
+    struct RolloutEntry { int roll; int percentage; };
+    QMap<QString, RolloutEntry> m_rolloutEntries;
+    bool m_rolloutLoaded = false;
 };
 
 #endif // JSONSTORAGE_H

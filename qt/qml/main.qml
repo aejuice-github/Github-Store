@@ -619,11 +619,13 @@ ApplicationWindow {
         onTriggered: {
             var availW = Screen.desktopAvailableWidth
             var availH = Screen.desktopAvailableHeight
-            var frameMargin = 60  // Reserve space for title bar and window frame
+            var topMargin = 60   // Reserve space for title bar
+            var bottomMargin = 10 // Gap above taskbar for resize handle
+            var totalMargin = topMargin + bottomMargin
             if (root.width > availW) root.width = availW
-            if (root.height > availH - frameMargin) root.height = availH - frameMargin
+            if (root.height > availH - totalMargin) root.height = availH - totalMargin
             root.x = Math.max(0, (availW - root.width) / 2)
-            root.y = Math.max(0, (availH - root.height - frameMargin) / 2 + frameMargin)
+            root.y = Math.max(0, (availH - root.height - totalMargin) / 2 + topMargin)
         }
     }
 
