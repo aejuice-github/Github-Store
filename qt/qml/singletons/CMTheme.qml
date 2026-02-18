@@ -9,6 +9,7 @@ QtObject {
 
     // Semantic colors (dark only)
     readonly property color accentColor: schemes[activeTheme].accent
+    readonly property color accentDarkColor: schemes[activeTheme].accentDark
     readonly property color backgroundColor: schemes[activeTheme].background
     readonly property color surfaceColor: schemes[activeTheme].surface
     readonly property color surfaceContainerColor: schemes[activeTheme].surfaceContainer

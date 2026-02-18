@@ -85,7 +85,7 @@ Rectangle {
                                 height: 32
                                 radius: CMTheme.radiusSmall
                                 color: {
-                                    if (parent.selected === modelData) return CMTheme.accentColor
+                                    if (parent.selected === modelData) return CMTheme.surfaceContainerHighColor
                                     if (priceArea.containsMouse) return CMTheme.surfaceContainerHighColor
                                     return "transparent"
                                 }
@@ -98,7 +98,7 @@ Rectangle {
                                     font.pixelSize: CMTheme.fontSizeDefault
                                     font.family: CMTheme.fontFamily
                                     font.bold: parent.parent.selected === modelData
-                                    color: parent.parent.selected === modelData ? "#FFFFFF" : CMTheme.textColor
+                                    color: parent.parent.selected === modelData ? CMTheme.accentColor : CMTheme.textColor
                                 }
 
                                 MouseArea {

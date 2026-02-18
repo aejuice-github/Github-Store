@@ -178,7 +178,7 @@ ApplicationWindow {
                 color: active ? CMTheme.surfaceContainerHighColor : appsArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
                 MaterialIcon {
                     anchors.centerIn: parent
-                    iconName: "inventory_2"
+                    iconName: "download"
                     iconSize: 20
                     iconColor: parent.active ? CMTheme.accentColor : CMTheme.textColor
                 }
