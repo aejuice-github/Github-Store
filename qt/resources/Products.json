@@ -1,0 +1,2470 @@
+[
+  {
+    "name": "ASCII",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Convert footage into ASCII character art with customizable density, font size, and color modes",
+    "category": "Stylize",
+    "tags": [
+      "ascii",
+      "text-art",
+      "character",
+      "stylize"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Audio Waveform",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Generate animated audio waveform visualizations synced to your audio layers",
+    "category": "Audio",
+    "tags": [
+      "audio",
+      "waveform",
+      "visualization",
+      "music"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Auto Crop",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": true
+      }
+    },
+    "description": "Automatically crop layers to content bounds with one click. Supports batch processing",
+    "category": "Utilities",
+    "tags": [
+      "crop",
+      "trim",
+      "bounds",
+      "batch"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Auto Cut",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": true
+      }
+    },
+    "description": "AI-powered automatic scene detection and cutting for video editing workflows",
+    "category": "AI",
+    "tags": [
+      "cut",
+      "scene-detection",
+      "ai",
+      "editing"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Auto Reframe",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "AI-powered automatic reframing for social media formats including 9:16, 1:1, and 4:5",
+    "category": "AI",
+    "tags": [
+      "reframe",
+      "social-media",
+      "ai",
+      "aspect-ratio"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Black & White",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Advanced black and white conversion with channel mixing and tonal controls",
+    "category": "Color",
+    "tags": [
+      "monochrome",
+      "grayscale",
+      "color",
+      "grading"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "CCTV",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Simulate security camera footage with timestamps, scanlines, and noise",
+    "category": "Stylize",
+    "tags": [
+      "security",
+      "surveillance",
+      "vintage",
+      "camera"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Change Color",
+    "type": "plugin",
+    "platforms": {
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Selectively change colors in footage with precise hue, saturation, and luminance controls",
+    "category": "Color",
+    "tags": [
+      "color",
+      "hue",
+      "replace",
+      "selective"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Chromatic Aberration",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Add realistic RGB channel splitting and lens fringing effects",
+    "category": "Effects",
+    "tags": [
+      "aberration",
+      "rgb",
+      "lens",
+      "distortion"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Color Curves",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Professional color grading with individual RGB curves and histogram display",
+    "category": "Color",
+    "tags": [
+      "curves",
+      "grading",
+      "rgb",
+      "histogram"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Color Match",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Match color grading between clips automatically using reference frames",
+    "category": "Color",
+    "tags": [
+      "match",
+      "grading",
+      "reference",
+      "correction"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "CRT",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Classic CRT monitor simulation with curvature, scanlines, and phosphor glow",
+    "category": "Stylize",
+    "tags": [
+      "retro",
+      "monitor",
+      "scanlines",
+      "vintage"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Crystal Light",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Create beautiful prismatic light leaks and crystal refraction effects",
+    "category": "Effects",
+    "tags": [
+      "light",
+      "prism",
+      "rainbow",
+      "leak"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Deep Glow",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Advanced glow effect with multi-pass rendering and customizable falloff",
+    "category": "Effects",
+    "tags": [
+      "glow",
+      "bloom",
+      "light",
+      "neon"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Depth Map",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "AI-generated depth maps from 2D footage for parallax and focus effects",
+    "category": "AI",
+    "tags": [
+      "depth",
+      "ai",
+      "3d",
+      "parallax"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Duotone",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Map footage to two-color gradients for striking visual styles",
+    "category": "Color",
+    "tags": [
+      "color",
+      "gradient",
+      "two-tone",
+      "stylize"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "8-Bit",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Retro 8-bit pixel art style with reduced resolution and limited color palette",
+    "category": "Stylize",
+    "tags": [
+      "pixel",
+      "retro",
+      "8bit",
+      "game"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Emboss",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Create embossed and debossed surface effects with adjustable depth and lighting",
+    "category": "Effects",
+    "tags": [
+      "emboss",
+      "relief",
+      "texture",
+      "3d"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Explode Shape Layers",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Break compound shape layers into individual layers for easier editing",
+    "category": "Utilities",
+    "tags": [
+      "shapes",
+      "layers",
+      "organize",
+      "split"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Face Detector",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "AI-powered face detection and tracking with bounding box output",
+    "category": "AI",
+    "tags": [
+      "face",
+      "ai",
+      "detection",
+      "tracking"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Film Grain",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Add realistic photographic film grain with customizable size and intensity",
+    "category": "Effects",
+    "tags": [
+      "grain",
+      "film",
+      "noise",
+      "analog"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Flow Lines",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Generate animated flow field line effects following motion vectors",
+    "category": "Effects",
+    "tags": [
+      "lines",
+      "flow",
+      "particles",
+      "abstract"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Glitch Maker",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Create digital glitch effects with RGB shift, block displacement, and noise",
+    "category": "Glitch",
+    "tags": [
+      "glitch",
+      "digital",
+      "distortion",
+      "noise"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Halftone",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Convert footage into halftone dot patterns with adjustable size and angle",
+    "category": "Effects",
+    "tags": [
+      "halftone",
+      "dots",
+      "print",
+      "comic"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Hex Glitch",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Hexagonal grid-based glitch distortion with animated displacement",
+    "category": "Glitch",
+    "tags": [
+      "hexagon",
+      "glitch",
+      "grid",
+      "displacement"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Infrared",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Simulate infrared photography with false-color mapping and vegetation glow",
+    "category": "Color",
+    "tags": [
+      "infrared",
+      "thermal",
+      "false-color",
+      "photography"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Light Rays",
+    "type": "plugin",
+    "platforms": {
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Generate volumetric light rays and god rays from bright areas in footage",
+    "category": "Effects",
+    "tags": [
+      "rays",
+      "volumetric",
+      "god-rays",
+      "light"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Motion Echo",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Create motion trail and echo effects with customizable decay and blending",
+    "category": "Effects",
+    "tags": [
+      "echo",
+      "trail",
+      "motion",
+      "blur"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Night Vision",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Military-style night vision effect with green phosphor glow and noise",
+    "category": "Stylize",
+    "tags": [
+      "night",
+      "military",
+      "green",
+      "surveillance"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Noise Sort",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Pixel sorting effect based on luminance, creating waterfall-like distortions",
+    "category": "Glitch",
+    "tags": [
+      "sorting",
+      "pixels",
+      "noise",
+      "waterfall"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Nostalgia",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Vintage film look with light leaks, vignette, and color fading",
+    "category": "Stylize",
+    "tags": [
+      "vintage",
+      "retro",
+      "film",
+      "leak"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "NTSC",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Simulate NTSC video artifacts including color bleeding and chroma noise",
+    "category": "Stylize",
+    "tags": [
+      "ntsc",
+      "analog",
+      "video",
+      "artifact"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Object Detector",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "AI-powered object detection and classification with bounding box output",
+    "category": "AI",
+    "tags": [
+      "object",
+      "ai",
+      "detection",
+      "classification"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Optical Flares",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Generate realistic lens flares with customizable elements and animation",
+    "category": "Effects",
+    "tags": [
+      "flare",
+      "lens",
+      "light",
+      "sun"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Path Fire",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Create animated fire effects that follow mask paths",
+    "category": "Effects",
+    "tags": [
+      "fire",
+      "path",
+      "particles",
+      "animation"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Pixel Shifter",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Displace pixels in patterns creating digital displacement effects",
+    "category": "Glitch",
+    "tags": [
+      "pixel",
+      "displacement",
+      "digital",
+      "shift"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Prism Echo",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Prismatic RGB splitting with echo trails and rainbow chromatic effects",
+    "category": "Glitch",
+    "tags": [
+      "prism",
+      "rgb",
+      "echo",
+      "rainbow"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Privacy Blur",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Apply tracked blur or pixelation to faces and sensitive areas",
+    "category": "Effects",
+    "tags": [
+      "blur",
+      "privacy",
+      "face",
+      "censor"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Psychedelic",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Trippy color cycling and kaleidoscopic pattern generation",
+    "category": "Stylize",
+    "tags": [
+      "psychedelic",
+      "trippy",
+      "color-cycle",
+      "kaleidoscope"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Quantize",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Reduce color palette to create posterized and banded color effects",
+    "category": "Glitch",
+    "tags": [
+      "posterize",
+      "color-reduce",
+      "bands",
+      "stylize"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Real VHS",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Authentic VHS tape simulation with tracking errors, dropout, and head switching noise",
+    "category": "Stylize",
+    "tags": [
+      "vhs",
+      "tape",
+      "tracking",
+      "analog"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Repeater",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Create kaleidoscopic and tiled repetition effects with rotation and scaling",
+    "category": "Effects",
+    "tags": [
+      "repeat",
+      "tile",
+      "kaleidoscope",
+      "pattern"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Resize Blur",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Directional blur based on scaling for motion and zoom blur effects",
+    "category": "Effects",
+    "tags": [
+      "blur",
+      "zoom",
+      "motion",
+      "directional"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Soft Glow",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Gentle diffusion glow that softens highlights and adds a dreamy quality",
+    "category": "Effects",
+    "tags": [
+      "glow",
+      "soft",
+      "diffusion",
+      "dreamy"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Stop Motion",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Simulate stop motion animation by reducing frame rate with frame blending options",
+    "category": "Stylize",
+    "tags": [
+      "stop-motion",
+      "frame-rate",
+      "animation",
+      "clay"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Thermal Vision",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      },
+      "finalCut": {
+        "required": false
+      }
+    },
+    "description": "Simulate thermal camera imagery with heat-map color mapping",
+    "category": "Stylize",
+    "tags": [
+      "thermal",
+      "heat",
+      "infrared",
+      "camera"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Tilt Shift",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Miniature effect with selective focus blur simulating tilt-shift photography",
+    "category": "Effects",
+    "tags": [
+      "tilt-shift",
+      "miniature",
+      "focus",
+      "blur"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Track",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "GPU-accelerated point tracking for motion stabilization and matchmoving",
+    "category": "Utilities",
+    "tags": [
+      "tracking",
+      "stabilize",
+      "motion",
+      "gpu"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "VHS",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Classic VHS video effect with scanlines, noise, and color distortion",
+    "category": "Stylize",
+    "tags": [
+      "vhs",
+      "retro",
+      "scanlines",
+      "noise"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Voronoi Glitch",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Voronoi cell-based displacement creating shattered glass glitch effects",
+    "category": "Glitch",
+    "tags": [
+      "voronoi",
+      "glitch",
+      "shatter",
+      "cells"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Wave",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Animated wave distortion with customizable frequency, amplitude, and direction",
+    "category": "Glitch",
+    "tags": [
+      "wave",
+      "distortion",
+      "ripple",
+      "liquid"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "X-Ray",
+    "type": "plugin",
+    "platforms": {
+      "adobe": {
+        "required": false
+      },
+      "openfx": {
+        "required": false
+      }
+    },
+    "description": "Simulate X-ray imaging with inverted luminance and blue-tinted overlay",
+    "category": "Stylize",
+    "tags": [
+      "xray",
+      "invert",
+      "medical",
+      "stylize"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro",
+      "DaVinci Resolve",
+      "Vegas",
+      "Other OpenFX hosts"
+    ]
+  },
+  {
+    "name": "Add Bounce Expression",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Add elastic bounce animation to any property with one click",
+    "category": "Animation",
+    "tags": [
+      "bounce",
+      "expression",
+      "elastic",
+      "animation"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Color Controls",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Add organized color picker controls to a control layer for easy adjustment",
+    "category": "Color",
+    "tags": [
+      "color",
+      "controls",
+      "picker",
+      "template"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Dynamic Text Box",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Create auto-sizing text boxes that resize with text content",
+    "category": "Animation",
+    "tags": [
+      "text",
+      "box",
+      "auto-size",
+      "responsive"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Glow",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Quick glow effect application with pre-configured settings",
+    "category": "Effects",
+    "tags": [
+      "glow",
+      "quick",
+      "effect",
+      "preset"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Null at Point",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Create a null object at any clicked point in the composition",
+    "category": "Utilities",
+    "tags": [
+      "null",
+      "point",
+      "helper",
+      "control"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Text Controls",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Add text source controls to a control layer for template customization",
+    "category": "Animation",
+    "tags": [
+      "text",
+      "controls",
+      "template",
+      "source"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Texture",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Apply texture overlays to layers with blending mode presets",
+    "category": "Effects",
+    "tags": [
+      "texture",
+      "overlay",
+      "blend",
+      "surface"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Add Typing Cursor",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Add an animated blinking cursor to text layers for typing animations",
+    "category": "Animation",
+    "tags": [
+      "cursor",
+      "typing",
+      "text",
+      "animation"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Audio to Markers",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Convert audio beats and peaks to composition markers automatically",
+    "category": "Audio",
+    "tags": [
+      "audio",
+      "markers",
+      "beats",
+      "sync"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Autopodcast AI",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "AI-powered podcast video editing with automatic speaker detection and framing",
+    "category": "AI",
+    "tags": [
+      "podcast",
+      "ai",
+      "speaker",
+      "multicam"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Autoresize",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Automatically resize compositions to fit content or custom dimensions",
+    "category": "Utilities",
+    "tags": [
+      "resize",
+      "composition",
+      "dimensions",
+      "scale"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Bake Expressions",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Convert expressions to keyframes for better performance and compatibility",
+    "category": "Utilities",
+    "tags": [
+      "expressions",
+      "keyframes",
+      "convert",
+      "performance"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Collect Fonts",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Gather all fonts used in a project into a single folder for archiving",
+    "category": "Utilities",
+    "tags": [
+      "fonts",
+      "collect",
+      "archive",
+      "typography"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Comp to Spreadsheet",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Export composition data and layer information to CSV spreadsheets",
+    "category": "Utilities",
+    "tags": [
+      "spreadsheet",
+      "csv",
+      "export",
+      "data"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Cursor Toolkit",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Animated cursor effects for screen recordings and tutorials",
+    "category": "Animation",
+    "tags": [
+      "cursor",
+      "mouse",
+      "tutorial",
+      "screen-recording"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Duplicate",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Smart duplication with offset controls for creating grids and patterns",
+    "category": "Utilities",
+    "tags": [
+      "duplicate",
+      "clone",
+      "grid",
+      "pattern"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Explode Shape Layers",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Break compound shape layers into individual layers for easier editing",
+    "category": "Utilities",
+    "tags": [
+      "shapes",
+      "layers",
+      "organize",
+      "split"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Export GIF",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Export compositions as optimized animated GIFs with palette controls",
+    "category": "Export",
+    "tags": [
+      "gif",
+      "export",
+      "animated",
+      "web"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Export MP4",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Quick MP4 export with H.264 encoding and quality presets",
+    "category": "Export",
+    "tags": [
+      "mp4",
+      "export",
+      "h264",
+      "video"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Export PNG",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Export current frame or sequence as PNG with transparency support",
+    "category": "Export",
+    "tags": [
+      "png",
+      "export",
+      "frame",
+      "transparency"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Find",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Search and filter layers, effects, and properties across your project",
+    "category": "Utilities",
+    "tags": [
+      "search",
+      "filter",
+      "layers",
+      "effects"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Find Missing Files",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Locate and relink missing footage files in your project",
+    "category": "Utilities",
+    "tags": [
+      "missing",
+      "relink",
+      "footage",
+      "files"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Fix Legacy Expressions",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Batch convert legacy expressions to modern syntax automatically",
+    "category": "Utilities",
+    "tags": [
+      "expressions",
+      "legacy",
+      "fix",
+      "update"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Footages to Comps",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Create individual compositions from selected footage items",
+    "category": "Utilities",
+    "tags": [
+      "footage",
+      "compositions",
+      "batch",
+      "create"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Freeze Frame",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Create freeze frame effects with time remapping at current time",
+    "category": "Animation",
+    "tags": [
+      "freeze",
+      "frame",
+      "hold",
+      "time-remap"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Import Sequences",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Batch import image sequences with automatic frame rate detection",
+    "category": "Utilities",
+    "tags": [
+      "import",
+      "sequence",
+      "batch",
+      "frames"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Increase Comp Duration",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Extend composition duration while preserving all layer timing",
+    "category": "Utilities",
+    "tags": [
+      "duration",
+      "extend",
+      "composition",
+      "time"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Localize AI",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "AI-powered automatic translation of text layers to multiple languages",
+    "category": "AI",
+    "tags": [
+      "translate",
+      "localize",
+      "ai",
+      "language"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Loop",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Add loop expressions to selected properties with pingpong and offset options",
+    "category": "Animation",
+    "tags": [
+      "loop",
+      "expression",
+      "cycle",
+      "repeat"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Move to",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Move layers to specific positions, times, or compositions with precision",
+    "category": "Utilities",
+    "tags": [
+      "move",
+      "position",
+      "organize",
+      "layers"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Pixelate",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Apply pixelation mosaic effect with adjustable block size",
+    "category": "Effects",
+    "tags": [
+      "pixel",
+      "mosaic",
+      "censor",
+      "block"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Points to Nulls",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Convert mask or shape path points to null objects for animation control",
+    "category": "Animation",
+    "tags": [
+      "points",
+      "nulls",
+      "mask",
+      "control"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Precomp",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Smart pre-composition with options for moving attributes and adjusting timing",
+    "category": "Utilities",
+    "tags": [
+      "precompose",
+      "organize",
+      "nest",
+      "attributes"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Prerender",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Pre-render compositions to video files for faster playback",
+    "category": "Utilities",
+    "tags": [
+      "render",
+      "cache",
+      "performance",
+      "proxy"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Quick Folders",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Organize project panel with auto-generated folder structures",
+    "category": "Utilities",
+    "tags": [
+      "folders",
+      "organize",
+      "project",
+      "structure"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Remove Silence",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Automatically detect and remove silent portions from audio layers",
+    "category": "Utilities",
+    "tags": [
+      "silence",
+      "audio",
+      "remove",
+      "detect"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Rename Controls",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Batch rename effect controls and expressions with find-and-replace",
+    "category": "Utilities",
+    "tags": [
+      "rename",
+      "controls",
+      "batch",
+      "expressions"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Replace Expressions",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Find and replace text within expressions across multiple layers",
+    "category": "Utilities",
+    "tags": [
+      "expressions",
+      "find-replace",
+      "batch",
+      "text"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Reposition Anchor Point",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Move anchor point to predefined positions without shifting the layer",
+    "category": "Utilities",
+    "tags": [
+      "anchor",
+      "position",
+      "center",
+      "align"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Round Cap",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Convert stroke line caps to round caps on shape layers",
+    "category": "Utilities",
+    "tags": [
+      "stroke",
+      "cap",
+      "round",
+      "shape"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Set Rasterize",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Toggle continuously rasterize on multiple layers at once",
+    "category": "Utilities",
+    "tags": [
+      "rasterize",
+      "vector",
+      "toggle",
+      "batch"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Text to Layers",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Split text layers into individual per-character or per-word layers",
+    "category": "Animation",
+    "tags": [
+      "text",
+      "split",
+      "characters",
+      "words"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Unprecomp",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Extract layers from pre-compositions back to the parent composition",
+    "category": "Utilities",
+    "tags": [
+      "unprecomp",
+      "extract",
+      "flatten",
+      "layers"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Anti-Static ToolBox",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Motion graphics toolbox with shape generators and animation presets",
+    "category": "Animation",
+    "tags": [
+      "motion-graphics",
+      "shapes",
+      "presets",
+      "tools"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Anti-Static Dominion",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Advanced motion design toolkit with procedural animation tools",
+    "category": "Animation",
+    "tags": [
+      "motion-design",
+      "procedural",
+      "animation",
+      "tools"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Stable Diffusion AI",
+    "type": "script",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Generate AI images directly in After Effects using Stable Diffusion",
+    "category": "AI",
+    "tags": [
+      "ai",
+      "image-generation",
+      "diffusion",
+      "creative"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Duik Angela",
+    "type": "script",
+    "file": "Duik_Angela.zip",
+    "version": "17.1.20",
+    "install": "unzip to ScriptUI Panels",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Professional character rigging and animation toolkit for After Effects",
+    "category": "Animation",
+    "tags": [
+      "rigging",
+      "character",
+      "ik",
+      "animation"
+    ],
+    "author": "Community",
+    "compatibleApps": [
+      "After Effects"
+    ]
+  },
+  {
+    "name": "Bodymovin",
+    "type": "extension",
+    "file": "bodymovin.zxp",
+    "platforms": {
+      "adobe": {
+        "required": false
+      }
+    },
+    "description": "Export After Effects animations as Lottie JSON for web and mobile apps",
+    "category": "Export",
+    "tags": [
+      "lottie",
+      "json",
+      "web",
+      "export"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "After Effects",
+      "Premiere Pro"
+    ]
+  },
+  {
+    "name": "Gyroflow",
+    "type": "software",
+    "version": "1.6.3",
+    "platforms": {
+      "win": {
+        "file": "Gyroflow-windows64.zip"
+      },
+      "mac": {
+        "file": "Gyroflow-mac-universal.dmg"
+      }
+    },
+    "description": "Stabilize video footage using gyroscope data from action cameras",
+    "category": "Software",
+    "tags": [
+      "stabilize",
+      "gyroscope",
+      "action-camera",
+      "video"
+    ],
+    "author": "Community",
+    "compatibleApps": [
+      "Standalone"
+    ]
+  },
+  {
+    "name": "AEJuice Video Editor",
+    "type": "software",
+    "platforms": {
+      "win": {
+        "file": "AEJuice Video Editor.exe"
+      }
+    },
+    "description": "Standalone video editing application with timeline and effects",
+    "category": "Software",
+    "tags": [
+      "editor",
+      "video",
+      "timeline",
+      "standalone"
+    ],
+    "author": "AEJuice",
+    "compatibleApps": [
+      "Standalone"
+    ]
+  }
+]

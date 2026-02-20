@@ -48,6 +48,13 @@ void AppController::initialize() {
     connect(m_manifest, &ManifestManager::manifestLoaded,
             this, &AppController::onManifestLoaded);
 
+    connect(m_manifest, &ManifestManager::errorOccurred,
+            this, [this](const QString &error) {
+                m_loading = false;
+                emit loadingChanged();
+                emit toastRequested(error, "error");
+            });
+
     connect(m_installer, &InstallManager::installCompleted,
             this, [this](const QString &componentId) {
                 m_componentModel->setInstalledVersions(m_storage->installedVersions());

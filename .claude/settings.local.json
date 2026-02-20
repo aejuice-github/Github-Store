@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:slack-chats.kotlinlang.org)",
+      "WebFetch(domain:www.jetbrains.com)",
+      "WebFetch(domain:youtrack.jetbrains.com)",
+      "WebFetch(domain:www.boltuix.com)",
+      "WebFetch(domain:blog.jetbrains.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:doc.qt.io)",
+      "WebFetch(domain:www.figma.com)"
+    ]
+  }
+}

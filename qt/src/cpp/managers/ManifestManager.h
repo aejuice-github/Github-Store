@@ -30,15 +30,11 @@ private slots:
 
 private:
     void parseManifest(const QByteArray &data);
-    void loadBundledManifest();
-    bool loadCachedManifest();
-    void saveCachedManifest(const QByteArray &data);
-    QString cachePath() const;
+    void applyDefaults(Component &component, const QJsonObject &json);
 
     QNetworkAccessManager m_networkManager;
     JsonStorage *m_storage = nullptr;
     QString m_manifestUrl = "https://install.aejuice.com/Products.json";
-    static const int CACHE_HOURS = 24;
 };
 
 #endif // MANIFESTMANAGER_H

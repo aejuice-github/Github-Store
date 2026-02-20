@@ -1,16 +1,12 @@
 #include "ManifestManager.h"
 #include "JsonStorage.h"
-#include "services/FileLocations.h"
 #include <QNetworkReply>
 #include <QJsonDocument>
 #include <QJsonObject>
 #include <QJsonArray>
 #include <QFile>
-#include <QFileInfo>
-#include <QDir>
-#include <QDateTime>
-#include <QStandardPaths>
-#include <QCoreApplication>
+#include <QUrl>
+#include <QSet>
 #include <QDebug>
 
 ManifestManager::ManifestManager(QObject *parent)
@@ -28,10 +24,6 @@ void ManifestManager::setJsonStorage(JsonStorage *storage)
 
 void ManifestManager::loadManifest()
 {
-    // Use cached manifest if fetched within the last 24 hours
-    if (loadCachedManifest())
-        return;
-
     QUrl url(m_manifestUrl);
     QNetworkRequest request(url);
     request.setAttribute(QNetworkRequest::RedirectPolicyAttribute,
@@ -45,9 +37,7 @@ void ManifestManager::onNetworkReply(QNetworkReply *reply)
 
     if (reply->error() != QNetworkReply::NoError) {
         qWarning() << "Network error:" << reply->errorString();
-        // Try cache regardless of age, then bundled
-        if (!loadCachedManifest())
-            loadBundledManifest();
+        emit errorOccurred("Internet connection error");
         return;
     }
 
@@ -55,14 +45,12 @@ void ManifestManager::onNetworkReply(QNetworkReply *reply)
     qDebug() << "Manifest loaded from network, size:" << data.size();
 
     QJsonDocument doc = QJsonDocument::fromJson(data);
-    if (doc.isNull() || doc.object()["components"].toArray().isEmpty()) {
-        qWarning() << "Network manifest has no components, falling back";
-        if (!loadCachedManifest())
-            loadBundledManifest();
+    if (doc.isNull() || !doc.isArray() || doc.array().isEmpty()) {
+        qWarning() << "Network manifest invalid";
+        emit errorOccurred("Failed to load component list");
         return;
     }
 
-    saveCachedManifest(data);
     parseManifest(data);
 }
 
@@ -74,15 +62,16 @@ void ManifestManager::parseManifest(const QByteArray &data)
         return;
     }
 
-    QJsonObject root = doc.object();
     QStringList categories;
     QList<Component> components;
+    QSet<QString> categorySet;
 
-    for (const auto &category : root["categories"].toArray())
-        categories.append(category.toString());
+    for (const auto &componentJson : doc.array()) {
+        QJsonObject obj = componentJson.toObject();
+        Component component = Component::fromJson(obj);
 
-    for (const auto &componentJson : root["components"].toArray()) {
-        Component component = Component::fromJson(componentJson.toObject());
+        applyDefaults(component, obj);
+
 #ifdef Q_OS_WIN
         QString platform = "windows";
 #else
@@ -92,63 +81,78 @@ void ManifestManager::parseManifest(const QByteArray &data)
             continue;
         if (m_storage && !m_storage->isInRollout(component.id, component.rolloutPercentage))
             continue;
+        if (!component.category.isEmpty() && !categorySet.contains(component.category)) {
+            categorySet.insert(component.category);
+            categories.append(component.category);
+        }
         components.append(component);
     }
 
+    categories.sort();
+    categories.prepend("All");
     emit manifestLoaded(components, categories);
 }
 
-void ManifestManager::loadBundledManifest()
+void ManifestManager::applyDefaults(Component &component, const QJsonObject &json)
 {
-    QFile file(":/resources/bundled-manifest.json");
-    if (!file.open(QIODevice::ReadOnly)) {
-        emit errorOccurred("Failed to load bundled manifest");
+    if (component.id.isEmpty() && !component.name.isEmpty())
+        component.id = component.name.toLower().replace(" ", "-").replace("&", "and");
+
+    if (component.version.isEmpty())
+        component.version = "1.0";
+
+    // Skip if platforms already have windows/macos keys (fully specified)
+    if (component.platforms.contains("windows") || component.platforms.contains("macos"))
         return;
+
+    QJsonObject platforms = json["platforms"].toObject();
+    QString baseUrl = "https://install.aejuice.com/";
+    QString urlName = QUrl::toPercentEncoding(component.name, "", " ");
+    urlName.replace("%20", "%20");  // keep spaces encoded
+
+    if (component.type == "plugin") {
+        bool hasAdobe = platforms.contains("adobe");
+        bool hasOpenFx = platforms.contains("openfx");
+        if (!hasAdobe && !hasOpenFx)
+            return;
+
+        PlatformAsset windows;
+        windows.url = baseUrl + "Plugins/Win/Adobe/" + urlName + ".aex";
+        windows.installPath = "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/";
+        windows.requiresAdmin = true;
+        windows.fileName = "AEJuice " + component.name + ".aex";
+        component.platforms["windows"] = windows;
+
+        PlatformAsset macos;
+        macos.url = baseUrl + "Plugins/Mac/Adobe/" + urlName + ".plugin";
+        macos.installPath = "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/";
+        macos.requiresAdmin = true;
+        macos.fileName = "AEJuice " + component.name + ".plugin";
+        component.platforms["macos"] = macos;
+
+        if (!hasOpenFx)
+            component.compatibleApps = {"After Effects", "Premiere Pro"};
+        else
+            component.compatibleApps = {"After Effects", "Premiere Pro", "DaVinci Resolve", "Vegas"};
     }
+    else if (component.type == "script") {
+        PlatformAsset windows;
+        QString file = json["file"].toString();
+        if (file.isEmpty())
+            file = urlName + ".jsx";
+        windows.url = baseUrl + "Scripts/" + file;
+        windows.installPath = "scriptui";
+        windows.fileName = file;
+        component.platforms["windows"] = windows;
 
-    parseManifest(file.readAll());
-}
+        PlatformAsset macos;
+        macos.url = windows.url;
+        macos.installPath = "scriptui";
+        macos.fileName = file;
+        component.platforms["macos"] = macos;
 
-bool ManifestManager::loadCachedManifest()
-{
-    QString path = cachePath();
-    QFileInfo info(path);
-    if (!info.exists())
-        return false;
-
-    qint64 ageHours = info.lastModified().secsTo(QDateTime::currentDateTime()) / 3600;
-    if (ageHours >= CACHE_HOURS)
-        return false;
-
-    QFile file(path);
-    if (!file.open(QIODevice::ReadOnly))
-        return false;
-
-    QByteArray data = file.readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(data);
-    if (doc.isNull() || doc.object()["components"].toArray().isEmpty())
-        return false;
-
-    qDebug() << "Using cached manifest, age:" << ageHours << "hours";
-    parseManifest(data);
-    return true;
-}
-
-void ManifestManager::saveCachedManifest(const QByteArray &data)
-{
-    QString path = cachePath();
-    if (!FileLocations::createDirectory(QFileInfo(path).absolutePath()))
-        return;
-
-    QFile file(path);
-    if (file.open(QIODevice::WriteOnly))
-        file.write(data);
-}
-
-QString ManifestManager::cachePath() const
-{
-    return QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)
-           + "/manifest-cache.json";
+        component.compatibleApps = {"After Effects"};
+    }
 }
 
 int ManifestManager::compareVersions(const QString &a, const QString &b)
