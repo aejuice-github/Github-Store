@@ -1,5 +1,6 @@
 #include "ManifestManager.h"
 #include "JsonStorage.h"
+#include "services/FileLocations.h"
 #include <QNetworkReply>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -145,7 +146,8 @@ bool ManifestManager::loadCachedManifest()
 void ManifestManager::saveCachedManifest(const QByteArray &data)
 {
     QString path = cachePath();
-    QDir().mkpath(QFileInfo(path).absolutePath());
+    if (!FileLocations::createDirectory(QFileInfo(path).absolutePath()))
+        return;
 
     QFile file(path);
     if (file.open(QIODevice::WriteOnly))

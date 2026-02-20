@@ -1,4 +1,5 @@
 #include "JsonStorage.h"
+#include "services/FileLocations.h"
 #include <QStandardPaths>
 #include <QDir>
 #include <QFile>
@@ -42,7 +43,8 @@ void JsonStorage::load()
 
 void JsonStorage::save()
 {
-    QDir().mkpath(QFileInfo(storagePath()).absolutePath());
+    if (!FileLocations::createDirectory(QFileInfo(storagePath()).absolutePath()))
+        return;
 
     QJsonObject obj;
     for (auto it = m_installedVersions.begin(); it != m_installedVersions.end(); ++it)
@@ -99,7 +101,8 @@ void JsonStorage::toggleFavorite(const QString &componentId)
     else
         m_favoriteIds.insert(componentId);
 
-    QDir().mkpath(QFileInfo(favoritesPath()).absolutePath());
+    if (!FileLocations::createDirectory(QFileInfo(favoritesPath()).absolutePath()))
+        return;
     QJsonArray array;
     for (const auto &id : m_favoriteIds)
         array.append(id);
@@ -149,7 +152,8 @@ void JsonStorage::loadRollout()
 
 void JsonStorage::saveRollout()
 {
-    QDir().mkpath(QFileInfo(rolloutPath()).absolutePath());
+    if (!FileLocations::createDirectory(QFileInfo(rolloutPath()).absolutePath()))
+        return;
 
     QJsonObject obj;
     for (auto it = m_rolloutEntries.begin(); it != m_rolloutEntries.end(); ++it) {

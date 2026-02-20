@@ -1,4 +1,5 @@
 #include "ElevatedCopyHelper.h"
+#include "FileLocations.h"
 #include <QCoreApplication>
 #include <QDebug>
 #include <QDir>
@@ -29,7 +30,10 @@ bool ElevatedCopyHelper::copyFiles(const QString &source, const QStringList &des
     // Try direct copy first — no UAC needed if we already have permission
     bool directSuccess = true;
     for (const QString &dest : destinations) {
-        QDir().mkpath(QFileInfo(dest).absolutePath());
+        if (!FileLocations::createDirectory(QFileInfo(dest).absolutePath())) {
+            directSuccess = false;
+            break;
+        }
         if (QFile::exists(dest))
             QFile::remove(dest);
         if (!QFile::copy(source, dest)) {
@@ -78,7 +82,10 @@ bool ElevatedCopyHelper::copyFiles(const QString &source, const QStringList &des
 #else
     bool success = true;
     for (const QString &dest : destinations) {
-        QDir().mkpath(QFileInfo(dest).absolutePath());
+        if (!FileLocations::createDirectory(QFileInfo(dest).absolutePath())) {
+            success = false;
+            continue;
+        }
         if (QFile::exists(dest))
             QFile::remove(dest);
         if (!QFile::copy(source, dest))
@@ -253,7 +260,10 @@ int ElevatedCopyHelper::runHelper(const QString &pipeName)
                 bool success = true;
                 for (int i = 2; i < parts.size(); i++) {
                     QString destination = parts[i];
-                    QDir().mkpath(QFileInfo(destination).absolutePath());
+                    if (!FileLocations::createDirectory(QFileInfo(destination).absolutePath())) {
+                        success = false;
+                        continue;
+                    }
                     if (QFile::exists(destination))
                         QFile::remove(destination);
                     if (!QFile::copy(source, destination))

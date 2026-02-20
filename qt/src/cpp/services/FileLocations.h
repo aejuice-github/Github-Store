@@ -18,6 +18,7 @@ public:
     static QString platformKey();
     static QString programFilesPath();
     static QString commonFilesPath();
+    static bool createDirectory(const QString &path);
 };
 
 #endif // FILELOCATIONS_H

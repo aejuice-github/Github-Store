@@ -1,6 +1,8 @@
 #include "DownloadManager.h"
+#include "services/FileLocations.h"
 #include <QNetworkReply>
 #include <QFile>
+#include <QFileInfo>
 #include <QDir>
 #include <QStandardPaths>
 
@@ -32,7 +34,10 @@ void DownloadManager::downloadFile(const QString &componentId, const QUrl &url, 
             return;
         }
 
-        QDir().mkpath(QFileInfo(destination).absolutePath());
+        if (!FileLocations::createDirectory(QFileInfo(destination).absolutePath())) {
+            emit downloadError(componentId, "Failed to create directory: " + QFileInfo(destination).absolutePath());
+            return;
+        }
         QFile file(destination);
         if (!file.open(QIODevice::WriteOnly)) {
             emit downloadError(componentId, "Failed to write file: " + destination);

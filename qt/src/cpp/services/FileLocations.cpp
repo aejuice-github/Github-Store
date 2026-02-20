@@ -52,13 +52,13 @@ QStringList FileLocations::scriptUIPanelsPaths() const {
 QString FileLocations::tempDownloadPath() const {
     QString path = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
         + "/ComponentManager/downloads";
-    QDir().mkpath(path);
+    createDirectory(path);
     return path;
 }
 
 QString FileLocations::appDataPath() const {
     QString path = QStandardPaths::writableLocation(QStandardPaths::AppDataLocation);
-    QDir().mkpath(path);
+    createDirectory(path);
     return path;
 }
 
@@ -98,4 +98,14 @@ QString FileLocations::commonFilesPath() {
 #else
     return QString();
 #endif
+}
+
+bool FileLocations::createDirectory(const QString &path) {
+    if (QDir(path).exists())
+        return true;
+    if (!QDir().mkpath(path)) {
+        qWarning() << "Failed to create directory:" << path;
+        return false;
+    }
+    return true;
 }
