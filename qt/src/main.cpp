@@ -9,7 +9,6 @@
 #include <QTimer>
 #include "cpp/AppController.h"
 #include "cpp/NativeDropHandler.h"
-#include "cpp/WindowsDnDFix.h"
 #include "cpp/services/ElevatedCopyHelper.h"
 #include "cpp/managers/ManifestManager.h"
 #include "cpp/managers/DownloadManager.h"
@@ -159,11 +158,6 @@ int main(int argc, char *argv[]) {
             return runHeadlessInstall(argc, argv, ids, false);
         }
     }
-
-    // On Windows, UIPI blocks drag-and-drop to elevated apps.
-    // Relaunch as normal user if running as admin.
-    if (WindowsDnDFix::relaunchIfElevated(argv[0]))
-        return 0;
 
     QQuickStyle::setStyle("Basic");
 
