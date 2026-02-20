@@ -41,9 +41,9 @@ Rectangle {
         spacing: CMTheme.spacingMedium
 
         // Header row with title and search
-        Row {
+        Item {
             width: parent.width
-            spacing: CMTheme.spacingMedium
+            height: 32
 
             Text {
                 text: "Installed Apps"
@@ -54,53 +54,13 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            // Uninstall All
             Rectangle {
-                visible: installedScreen.installedApps.length > 0
-                width: uninstallAllRow.width + CMTheme.spacingLarge
-                height: 28
-                radius: CMTheme.radiusDefault
-                color: uninstallAllArea.containsMouse ? "#93000A" : CMTheme.surfaceContainerHighColor
-                anchors.verticalCenter: parent.verticalCenter
-
-                Row {
-                    id: uninstallAllRow
-                    anchors.centerIn: parent
-                    spacing: CMTheme.spacingSmall
-
-                    MaterialIcon {
-                        iconName: "delete"
-                        iconSize: 16
-                        iconColor: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-
-                    Text {
-                        text: "Uninstall All"
-                        font.pixelSize: CMTheme.fontSizeSmall
-                        font.bold: true
-                        font.family: CMTheme.fontFamily
-                        color: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
-                        anchors.verticalCenter: parent.verticalCenter
-                    }
-                }
-
-                MouseArea {
-                    id: uninstallAllArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: uninstallAllDialog.open()
-                }
-            }
-
-            Item { width: parent.width - 500; height: 1 }
-
-            Rectangle {
+                id: installedSearchField
                 width: 200
                 height: 32
                 radius: CMTheme.radiusDefault
                 color: CMTheme.surfaceContainerHighColor
+                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
 
                 Row {
@@ -399,6 +359,49 @@ Rectangle {
                 verticalAlignment: Text.AlignVCenter
                 leftPadding: keepUpToDateRow.indicator.width + keepUpToDateRow.spacing
             }
+        }
+    }
+
+    // Uninstall All button
+    Rectangle {
+        visible: installedScreen.installedApps.length > 0
+        width: uninstallAllRow.width + CMTheme.spacingLarge
+        height: 28
+        radius: CMTheme.radiusDefault
+        color: uninstallAllArea.containsMouse ? "#93000A" : CMTheme.surfaceContainerHighColor
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: CMTheme.spacingLarge
+        anchors.bottomMargin: CMTheme.spacingLarge
+
+        Row {
+            id: uninstallAllRow
+            anchors.centerIn: parent
+            spacing: CMTheme.spacingSmall
+
+            MaterialIcon {
+                iconName: "delete"
+                iconSize: 16
+                iconColor: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                anchors.verticalCenter: parent.verticalCenter
+            }
+
+            Text {
+                text: "Uninstall All"
+                font.pixelSize: CMTheme.fontSizeSmall
+                font.bold: true
+                font.family: CMTheme.fontFamily
+                color: uninstallAllArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                anchors.verticalCenter: parent.verticalCenter
+            }
+        }
+
+        MouseArea {
+            id: uninstallAllArea
+            anchors.fill: parent
+            hoverEnabled: true
+            cursorShape: Qt.PointingHandCursor
+            onClicked: uninstallAllDialog.open()
         }
     }
 

@@ -7,14 +7,13 @@ Rectangle {
     id: homeScreen
     color: CMTheme.backgroundColor
 
-    Row {
-        anchors.fill: parent
-
         // Sidebar
         Rectangle {
             id: sidebar
+            anchors.left: parent.left
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             width: CMTheme.sidebarWidth
-            height: parent.height
             color: CMTheme.surfaceColor
 
             Flickable {
@@ -72,6 +71,7 @@ Rectangle {
                     }
 
                     Column {
+                        id: priceFilter
                         width: parent.width
                         spacing: 2
 
@@ -191,8 +191,10 @@ Rectangle {
 
         // Main content area
         Rectangle {
-            width: parent.width - sidebar.width
-            height: parent.height
+            anchors.left: sidebar.right
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
             color: CMTheme.backgroundColor
 
             Item {
@@ -279,11 +281,16 @@ Rectangle {
                         width: listViewComp.width
                         height: 72
                         radius: CMTheme.radiusDefault
-                        color: listItemArea.containsMouse ? CMTheme.surfaceContainerHighColor : CMTheme.surfaceContainerColor
+                        color: rowHover.hovered ? CMTheme.surfaceContainerHighColor : CMTheme.surfaceContainerColor
+
+                        HoverHandler {
+                            id: rowHover
+                        }
 
                         MouseArea {
                             id: listItemArea
                             anchors.fill: parent
+                            anchors.rightMargin: actionRow.width + CMTheme.spacingMedium * 2
                             hoverEnabled: true
                             cursorShape: Qt.PointingHandCursor
                             onClicked: appController.openComponentPage(model.componentId)
@@ -669,6 +676,8 @@ Rectangle {
                                 appController.filterByApp("All")
                                 appController.filterByPrice("All")
                                 appController.filterByAuthor("All")
+                                priceFilter.selected = "All"
+                                authorList.selectedAuthor = "All"
                             }
                         }
                     }
@@ -693,5 +702,4 @@ Rectangle {
                 }
             }
         }
-    }
 }

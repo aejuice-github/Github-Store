@@ -41,9 +41,9 @@ Rectangle {
         spacing: CMTheme.spacingMedium
 
         // Header row with title and search
-        Row {
+        Item {
             width: parent.width
-            spacing: CMTheme.spacingMedium
+            height: 32
 
             Text {
                 text: "Favorites"
@@ -54,13 +54,12 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
             }
 
-            Item { width: parent.width - 300; height: 1 }
-
             Rectangle {
                 width: 200
                 height: 32
                 radius: CMTheme.radiusDefault
                 color: CMTheme.surfaceContainerHighColor
+                anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
 
                 Row {

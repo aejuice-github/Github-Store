@@ -164,8 +164,10 @@ ApplicationWindow {
                     onClicked: {
                         if (stackView.currentItem && stackView.currentItem.objectName === "favoritesScreen")
                             stackView.pop(null)
+                        else if (stackView.depth > 1)
+                            stackView.replace(favoritesScreenComp, StackView.Immediate)
                         else
-                            { stackView.pop(null, StackView.Immediate); stackView.push(favoritesScreenComp) }
+                            stackView.push(favoritesScreenComp)
                     }
                 }
             }
@@ -193,8 +195,10 @@ ApplicationWindow {
                     onClicked: {
                         if (stackView.currentItem && stackView.currentItem.objectName === "installedAppsScreen")
                             stackView.pop(null)
+                        else if (stackView.depth > 1)
+                            stackView.replace(installedAppsScreenComp, StackView.Immediate)
                         else
-                            { stackView.pop(null, StackView.Immediate); stackView.push(installedAppsScreenComp) }
+                            stackView.push(installedAppsScreenComp)
                     }
                 }
             }
@@ -222,8 +226,10 @@ ApplicationWindow {
                     onClicked: {
                         if (stackView.currentItem && stackView.currentItem.objectName === "manualInstallScreen")
                             stackView.pop(null)
+                        else if (stackView.depth > 1)
+                            stackView.replace(manualInstallScreenComp, StackView.Immediate)
                         else
-                            { stackView.pop(null, StackView.Immediate); stackView.push(manualInstallScreenComp) }
+                            stackView.push(manualInstallScreenComp)
                     }
                 }
             }
