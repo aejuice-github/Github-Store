@@ -42,11 +42,23 @@ Rectangle {
             color: CMTheme.surfaceColor
 
             Flickable {
+                id: sidebarFlickable
                 anchors.fill: parent
-                anchors.margins: CMTheme.spacingDefault
+                anchors.leftMargin: CMTheme.spacingDefault
+                anchors.topMargin: CMTheme.spacingDefault
+                anchors.bottomMargin: CMTheme.spacingDefault
                 contentHeight: sidebarContent.height
                 clip: true
                 boundsBehavior: Flickable.StopAtBounds
+
+                ScrollBar.vertical: ScrollBar {
+                    policy: ScrollBar.AlwaysOn
+                    contentItem: Rectangle {
+                        implicitWidth: 6
+                        radius: 3
+                        color: parent.pressed ? CMTheme.textMutedColor : parent.hovered ? CMTheme.textMutedColor : CMTheme.borderColor
+                    }
+                }
 
                 Column {
                     id: sidebarContent
@@ -225,7 +237,9 @@ Rectangle {
             Item {
                 id: contentArea
                 anchors.fill: parent
-                anchors.margins: CMTheme.spacingMedium
+                anchors.leftMargin: CMTheme.spacingMedium
+                anchors.topMargin: CMTheme.spacingMedium
+                anchors.bottomMargin: CMTheme.spacingMedium
 
                 // Component grid
                 GridView {
@@ -249,7 +263,12 @@ Rectangle {
                     }
 
                     ScrollBar.vertical: ScrollBar {
-                        policy: ScrollBar.AsNeeded
+                        policy: ScrollBar.AlwaysOn
+                        contentItem: Rectangle {
+                            implicitWidth: 6
+                            radius: 3
+                            color: parent.pressed ? CMTheme.textMutedColor : parent.hovered ? CMTheme.textMutedColor : CMTheme.borderColor
+                        }
                     }
 
                     delegate: Item {
@@ -299,7 +318,12 @@ Rectangle {
                     }
 
                     ScrollBar.vertical: ScrollBar {
-                        policy: ScrollBar.AsNeeded
+                        policy: ScrollBar.AlwaysOn
+                        contentItem: Rectangle {
+                            implicitWidth: 6
+                            radius: 3
+                            color: parent.pressed ? CMTheme.textMutedColor : parent.hovered ? CMTheme.textMutedColor : CMTheme.borderColor
+                        }
                     }
 
                     delegate: Rectangle {
