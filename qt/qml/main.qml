@@ -165,7 +165,7 @@ ApplicationWindow {
                         if (stackView.currentItem && stackView.currentItem.objectName === "favoritesScreen")
                             stackView.pop(null)
                         else
-                            { stackView.pop(null); stackView.push(favoritesScreenComp) }
+                            { stackView.pop(null, StackView.Immediate); stackView.push(favoritesScreenComp) }
                     }
                 }
             }
@@ -194,7 +194,7 @@ ApplicationWindow {
                         if (stackView.currentItem && stackView.currentItem.objectName === "installedAppsScreen")
                             stackView.pop(null)
                         else
-                            { stackView.pop(null); stackView.push(installedAppsScreenComp) }
+                            { stackView.pop(null, StackView.Immediate); stackView.push(installedAppsScreenComp) }
                     }
                 }
             }
@@ -223,7 +223,7 @@ ApplicationWindow {
                         if (stackView.currentItem && stackView.currentItem.objectName === "manualInstallScreen")
                             stackView.pop(null)
                         else
-                            { stackView.pop(null); stackView.push(manualInstallScreenComp) }
+                            { stackView.pop(null, StackView.Immediate); stackView.push(manualInstallScreenComp) }
                     }
                 }
             }
@@ -250,16 +250,16 @@ ApplicationWindow {
         initialItem: HomeScreen {}
 
         pushEnter: Transition {
-            PropertyAnimation { property: "opacity"; from: 0; to: 1; duration: 200 }
+            PropertyAnimation { property: "opacity"; from: 0; to: 1; duration: 100 }
         }
         pushExit: Transition {
-            PropertyAnimation { property: "opacity"; from: 1; to: 0; duration: 200 }
+            PropertyAnimation { property: "opacity"; from: 1; to: 0; duration: 100 }
         }
         popEnter: Transition {
-            PropertyAnimation { property: "opacity"; from: 0; to: 1; duration: 200 }
+            PropertyAnimation { property: "opacity"; from: 0; to: 1; duration: 100 }
         }
         popExit: Transition {
-            PropertyAnimation { property: "opacity"; from: 1; to: 0; duration: 200 }
+            PropertyAnimation { property: "opacity"; from: 1; to: 0; duration: 100 }
         }
     }
 

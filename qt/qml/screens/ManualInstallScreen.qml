@@ -19,34 +19,7 @@ Rectangle {
             radius: CMTheme.radiusLarge
             color: dropZoneArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
             border.color: CMTheme.borderColor
-            border.width: 0
-
-            Canvas {
-                id: dashedBorder
-                anchors.fill: parent
-
-                onPaint: {
-                    var ctx = getContext("2d")
-                    ctx.clearRect(0, 0, width, height)
-                    ctx.strokeStyle = CMTheme.borderColor
-                    ctx.lineWidth = 2
-                    ctx.setLineDash([12, 8])
-                    ctx.beginPath()
-
-                    var r = CMTheme.radiusLarge
-                    ctx.moveTo(r, 0)
-                    ctx.lineTo(width - r, 0)
-                    ctx.arcTo(width, 0, width, r, r)
-                    ctx.lineTo(width, height - r)
-                    ctx.arcTo(width, height, width - r, height, r)
-                    ctx.lineTo(r, height)
-                    ctx.arcTo(0, height, 0, height - r, r)
-                    ctx.lineTo(0, r)
-                    ctx.arcTo(0, 0, r, 0, r)
-
-                    ctx.stroke()
-                }
-            }
+            border.width: 2
 
             Column {
                 anchors.centerIn: parent
