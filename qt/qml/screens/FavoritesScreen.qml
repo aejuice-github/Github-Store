@@ -7,6 +7,31 @@ Rectangle {
     id: favoritesScreen
     objectName: "favoritesScreen"
     color: CMTheme.backgroundColor
+    focus: true
+
+    Keys.onPressed: function(event) {
+        var maxY = Math.max(0, favList.contentHeight - favList.height)
+        switch (event.key) {
+            case Qt.Key_Down:
+                favList.contentY = Math.min(maxY, favList.contentY + 72)
+                event.accepted = true; break
+            case Qt.Key_Up:
+                favList.contentY = Math.max(0, favList.contentY - 72)
+                event.accepted = true; break
+            case Qt.Key_PageDown:
+                favList.contentY = Math.min(maxY, favList.contentY + favList.height)
+                event.accepted = true; break
+            case Qt.Key_PageUp:
+                favList.contentY = Math.max(0, favList.contentY - favList.height)
+                event.accepted = true; break
+            case Qt.Key_Home:
+                favList.contentY = 0
+                event.accepted = true; break
+            case Qt.Key_End:
+                favList.contentY = maxY
+                event.accepted = true; break
+        }
+    }
 
     property var favorites: []
     property var filteredFavorites: []

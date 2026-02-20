@@ -6,6 +6,31 @@ import "../components"
 Rectangle {
     id: homeScreen
     color: CMTheme.backgroundColor
+    focus: true
+
+    Keys.onPressed: function(event) {
+        var maxY = Math.max(0, listViewComp.contentHeight - listViewComp.height)
+        switch (event.key) {
+            case Qt.Key_Down:
+                listViewComp.contentY = Math.min(maxY, listViewComp.contentY + 72)
+                event.accepted = true; break
+            case Qt.Key_Up:
+                listViewComp.contentY = Math.max(0, listViewComp.contentY - 72)
+                event.accepted = true; break
+            case Qt.Key_PageDown:
+                listViewComp.contentY = Math.min(maxY, listViewComp.contentY + listViewComp.height)
+                event.accepted = true; break
+            case Qt.Key_PageUp:
+                listViewComp.contentY = Math.max(0, listViewComp.contentY - listViewComp.height)
+                event.accepted = true; break
+            case Qt.Key_Home:
+                listViewComp.contentY = 0
+                event.accepted = true; break
+            case Qt.Key_End:
+                listViewComp.contentY = maxY
+                event.accepted = true; break
+        }
+    }
 
         // Sidebar
         Rectangle {

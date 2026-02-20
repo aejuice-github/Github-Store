@@ -248,6 +248,7 @@ ApplicationWindow {
     // Main content
     StackView {
         id: stackView
+        focus: true
         anchors.top: navBar.bottom
         anchors.left: parent.left
         anchors.right: parent.right

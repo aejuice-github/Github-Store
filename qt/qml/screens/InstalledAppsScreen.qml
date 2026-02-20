@@ -7,6 +7,31 @@ Rectangle {
     id: installedScreen
     objectName: "installedAppsScreen"
     color: CMTheme.backgroundColor
+    focus: true
+
+    Keys.onPressed: function(event) {
+        var maxY = Math.max(0, installedList.contentHeight - installedList.height)
+        switch (event.key) {
+            case Qt.Key_Down:
+                installedList.contentY = Math.min(maxY, installedList.contentY + 72)
+                event.accepted = true; break
+            case Qt.Key_Up:
+                installedList.contentY = Math.max(0, installedList.contentY - 72)
+                event.accepted = true; break
+            case Qt.Key_PageDown:
+                installedList.contentY = Math.min(maxY, installedList.contentY + installedList.height)
+                event.accepted = true; break
+            case Qt.Key_PageUp:
+                installedList.contentY = Math.max(0, installedList.contentY - installedList.height)
+                event.accepted = true; break
+            case Qt.Key_Home:
+                installedList.contentY = 0
+                event.accepted = true; break
+            case Qt.Key_End:
+                installedList.contentY = maxY
+                event.accepted = true; break
+        }
+    }
 
     property var installedApps: []
     property var filteredApps: []
