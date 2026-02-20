@@ -1,5 +1,6 @@
 #include "DragDropManager.h"
 #include "services/ElevatedCopyHelper.h"
+#include "services/FileLocations.h"
 #include <QFile>
 #include <QFileInfo>
 #include <QDir>
@@ -122,10 +123,10 @@ QStringList DragDropManager::findInstallPaths(const QString &extension)
     if (extension == "jsx" || extension == "jsxbin") {
         QStringList paths;
 #ifdef Q_OS_WIN
-        QDir programFiles("C:/Program Files/Adobe");
-        if (programFiles.exists()) {
-            for (const auto &entry : programFiles.entryList({"Adobe After Effects *"}, QDir::Dirs)) {
-                QString scriptUIPath = programFiles.absoluteFilePath(entry)
+        QDir adobeDir(FileLocations::programFilesPath() + "/Adobe");
+        if (adobeDir.exists()) {
+            for (const auto &entry : adobeDir.entryList({"Adobe After Effects *"}, QDir::Dirs)) {
+                QString scriptUIPath = adobeDir.absoluteFilePath(entry)
                     + "/Support Files/Scripts/ScriptUI Panels/";
                 paths.append(scriptUIPath);
             }
@@ -144,15 +145,15 @@ QStringList DragDropManager::findInstallPaths(const QString &extension)
     }
 
     if (extension == "aex") {
-        return {"C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/"};
+        return {FileLocations::programFilesPath() + "/Adobe/Common/Plug-ins/7.0/MediaCore/"};
     }
 
     if (extension == "ofx") {
-        return {"C:/Program Files/Common Files/OFX/Plugins/"};
+        return {FileLocations::commonFilesPath() + "/OFX/Plugins/"};
     }
 
     if (extension == "zxp") {
-        return {"C:/Program Files/Common Files/Adobe/CEP/extensions/"};
+        return {FileLocations::commonFilesPath() + "/Adobe/CEP/extensions/"};
     }
 
     return {};

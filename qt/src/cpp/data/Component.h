@@ -15,6 +15,7 @@ struct PlatformAsset {
     bool requiresAdmin = false;
     QString fileName;
     QStringList waitForFinish;  // Processes that must be closed before overwriting
+    QStringList silentArgs;     // Arguments for silent/hidden install (exe/msi)
 
     static PlatformAsset fromJson(const QJsonObject &json) {
         PlatformAsset asset;
@@ -26,6 +27,8 @@ struct PlatformAsset {
         asset.fileName = json["fileName"].toString();
         for (const auto &proc : json["wait_for_finish"].toArray())
             asset.waitForFinish.append(proc.toString());
+        for (const auto &arg : json["silentArgs"].toArray())
+            asset.silentArgs.append(arg.toString());
         return asset;
     }
 
@@ -33,6 +36,9 @@ struct PlatformAsset {
         QVariantList procList;
         for (const auto &proc : waitForFinish)
             procList.append(proc);
+        QVariantList argsList;
+        for (const auto &arg : silentArgs)
+            argsList.append(arg);
         return {
             {"url", url},
             {"sha256", sha256},
@@ -40,7 +46,8 @@ struct PlatformAsset {
             {"installPath", installPath},
             {"requiresAdmin", requiresAdmin},
             {"fileName", fileName},
-            {"waitForFinish", procList}
+            {"waitForFinish", procList},
+            {"silentArgs", argsList}
         };
     }
 };

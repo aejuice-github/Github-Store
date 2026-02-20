@@ -37,7 +37,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ASCII.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice ASCII.aex"
         },
@@ -83,7 +83,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/AudioWaveform.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Audio Waveform.aex"
         },
@@ -129,7 +129,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/AutoCrop.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Auto Crop.aex"
         },
@@ -172,7 +172,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/AutoCut.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Auto Cut.aex"
         },
@@ -215,7 +215,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/AutoReframe.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Auto Reframe.aex"
         },
@@ -258,7 +258,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Black%26White.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Black & White.aex"
         },
@@ -304,7 +304,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/CCTV.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice CCTV.aex"
         },
@@ -350,7 +350,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ChangeColor.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Change Color.aex"
         },
@@ -394,7 +394,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ChromaticAberration.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Chromatic Aberration.aex"
         },
@@ -440,7 +440,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ColorCurves.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Color Curves.aex"
         },
@@ -486,7 +486,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ColorMatch.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Color Match.aex"
         },
@@ -529,7 +529,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/CRT.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice CRT.aex"
         },
@@ -575,7 +575,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/CrystalLight.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Crystal Light.aex"
         },
@@ -621,7 +621,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/DeepGlow.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Deep Glow.aex"
         },
@@ -667,7 +667,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/DepthMap.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Depth Map.aex"
         },
@@ -710,7 +710,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Duotone.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Duotone.aex"
         },
@@ -756,7 +756,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/8-Bit.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice 8-Bit.aex"
         },
@@ -802,7 +802,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Emboss.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Emboss.aex"
         },
@@ -848,7 +848,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ExplodeShapeLayers.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Explode Shape Layers.aex"
         },
@@ -891,7 +891,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/FaceDetector.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Face Detector.aex"
         },
@@ -937,7 +937,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/FilmGrain.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Film Grain.aex"
         },
@@ -983,7 +983,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/FlowLines.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Flow Lines.aex"
         },
@@ -1029,7 +1029,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/GlitchMaker.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Glitch Maker.aex"
         },
@@ -1075,7 +1075,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Halftone.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Halftone.aex"
         },
@@ -1121,7 +1121,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/HexGlitch.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Hex Glitch.aex"
         },
@@ -1164,7 +1164,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Infrared.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Infrared.aex"
         },
@@ -1210,7 +1210,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/LightRays.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Light Rays.aex"
         },
@@ -1254,7 +1254,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/MotionEcho.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Motion Echo.aex"
         },
@@ -1300,7 +1300,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/NightVision.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Night Vision.aex"
         },
@@ -1346,7 +1346,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/NoiseSort.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Noise Sort.aex"
         },
@@ -1392,7 +1392,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Nostalgia.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Nostalgia.aex"
         },
@@ -1438,7 +1438,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/NTSC.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice NTSC.aex"
         },
@@ -1484,7 +1484,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ObjectDetector.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Object Detector.aex"
         },
@@ -1527,7 +1527,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/OpticalFlares.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Optical Flares.aex"
         },
@@ -1573,7 +1573,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/PathFire.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Path Fire.aex"
         },
@@ -1616,7 +1616,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/PixelShifter.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Pixel Shifter.aex"
         },
@@ -1662,7 +1662,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/PrismEcho.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Prism Echo.aex"
         },
@@ -1708,7 +1708,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/PrivacyBlur.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Privacy Blur.aex"
         },
@@ -1754,7 +1754,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Psychedelic.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Psychedelic.aex"
         },
@@ -1800,7 +1800,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Quantize.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Quantize.aex"
         },
@@ -1843,7 +1843,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/RealVHS.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Real VHS.aex"
         },
@@ -1889,7 +1889,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Repeater.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Repeater.aex"
         },
@@ -1935,7 +1935,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ResizeBlur.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Resize Blur.aex"
         },
@@ -1981,7 +1981,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/SoftGlow.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Soft Glow.aex"
         },
@@ -2027,7 +2027,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/StopMotion.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Stop Motion.aex"
         },
@@ -2073,7 +2073,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/ThermalVision.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Thermal Vision.aex"
         },
@@ -2119,7 +2119,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/TiltShift.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Tilt Shift.aex"
         },
@@ -2165,7 +2165,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Track.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Track.aex"
         },
@@ -2211,7 +2211,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/VHS.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice VHS.aex"
         },
@@ -2257,7 +2257,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/VoronoiGlitch.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Voronoi Glitch.aex"
         },
@@ -2303,7 +2303,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/Wave.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice Wave.aex"
         },
@@ -2349,7 +2349,7 @@
           "url": "https://install.aejuice.com/Plugins/Win/Adobe/X-Ray.aex",
           "sha256": "",
           "size": 3500000,
-          "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+          "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
           "requiresAdmin": true,
           "fileName": "AEJuice X-Ray.aex"
         },
@@ -4369,7 +4369,7 @@
           "url": "https://install.aejuice.com/Extensions/bodymovin.zxp",
           "sha256": "",
           "size": 1500000,
-          "installPath": "C:/Program Files/Common Files/Adobe/CEP/extensions/",
+          "installPath": "%COMMONFILES%/Adobe/CEP/extensions/",
           "requiresAdmin": true,
           "fileName": "bodymovin.zxp"
         },
@@ -4412,7 +4412,7 @@
           "url": "https://install.aejuice.com/Software/Gyroflow-windows64.zip",
           "sha256": "",
           "size": 85000000,
-          "installPath": "C:/Program Files/AEJuice/Gyroflow/",
+          "installPath": "%PROGRAMFILES%/AEJuice/Gyroflow/",
           "requiresAdmin": true,
           "fileName": "Gyroflow-windows64.zip"
         },
@@ -4455,9 +4455,10 @@
           "url": "https://install.aejuice.com/Software/VideoEditor.exe",
           "sha256": "",
           "size": 85000000,
-          "installPath": "C:/Program Files/AEJuice/AEJuice Video Editor/",
+          "installPath": "%PROGRAMFILES%/AEJuice/AEJuice Video Editor/",
           "requiresAdmin": true,
-          "fileName": "AEJuice Video Editor.exe"
+          "fileName": "AEJuice Video Editor.exe",
+          "silentArgs": ["/S"]
         }
       },
       "dependencies": [],

@@ -33,7 +33,13 @@ signals:
 private:
     void finishInstall(const QString &componentId, const QString &filePath,
                        const QString &version, const QString &installPath,
-                       const QString &fileName, const QStringList &waitForFinish);
+                       const QString &fileName, const QStringList &waitForFinish,
+                       const QStringList &silentArgs);
+    void runInstaller(const QString &componentId, const QString &filePath,
+                      const QString &version, const QStringList &silentArgs,
+                      const QStringList &waitForFinish);
+    void waitForProcesses(const QString &componentId, const QString &version,
+                          const QStringList &processNames);
     QStringList resolveInstallPaths(const QString &installPath) const;
     QStringList findRunningProcesses(const QStringList &processNames) const;
     bool fileExistsAtDestination(const QString &fileName, const QStringList &targetDirs) const;

@@ -16,6 +16,8 @@ public:
     Q_INVOKABLE QString appDataPath() const;
 
     static QString platformKey();
+    static QString programFilesPath();
+    static QString commonFilesPath();
 };
 
 #endif // FILELOCATIONS_H

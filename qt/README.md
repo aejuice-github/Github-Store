@@ -98,7 +98,7 @@ Fetched from `https://install.aejuice.com/Products.json` with bundled fallback.
       "url": "https://install.aejuice.com/Plugins/Win/Adobe/ASCII.aex",
       "sha256": "",
       "size": 3500000,
-      "installPath": "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/",
+      "installPath": "%PROGRAMFILES%/Adobe/Common/Plug-ins/7.0/MediaCore/",
       "requiresAdmin": true,
       "fileName": "AEJuice ASCII.aex"
     }
@@ -122,6 +122,19 @@ Fetched from `https://install.aejuice.com/Products.json` with bundled fallback.
 | `runnable` | bool | Can be launched directly |
 | `compatibleApps` | array | Compatible host apps |
 | `platforms` | object | Per-platform download assets |
+
+### Platform Asset Fields
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `url` | string | Download URL |
+| `sha256` | string | SHA-256 checksum (optional) |
+| `size` | int | File size in bytes |
+| `installPath` | string | Target directory. Supports `%PROGRAMFILES%` and `%COMMONFILES%` placeholders (resolved at runtime via system API). Use `scriptui` or `scripts` for AE-relative paths |
+| `requiresAdmin` | bool | Needs elevated permissions to install |
+| `fileName` | string | Name of the installed file |
+| `wait_for_finish` | array | Process names that must be closed before overwriting (e.g. `["AfterFX.exe"]`) |
+| `silentArgs` | array | Arguments for silent/hidden install of exe/msi installers. Examples: `["/S"]` (NSIS), `["/quiet", "/norestart"]` (MSI), `["/VERYSILENT", "/NORESTART"]` (Inno Setup). The app runs the installer with these args and waits for exit code 0 |
 
 ## Local Storage
 

@@ -2,13 +2,18 @@
 #include <QStandardPaths>
 #include <QDir>
 
+#ifdef Q_OS_WIN
+#include <windows.h>
+#include <shlobj.h>
+#endif
+
 FileLocations::FileLocations(QObject *parent)
     : QObject(parent) {
 }
 
 QString FileLocations::mediaCorePath() const {
 #ifdef Q_OS_WIN
-    return "C:/Program Files/Adobe/Common/Plug-ins/7.0/MediaCore/";
+    return programFilesPath() + "/Adobe/Common/Plug-ins/7.0/MediaCore/";
 #elif defined(Q_OS_MAC)
     return "/Library/Application Support/Adobe/Common/Plug-ins/7.0/MediaCore/";
 #else
@@ -20,10 +25,10 @@ QStringList FileLocations::scriptUIPanelsPaths() const {
     QStringList paths;
 
 #ifdef Q_OS_WIN
-    QDir programFiles("C:/Program Files/Adobe");
-    if (programFiles.exists()) {
-        for (const auto &entry : programFiles.entryList({"Adobe After Effects *"}, QDir::Dirs)) {
-            QString scriptUIPath = programFiles.absoluteFilePath(entry)
+    QDir adobeDir(programFilesPath() + "/Adobe");
+    if (adobeDir.exists()) {
+        for (const auto &entry : adobeDir.entryList({"Adobe After Effects *"}, QDir::Dirs)) {
+            QString scriptUIPath = adobeDir.absoluteFilePath(entry)
                 + "/Support Files/Scripts/ScriptUI Panels/";
             if (QDir(scriptUIPath).exists())
                 paths.append(scriptUIPath);
@@ -64,5 +69,33 @@ QString FileLocations::platformKey() {
     return "macos";
 #else
     return "linux";
+#endif
+}
+
+QString FileLocations::programFilesPath() {
+#ifdef Q_OS_WIN
+    wchar_t *path = nullptr;
+    if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_ProgramFiles, 0, nullptr, &path))) {
+        QString result = QString::fromWCharArray(path);
+        CoTaskMemFree(path);
+        return QDir::fromNativeSeparators(result);
+    }
+    return "C:/Program Files";
+#else
+    return QString();
+#endif
+}
+
+QString FileLocations::commonFilesPath() {
+#ifdef Q_OS_WIN
+    wchar_t *path = nullptr;
+    if (SUCCEEDED(SHGetKnownFolderPath(FOLDERID_ProgramFilesCommon, 0, nullptr, &path))) {
+        QString result = QString::fromWCharArray(path);
+        CoTaskMemFree(path);
+        return QDir::fromNativeSeparators(result);
+    }
+    return "C:/Program Files/Common Files";
+#else
+    return QString();
 #endif
 }
