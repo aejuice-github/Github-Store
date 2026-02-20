@@ -53,7 +53,7 @@ set(RESOURCES
     resources.qrc
 )
 
-add_executable(${PROJECT_NAME} ${SOURCES} ${RESOURCES})
+add_executable(${PROJECT_NAME} WIN32 ${SOURCES} ${RESOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/src
