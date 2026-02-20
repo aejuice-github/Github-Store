@@ -23,7 +23,6 @@ public:
 
 signals:
     void manifestLoaded(const QList<Component> &components, const QStringList &categories);
-    void appUpdateAvailable(const QString &version, const QString &url);
     void errorOccurred(const QString &error);
 
 private slots:

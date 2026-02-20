@@ -1,9 +1,5 @@
 #include "AppController.h"
 #include <QCoreApplication>
-#include <QStandardPaths>
-#include <QProcess>
-#include <QFile>
-#include <QDir>
 #include <QDebug>
 #include <QDesktopServices>
 #include <QUrl>
@@ -30,14 +26,6 @@ bool AppController::loading() const {
     return m_loading;
 }
 
-bool AppController::appUpdateAvailable() const {
-    return m_appUpdateAvailable;
-}
-
-QString AppController::appUpdateVersion() const {
-    return m_appUpdateVersion;
-}
-
 int AppController::updatesAvailableCount() const {
     int count = 0;
     for (const auto &component : m_allComponents) {
@@ -59,9 +47,6 @@ void AppController::initialize() {
 
     connect(m_manifest, &ManifestManager::manifestLoaded,
             this, &AppController::onManifestLoaded);
-
-    connect(m_manifest, &ManifestManager::appUpdateAvailable,
-            this, &AppController::onAppUpdateAvailable);
 
     connect(m_installer, &InstallManager::installCompleted,
             this, [this](const QString &componentId) {
@@ -111,67 +96,6 @@ void AppController::onManifestLoaded(const QList<Component> &components,
     emit loadingChanged();
     emit authorsChanged();
     emit updatesAvailableCountChanged();
-}
-
-void AppController::onAppUpdateAvailable(const QString &version, const QString &url) {
-    m_appUpdateVersion = version;
-    m_appUpdateUrl = url;
-    m_appUpdateAvailable = true;
-    emit appUpdateAvailableChanged();
-}
-
-void AppController::updateApp() {
-    if (m_appUpdateUrl.isEmpty()) {
-        emit toastRequested("No update URL available", "error");
-        return;
-    }
-
-    emit toastRequested("Downloading update...", "info");
-
-    QString tempPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
-                       + "/ComponentManager_update.exe";
-
-    connect(m_downloads, &DownloadManager::downloadCompleted,
-            this, [this, tempPath](const QString &id, const QString &filePath) {
-        if (id != "_app_update")
-            return;
-
-        Q_UNUSED(filePath)
-        QString currentExe = QCoreApplication::applicationFilePath();
-        QString batchPath = QStandardPaths::writableLocation(QStandardPaths::TempLocation)
-                            + "/cm_update.bat";
-
-        QFile batch(batchPath);
-        if (!batch.open(QIODevice::WriteOnly | QIODevice::Text)) {
-            emit toastRequested("Failed to create update script", "error");
-            return;
-        }
-
-        // Batch script: wait for app to close, copy new exe, launch, clean up
-        QString script = QString(
-            "@echo off\r\n"
-            "timeout /t 2 /nobreak >nul\r\n"
-            "copy /y \"%1\" \"%2\" >nul\r\n"
-            "start \"\" \"%2\"\r\n"
-            "del \"%1\" >nul\r\n"
-            "del \"%3\" >nul\r\n"
-        ).arg(tempPath, currentExe, batchPath);
-
-        batch.write(script.toLocal8Bit());
-        batch.close();
-
-        QProcess::startDetached("cmd.exe", {"/c", batchPath});
-        QCoreApplication::quit();
-    });
-
-    connect(m_downloads, &DownloadManager::downloadError,
-            this, [this](const QString &id, const QString &error) {
-        if (id != "_app_update")
-            return;
-        emit toastRequested("Update failed: " + error, "error");
-    });
-
-    m_downloads->downloadFile("_app_update", QUrl(m_appUpdateUrl), tempPath);
 }
 
 // Navigation

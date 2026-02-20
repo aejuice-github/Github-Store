@@ -32,11 +32,6 @@ Headless modes log to `%TEMP%/cm_install.log` and exit with code 0 on success, 1
 - Random roll (1–100) assigned per component on first encounter, persisted in `rollout.json`
 - Re-rolls only when the percentage value changes in the manifest
 
-### Self-Update
-- Manifest declares `appVersion` and `appUpdateUrl`
-- Update banner shown when a newer version is detected
-- Downloads new exe, runs a batch script to replace itself, relaunches
-
 ### Drag-and-Drop
 - Native Windows OLE `IDropTarget` integration
 - Auto de-elevation: if app is launched as admin, it relaunches as normal user so UIPI doesn't block drops

@@ -239,70 +239,10 @@ ApplicationWindow {
         }
     }
 
-    // App update banner
-    Rectangle {
-        id: updateBanner
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.top: navBar.bottom
-        height: appController.appUpdateAvailable ? 36 : 0
-        visible: appController.appUpdateAvailable
-        color: "#E65100"
-        z: 9
-
-        Row {
-            anchors.centerIn: parent
-            spacing: CMTheme.spacingDefault
-
-            MaterialIcon {
-                iconName: "system_update"
-                iconSize: 18
-                iconColor: "#FFFFFF"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Text {
-                text: "Version " + appController.appUpdateVersion + " is available"
-                font.pixelSize: CMTheme.fontSizeDefault
-                font.family: CMTheme.fontFamily
-                color: "#FFFFFF"
-                anchors.verticalCenter: parent.verticalCenter
-            }
-
-            Rectangle {
-                width: updateBtnText.width + CMTheme.spacingLarge
-                height: 24
-                radius: CMTheme.radiusSmall
-                color: updateBtnArea.containsMouse ? "#FFFFFF" : "transparent"
-                border.color: "#FFFFFF"
-                border.width: 1
-                anchors.verticalCenter: parent.verticalCenter
-
-                Text {
-                    id: updateBtnText
-                    anchors.centerIn: parent
-                    text: "Update"
-                    font.pixelSize: CMTheme.fontSizeSmall
-                    font.bold: true
-                    font.family: CMTheme.fontFamily
-                    color: updateBtnArea.containsMouse ? "#E65100" : "#FFFFFF"
-                }
-
-                MouseArea {
-                    id: updateBtnArea
-                    anchors.fill: parent
-                    hoverEnabled: true
-                    cursorShape: Qt.PointingHandCursor
-                    onClicked: appController.updateApp()
-                }
-            }
-        }
-    }
-
     // Main content
     StackView {
         id: stackView
-        anchors.top: updateBanner.bottom
+        anchors.top: navBar.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom

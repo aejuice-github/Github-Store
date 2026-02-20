@@ -95,15 +95,6 @@ void ManifestManager::parseManifest(const QByteArray &data)
         components.append(component);
     }
 
-    // Check for app update
-    QString manifestAppVersion = root["appVersion"].toString();
-    QString appUpdateUrl = root["appUpdateUrl"].toString();
-    if (!manifestAppVersion.isEmpty()) {
-        QString currentVersion = QCoreApplication::applicationVersion();
-        if (compareVersions(currentVersion, manifestAppVersion) < 0)
-            emit appUpdateAvailable(manifestAppVersion, appUpdateUrl);
-    }
-
     emit manifestLoaded(components, categories);
 }
 
