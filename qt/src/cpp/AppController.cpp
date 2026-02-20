@@ -91,6 +91,17 @@ void AppController::onManifestLoaded(const QList<Component> &components,
     m_allComponents = components;
     m_componentModel->setComponents(components);
     m_componentModel->setInstalledVersions(m_storage->installedVersions());
+
+    // Verify installed components still exist on disk
+    QStringList missing = m_installer->verifyInstalled(m_allComponents, m_storage);
+    if (!missing.isEmpty()) {
+        for (const QString &id : missing) {
+            qDebug() << "Installed component missing from disk, removing:" << id;
+            m_storage->removeInstalled(id);
+        }
+        m_componentModel->setInstalledVersions(m_storage->installedVersions());
+    }
+
     m_categoryModel->setCategories(categories);
     m_loading = false;
     emit loadingChanged();

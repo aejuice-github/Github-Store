@@ -307,30 +307,33 @@ Rectangle {
                         }
 
                         Rectangle {
-                            width: Math.max(100, installedUninstallLabel.width + CMTheme.spacingXLarge * 2)
+                            id: installedMenuBtn
+                            width: 36
                             height: 36
                             radius: CMTheme.radiusDefault
-                            color: installedUninstallArea.containsMouse ? "#93000A" : CMTheme.surfaceContainerHighColor
+                            color: installedMenuBtnArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
 
-                            Text {
-                                id: installedUninstallLabel
+                            MaterialIcon {
                                 anchors.centerIn: parent
-                                text: "Uninstall"
-                                font.pixelSize: CMTheme.fontSizeDefault
-                                font.bold: true
-                                font.family: CMTheme.fontFamily
-                                color: installedUninstallArea.containsMouse ? "#FFFFFF" : CMTheme.textMutedColor
+                                iconName: "more_vert"
+                                iconSize: 20
+                                iconColor: CMTheme.textMutedColor
                             }
 
                             MouseArea {
-                                id: installedUninstallArea
+                                id: installedMenuBtnArea
                                 anchors.fill: parent
                                 hoverEnabled: true
                                 cursorShape: Qt.PointingHandCursor
                                 onClicked: {
-                                    appController.uninstallComponent(modelData.id)
-                                    installedApps = appController.getInstalledComponents()
-                                    filteredApps = installedApps
+                                    var pos = installedMenuBtn.mapToItem(installedScreen, installedMenuBtn.width, installedMenuBtn.height + 4)
+                                    installedContextPopup.targetComponentId = modelData.id
+                                    installedContextPopup.targetName = modelData.name
+                                    installedContextPopup.x = pos.x - installedContextPopup.width
+                                    installedContextPopup.y = pos.y
+                                    if (installedContextPopup.y + installedContextPopup.implicitHeight > installedScreen.height)
+                                        installedContextPopup.y = pos.y - installedMenuBtn.height - 4 - installedContextPopup.implicitHeight
+                                    installedContextPopup.open()
                                 }
                             }
                         }
@@ -532,6 +535,85 @@ Rectangle {
                             installedApps = appController.getInstalledComponents()
                             filteredApps = installedApps
                         }
+                    }
+                }
+            }
+        }
+    }
+
+    Popup {
+        id: installedContextPopup
+        width: 160
+        padding: CMTheme.spacingSmall
+        closePolicy: Popup.CloseOnPressOutside | Popup.CloseOnEscape
+
+        property string targetComponentId: ""
+        property string targetName: ""
+
+        background: Rectangle {
+            radius: CMTheme.radiusDefault
+            color: CMTheme.surfaceColor
+            border.color: CMTheme.borderColor
+            border.width: 1
+        }
+
+        Column {
+            width: parent.width
+
+            Rectangle {
+                width: parent.width
+                height: 32
+                radius: CMTheme.radiusSmall
+                color: popupReinstallArea2.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: CMTheme.spacingDefault
+                    text: "Reinstall"
+                    font.pixelSize: CMTheme.fontSizeDefault
+                    font.family: CMTheme.fontFamily
+                    color: CMTheme.textColor
+                }
+
+                MouseArea {
+                    id: popupReinstallArea2
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        installedContextPopup.close()
+                        appController.installComponent(installedContextPopup.targetComponentId)
+                    }
+                }
+            }
+
+            Rectangle {
+                width: parent.width
+                height: 32
+                radius: CMTheme.radiusSmall
+                color: popupUninstallArea2.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+
+                Text {
+                    anchors.verticalCenter: parent.verticalCenter
+                    anchors.left: parent.left
+                    anchors.leftMargin: CMTheme.spacingDefault
+                    text: "Uninstall"
+                    font.pixelSize: CMTheme.fontSizeDefault
+                    font.family: CMTheme.fontFamily
+                    color: "#F44336"
+                }
+
+                MouseArea {
+                    id: popupUninstallArea2
+                    anchors.fill: parent
+                    hoverEnabled: true
+                    cursorShape: Qt.PointingHandCursor
+                    onClicked: {
+                        installedContextPopup.close()
+                        appController.uninstallComponent(installedContextPopup.targetComponentId)
+                        installedApps = appController.getInstalledComponents()
+                        filteredApps = installedApps
                     }
                 }
             }

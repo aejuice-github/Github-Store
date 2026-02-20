@@ -1,6 +1,7 @@
 #include "InstallManager.h"
 #include "DownloadManager.h"
 #include "JsonStorage.h"
+#include "../data/Component.h"
 #include "services/ElevatedCopyHelper.h"
 #include "services/FileLocations.h"
 #include <QProcess>
@@ -25,6 +26,52 @@ void InstallManager::setDownloadManager(DownloadManager *download)
 void InstallManager::setJsonStorage(JsonStorage *storage)
 {
     m_storage = storage;
+}
+
+QStringList InstallManager::verifyInstalled(const QList<Component> &components, JsonStorage *storage)
+{
+    QStringList missing;
+    auto installed = storage->installedVersions();
+
+    for (auto it = installed.begin(); it != installed.end(); ++it) {
+        QString componentId = it.key();
+
+        // Find matching component from manifest
+        const Component *found = nullptr;
+        for (const auto &component : components) {
+            if (component.id == componentId) {
+                found = &component;
+                break;
+            }
+        }
+        if (!found)
+            continue;
+
+        // Skip software type (exe installers have no single file path to check)
+        if (found->type == "software")
+            continue;
+
+#ifdef Q_OS_WIN
+        QString platformKey = "windows";
+#else
+        QString platformKey = "macos";
+#endif
+        if (!found->platforms.contains(platformKey))
+            continue;
+
+        PlatformAsset asset = found->platforms[platformKey];
+        if (asset.installPath.isEmpty() || asset.fileName.isEmpty())
+            continue;
+
+        QStringList targetDirs = resolveInstallPaths(asset.installPath);
+        if (targetDirs.isEmpty())
+            continue;
+
+        if (!fileExistsAtDestination(asset.fileName, targetDirs))
+            missing.append(componentId);
+    }
+
+    return missing;
 }
 
 void InstallManager::install(const QString &componentId, const QVariantMap &componentData, const QString &version)

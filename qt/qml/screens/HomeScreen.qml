@@ -628,6 +628,35 @@ Rectangle {
                             width: parent.width
                             height: 32
                             radius: CMTheme.radiusSmall
+                            color: popupReinstallArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
+
+                            Text {
+                                anchors.verticalCenter: parent.verticalCenter
+                                anchors.left: parent.left
+                                anchors.leftMargin: CMTheme.spacingDefault
+                                text: "Reinstall"
+                                font.pixelSize: CMTheme.fontSizeDefault
+                                font.family: CMTheme.fontFamily
+                                color: CMTheme.textColor
+                            }
+
+                            MouseArea {
+                                id: popupReinstallArea
+                                anchors.fill: parent
+                                hoverEnabled: true
+                                cursorShape: Qt.PointingHandCursor
+                                onClicked: {
+                                    contextPopup.close()
+                                    appController.installComponent(contextPopup.targetComponentId)
+                                }
+                            }
+                        }
+
+                        Rectangle {
+                            visible: contextPopup.targetInstalled
+                            width: parent.width
+                            height: 32
+                            radius: CMTheme.radiusSmall
                             color: popupUninstallArea.containsMouse ? CMTheme.surfaceContainerHighColor : "transparent"
 
                             Text {

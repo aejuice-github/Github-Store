@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QVariantMap>
 
+#include "../data/Component.h"
+
 class DownloadManager;
 class JsonStorage;
 class ElevatedCopyHelper;
@@ -22,6 +24,7 @@ public:
     bool isBusy() const { return m_isBusy; }
 
     Q_INVOKABLE void install(const QString &componentId, const QVariantMap &componentData, const QString &version = QString());
+    QStringList verifyInstalled(const QList<Component> &components, JsonStorage *storage);
 
 signals:
     void isBusyChanged();
